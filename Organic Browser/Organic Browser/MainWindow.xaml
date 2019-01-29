@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Organic_Browser"
+        xmlns:control="clr-namespace:Organic_Browser.Controls"
         xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf" 
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" WindowState="Maximized">
@@ -22,17 +23,7 @@
                     <Label>Tab1</Label>
                 </TabItem.Header>
 
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="12*"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        
-                    </Grid.RowDefinitions>
-                </Grid>
+                <control:UrlTextBoxControl Height="25" Width="700"></control:UrlTextBoxControl>
             </TabItem>
 
             <TabItem Style="{StaticResource TabItemStyle}">

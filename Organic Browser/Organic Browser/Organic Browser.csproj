@@ -81,11 +81,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controls\BrowserTabControl.xaml.cs">
-      <DependentUpon>BrowserTabControl.xaml</DependentUpon>
+    <Compile Include="Controls\UrlTextBoxControl.xaml.cs">
+      <DependentUpon>UrlTextBoxControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\CefInitializer.cs" />
-    <Page Include="Controls\BrowserTabControl.xaml">
+    <Page Include="Controls\UrlTextBoxControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

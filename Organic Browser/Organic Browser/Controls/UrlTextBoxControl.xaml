@@ -9,16 +9,40 @@
     
     <UserControl.Resources>
         <Style x:Key="UrlTBStyle" TargetType="TextBox">
-            <Setter Property="Background" Value="#FFCCCCCC" />
-            <Setter Property="Foreground" Value="#FF161616" />
+            <Setter Property="Foreground" Value="#FF3F3F3F" />
+            <Setter Property="SelectionBrush" Value="#FF00A815" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Padding" Value="10, 0, 0, 0" />
+            <Setter Property="Background" Value="#FFDBDBDB" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="Transparent"/>
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="Transparent"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </UserControl.Resources>
     
     <Grid>
-        <TextBox Style="{StaticResource ResourceKey=UrlTBStyle}">
+        <TextBox x:Name="UrlTB" Style="{StaticResource ResourceKey=UrlTBStyle}">
             <TextBox.Resources>
                 <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10"/>
+                    <Setter Property="CornerRadius" Value="4"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
