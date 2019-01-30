@@ -87,6 +87,7 @@
     <Compile Include="Controls\UrlTextBoxControl.xaml.cs">
       <DependentUpon>UrlTextBoxControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utils\BrowserTab.cs" />
     <Compile Include="Utils\CefInitializer.cs" />
     <Page Include="Controls\NavigationBarControl.xaml">
       <SubType>Designer</SubType>

@@ -7,7 +7,7 @@
         xmlns:control="clr-namespace:Organic_Browser.Controls"
         xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf" 
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowState="Maximized">
+        Title="Organic Browser" Height="450" Width="800" WindowState="Maximized">
 
     <Window.Resources>
         <Style x:Key="TabItemStyle" TargetType="TabItem">
@@ -15,14 +15,13 @@
             <Setter Property="Height" Value="30" />            
         </Style>
     </Window.Resources>
-        
+
     <Grid>
         <TabControl>
             <TabItem Style="{StaticResource TabItemStyle}">
                 <TabItem.Header>
                     <Label>Tab1</Label>
-                </TabItem.Header
-                    >
+                </TabItem.Header>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>

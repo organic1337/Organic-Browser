@@ -20,6 +20,12 @@ namespace Organic_Browser.Controls
     /// </summary>
     public partial class UrlTextBoxControl : UserControl
     {
+        // Text property
+        public string Text {    
+            get { return this.UrlTB.Text; }
+            set { this.UrlTB.Text = value;}
+        }
+
         public UrlTextBoxControl()
         {
             InitializeComponent();

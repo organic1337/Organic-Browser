@@ -23,9 +23,10 @@ namespace Organic_Browser
     {
         public MainWindow()
         {
-            CefInitializer.Initialize();
+            CefInitializer.Initialize();            
+            InitializeComponent();
 
-            InitializeComponent();           
+            BrowserTab tab = new BrowserTab(this.navBar, this.webBrowser);
         }
     }
 }
