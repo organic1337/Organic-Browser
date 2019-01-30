@@ -23,7 +23,7 @@
                     <Label>Tab1</Label>
                 </TabItem.Header>
 
-                <control:UrlTextBoxControl Height="25" Width="700"></control:UrlTextBoxControl>
+                <control:NavigationBarControl />
             </TabItem>
 
             <TabItem Style="{StaticResource TabItemStyle}">
