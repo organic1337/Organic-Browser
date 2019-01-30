@@ -21,9 +21,16 @@
             <TabItem Style="{StaticResource TabItemStyle}">
                 <TabItem.Header>
                     <Label>Tab1</Label>
-                </TabItem.Header>
-
-                <control:NavigationBarControl />
+                </TabItem.Header
+                    >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <control:NavigationBarControl  VerticalAlignment="Top"/>
+                    <cefSharp:ChromiumWebBrowser  Address="www.google.com" Grid.Row="1"/>
+                </Grid>
             </TabItem>
 
             <TabItem Style="{StaticResource TabItemStyle}">
