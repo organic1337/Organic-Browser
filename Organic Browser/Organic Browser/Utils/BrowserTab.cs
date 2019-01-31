@@ -56,7 +56,7 @@ namespace Organic_Browser.Utils
             };
             // Refresh
             this.NavigationBar.refreshBtn.MouseUp += (object obj, MouseButtonEventArgs e) => this.WebBrowser.ReloadCommand.Execute(null);
-            this.WebBrowser.FrameLoadStart += (object obj, FrameLoadStartEventArgs e) => this.UpdateUrlTextBox();
+            this.WebBrowser.LoadingStateChanged += (object obj, LoadingStateChangedEventArgs e) => this.UpdateUrlTextBox();
             
         }
 
