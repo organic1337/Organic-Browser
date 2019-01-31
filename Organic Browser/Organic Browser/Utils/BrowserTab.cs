@@ -41,17 +41,9 @@ namespace Organic_Browser.Utils
         {          
             // Bind the buttons in the navigation bar to the commands of the webbrowser
             // Back
-            this.NavigationBar.backBtn.MouseUp += (object obj, MouseButtonEventArgs e) => 
-            {
-                this.WebBrowser.BackCommand.Execute(null);
-                this.UpdateUrlTextBox();
-            };
+            this.NavigationBar.backBtn.MouseUp += (object obj, MouseButtonEventArgs e) => this.WebBrowser.BackCommand.Execute(null);
             // Forward
-            this.NavigationBar.forwardBtn.MouseUp += (object obj, MouseButtonEventArgs e) =>
-            {
-                this.WebBrowser.ForwardCommand.Execute(null);
-                this.UpdateUrlTextBox();
-            };
+            this.NavigationBar.forwardBtn.MouseUp += (object obj, MouseButtonEventArgs e) => this.WebBrowser.ForwardCommand.Execute(null);
             // Refresh
             this.NavigationBar.refreshBtn.MouseUp += (object obj, MouseButtonEventArgs e) => this.WebBrowser.ReloadCommand.Execute(null);
 
