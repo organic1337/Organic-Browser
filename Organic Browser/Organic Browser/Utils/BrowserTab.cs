@@ -38,9 +38,7 @@ namespace Organic_Browser.Utils
         /// Binds the browser to the navigation bar
         /// </summary>
         private void Bind()
-        {
-            // TODO: FIX!! after going back & forward the url text box is not changed
-
+        {          
             // Bind the buttons in the navigation bar to the commands of the webbrowser
             // Back
             this.NavigationBar.backBtn.MouseUp += (object obj, MouseButtonEventArgs e) => 
@@ -56,8 +54,26 @@ namespace Organic_Browser.Utils
             };
             // Refresh
             this.NavigationBar.refreshBtn.MouseUp += (object obj, MouseButtonEventArgs e) => this.WebBrowser.ReloadCommand.Execute(null);
-            this.WebBrowser.LoadingStateChanged += (object obj, LoadingStateChangedEventArgs e) => this.UpdateUrlTextBox();
+
+            // Update url on navigation
+            // TODO: FIX!! working super slow
+            this.WebBrowser.FrameLoadEnd += (object obj, FrameLoadEndEventArgs e) => this.UpdateUrlTextBox();
+
+            // Key up (Navigation bar textbox)
+            this.NavigationBar.urlTexBox.KeyUp += UrlTextBox_OnKeyUp;            
             
+            // TODO: Bind the home button, settings button and eventually download button
+        }
+
+        /// <summary>
+        /// Executes when a key in the keyboard is up in the URL text box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="eventArgs"></param>
+        private void UrlTextBox_OnKeyUp(object sender, KeyEventArgs eventArgs)
+        {
+            if (eventArgs.Key == Key.Enter)
+                this.WebBrowser.Address = this.NavigationBar.urlTexBox.Text;
         }
 
         /// <summary>
@@ -66,7 +82,11 @@ namespace Organic_Browser.Utils
         private void UpdateUrlTextBox()
         {
             // Update the url from the thread that created the navigation bar
-            this.NavigationBar.Dispatcher.Invoke(() => this.NavigationBar.urlTexBox.Text = this.WebBrowser.Address);            
+            void Update()
+            {
+                this.NavigationBar.urlTexBox.Text = this.WebBrowser.Address;
+            }
+            this.NavigationBar.Dispatcher.BeginInvoke((Action) Update);      
         }
     }
 }
