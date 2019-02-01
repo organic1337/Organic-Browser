@@ -34,11 +34,11 @@
 
 
         <Style x:Key="DownloadButtonImage" TargetType="Image" BasedOn="{StaticResource ResourceKey=imageSize}">
-            <Setter Property="Source" Value="../Images/dark-gray-download.png" />
+            <Setter Property="Source" Value="../Resources/Images/dark-gray-download.png" />
             <Setter Property="Height" Value="20" />
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Source" Value="../Images/green-download.png" />
+                    <Setter Property="Source" Value="../Resources/Images/green-download.png" />
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -57,22 +57,22 @@
         
         <!--Back Button-->
         <Border x:Name="backBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}">
-            <Image Source="../Images/left-arrow.png" Style="{StaticResource ResourceKey=imageSize}"/>
+            <Image Source="../Resources/Images/left-arrow.png" Style="{StaticResource ResourceKey=imageSize}"/>
         </Border>
         
         <!--Forward Button-->
         <Border x:Name="forwardBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}" Grid.Column="1">
-            <Image Source="../Images/right-arrow.png" Style="{StaticResource ResourceKey=imageSize}"/>
+            <Image Source="../Resources/Images/right-arrow.png" Style="{StaticResource ResourceKey=imageSize}"/>
         </Border>
 
         <!--Refresh Button-->
         <Border x:Name="refreshBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}" Grid.Column="2">
-            <Image Source="../Images/refresh.png" Style="{StaticResource ResourceKey=imageSize}"/>
+            <Image Source="../Resources/Images/refresh.png" Style="{StaticResource ResourceKey=imageSize}"/>
         </Border>
 
         <!--Home Button-->
         <Border x:Name="homeBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}" Grid.Column="3">
-            <Image Source="../Images/home.png" Style="{StaticResource ResourceKey=imageSize}"/>
+            <Image Source="../Resources/Images/home.png" Style="{StaticResource ResourceKey=imageSize}"/>
         </Border>
 
         <!--Download Button-->
@@ -82,7 +82,7 @@
 
         <!--Settings Button-->
         <Border x:Name="settingsBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}" Grid.Column="6">
-            <Image Source="../Images/settings.png" Style="{StaticResource ResourceKey=imageSize}"/>
+            <Image Source="../Resources/Images/settings.png" Style="{StaticResource ResourceKey=imageSize}"/>
         </Border>
 
         <local:UrlTextBoxControl x:Name="urlTexBox" Height="30" Grid.Column="4"></local:UrlTextBoxControl>

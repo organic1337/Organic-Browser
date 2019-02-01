@@ -89,6 +89,7 @@
     </Compile>
     <Compile Include="Utils\BrowserTab.cs" />
     <Compile Include="Utils\CefInitializer.cs" />
+    <Compile Include="Utils\UserSettings.cs" />
     <Page Include="Controls\NavigationBarControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -141,16 +142,16 @@
     <Folder Include="WebsiteDownloader\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\dark-gray-download.png" />
-    <Resource Include="Images\green-download.png" />
-    <Resource Include="Images\home.png" />
-    <Resource Include="Images\left-arrow.png" />
-    <Resource Include="Images\refresh.png" />
-    <Resource Include="Images\right-arrow.png" />
-    <Resource Include="Images\x.png" />
+    <Resource Include="Resources\Images\dark-gray-download.png" />
+    <Resource Include="Resources\Images\green-download.png" />
+    <Resource Include="Resources\Images\home.png" />
+    <Resource Include="Resources\Images\left-arrow.png" />
+    <Resource Include="Resources\Images\refresh.png" />
+    <Resource Include="Resources\Images\right-arrow.png" />
+    <Resource Include="Resources\Images\x.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\settings.png" />
+    <Resource Include="Resources\Images\settings.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
