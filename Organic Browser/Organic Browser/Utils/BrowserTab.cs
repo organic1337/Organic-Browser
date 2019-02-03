@@ -7,6 +7,7 @@ using System.Windows.Input;
 using CefSharp;
 using CefSharp.Wpf;
 using Organic_Browser.Controls;
+using System.Windows.Data;
 
 namespace Organic_Browser.Utils
 {
@@ -29,9 +30,6 @@ namespace Organic_Browser.Utils
             // Assign the properties
             this.NavigationBar = navigationBar;
             this.WebBrowser = webBrowser;
-
-            // Update back and forward buttons (enable/disable them)
-            this.UpdateBackAndForwardButtons();
 
             // Bind the Navigation bar and the web browser
             this.Bind();
@@ -56,6 +54,20 @@ namespace Organic_Browser.Utils
             // Key up (Navigation bar textbox)
             this.NavigationBar.urlTexBox.KeyUp += UrlTextBox_OnKeyUp;
 
+            // Bind the back button to the CanGoBack property
+            var backBinding = new Binding("BackEnabled")
+            {
+                Source = this.NavigationBar,
+                Mode = BindingMode.OneWayToSource
+            };
+            this.WebBrowser.SetBinding(ChromiumWebBrowser.CanGoBackProperty, backBinding);
+
+            var forwardBinding = new Binding("ForwardEnabled")
+            {
+                Source = this.NavigationBar,
+                Mode = BindingMode.OneWayToSource
+            };
+            this.WebBrowser.SetBinding(ChromiumWebBrowser.CanGoForwardProperty, forwardBinding);
             // TODO: Bind the home button, settings button and eventually download button
         }
 
@@ -79,7 +91,6 @@ namespace Organic_Browser.Utils
         private void NavBar_ForwardBtnPress(object obj, MouseButtonEventArgs e)
         {
             this.WebBrowser.ForwardCommand.Execute(null);
-            this.UpdateBackAndForwardButtons();
         }
 
         /// <summary>
@@ -90,7 +101,6 @@ namespace Organic_Browser.Utils
         private void NavBar_BackBtnPress(object obj, MouseButtonEventArgs e)
         {
             this.WebBrowser.BackCommand.Execute(null);
-            this.UpdateBackAndForwardButtons();
         }
 
         /// <summary>
@@ -101,7 +111,6 @@ namespace Organic_Browser.Utils
         private void FrameLoadEnd(object obj, FrameLoadEndEventArgs e)
         {
             this.UpdateUrlTextBox();
-            this.UpdateBackAndForwardButtons();
         }
         #endregion
 
@@ -116,21 +125,6 @@ namespace Organic_Browser.Utils
                 this.NavigationBar.urlTexBox.Text = this.WebBrowser.Address;
             }
             this.NavigationBar.Dispatcher.BeginInvoke((Action)Update);
-        }
-
-
-        /// <summary>
-        /// Updates the back and forward buttons, If the user can go back / forward, enable the buttons,
-        /// else, disable them.
-        /// </summary>
-        private void UpdateBackAndForwardButtons()
-        {
-            void Update()
-            {
-                this.NavigationBar.backBtn.IsEnabled = this.WebBrowser.CanGoBack;           // Update backwards
-                this.NavigationBar.forwardBtn.IsEnabled = this.WebBrowser.CanGoForward;     // Update forward
-            }
-            this.NavigationBar.Dispatcher.BeginInvoke((Action)Update);                      
         }
     }
 }

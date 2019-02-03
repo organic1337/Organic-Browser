@@ -20,6 +20,33 @@ namespace Organic_Browser.Controls
     /// </summary>
     public partial class NavigationBarControl : UserControl
     {
+        /// <summary>
+        /// Whether back button is enabled
+        /// </summary>
+        public bool BackEnabled
+        {
+            get { return this.backBtn.IsEnabled; }
+            set { this.backBtn.IsEnabled = value; }
+        }
+
+        /// <summary>
+        /// Whether forward button is enabled
+        /// </summary>
+        public bool ForwardEnabled
+        {
+            get { return this.forwardBtn.IsEnabled; }
+            set { this.forwardBtn.IsEnabled = value; }
+        }
+
+        /// <summary>
+        /// The url text box content
+        /// </summary>
+        public string Url
+        {
+            get { return this.urlTexBox.Text; }
+            set { this.urlTexBox.Text = value; }
+        }
+
         public NavigationBarControl()
         {
             InitializeComponent();
