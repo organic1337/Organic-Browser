@@ -58,7 +58,7 @@ namespace Organic_Browser.Utils
                     var serializer = new DataContractJsonSerializer(typeof(UserSettings));
                     UserSettings result = (UserSettings)serializer.ReadObject(stream);
                     stream.Dispose();
-                    return result;
+                    Instance = result;
                 }
                 // In case file does NOT exist
                 else
@@ -70,14 +70,10 @@ namespace Organic_Browser.Utils
                         DownloadWebpagesLocation = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
                     };
                     result.Save();  // Create a new json file with default values
-                    return result;
+                    Instance = result;
                 }
             }
-            // In case settings file was already loaded
-            else
-            {
-                return Instance;
-            }
+            return Instance;
         }
     }
 }
