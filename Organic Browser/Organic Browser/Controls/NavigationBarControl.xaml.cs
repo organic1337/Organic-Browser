@@ -51,17 +51,25 @@ namespace Organic_Browser.Controls
         {
             InitializeComponent();
 
-            this.settingsBtn.MouseLeftButtonDown += (object obj, MouseButtonEventArgs e) => ChangeSettingsMenuVisibility();            
+            this.mainGrid.MouseLeftButtonDown += (object obj, MouseButtonEventArgs e) => this.MakeSettingsMenuInvisible();
+            this.settingsBtn.MouseLeftButtonUp += (object obj, MouseButtonEventArgs e) => this.MakeSettingsMenuVisible();            
         }
 
         /// <summary>
-        /// Change the settings menu visibility
+        /// Makes the settings dropdown menu invisible
         /// </summary>
-        private void ChangeSettingsMenuVisibility()
+        public void MakeSettingsMenuVisible()
         {
             if (this.settingsMenu.Visibility == Visibility.Hidden)
                 this.settingsMenu.Visibility = Visibility.Visible;
-            else
+        }
+
+        /// <summary>
+        /// Makes the settings dropdown menu invisible
+        /// </summary>
+        public void MakeSettingsMenuInvisible()
+        {
+            if (this.settingsMenu.Visibility == Visibility.Visible)
                 this.settingsMenu.Visibility = Visibility.Hidden;
         }
     }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Organic_Browser.Utils
 {
@@ -22,8 +18,6 @@ namespace Organic_Browser.Utils
                 // Improve performence on high resolutions
                 {"disable-gpu-vsync", "1"},     
                 {"disable-gpu", "1"},
-                // Make mouse events work
-                {"touch-events", "enabled" }
             };
         }
 

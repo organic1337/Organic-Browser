@@ -47,7 +47,7 @@
         </Style>
 
     </UserControl.Resources>
-    <Grid Background="White">
+    <Grid Background="White" x:Name="mainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />

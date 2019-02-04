@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using CefSharp;
+﻿using System.Web;
 using CefSharp.Wpf;
-using Organic_Browser.Controls;
 using System.Windows.Data;
-using System.Web;
-using System.Windows;
+using System.Windows.Input;
+using Organic_Browser.Controls;
+using System.Text.RegularExpressions;
 
 namespace Organic_Browser.Utils
 {
@@ -81,6 +75,8 @@ namespace Organic_Browser.Utils
             this.NavigationBar.backBtn.MouseLeftButtonUp += NavBar_BackBtnPress;            // Handle mouse left button up on back button
             this.NavigationBar.forwardBtn.MouseLeftButtonUp += NavBar_ForwardBtnPress;      // Handle mouse left button up on forward button
             this.NavigationBar.refreshBtn.MouseLeftButtonUp += NavBar_RefreshBtnPress;      // Handle mouse left button up on refresh button
+
+            this.WebBrowser.PreviewMouseLeftButtonUp += WebBrowser_MouseLeftButtonUp;
         }
 
         #region Event handlers
@@ -100,6 +96,12 @@ namespace Organic_Browser.Utils
                 else
                     this.WebBrowser.Address = "https://www.google.com/search?q=" + HttpUtility.UrlEncode(this.NavigationBar.Url);
             }
+        }
+
+        private void WebBrowser_MouseLeftButtonUp(object obj, MouseButtonEventArgs e)
+        {
+            System.Console.WriteLine("Hello");
+            this.NavigationBar.MakeSettingsMenuInvisible();
         }
 
         /// <summary>
