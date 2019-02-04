@@ -51,7 +51,6 @@ namespace Organic_Browser.Utils
             this.NavigationBar.forwardBtn.MouseUp += NavBar_ForwardBtnPress;
             // Refresh
             this.NavigationBar.refreshBtn.MouseUp += (object obj, MouseButtonEventArgs e) => this.WebBrowser.ReloadCommand.Execute(null);
-
             // Update url on navigation
             this.WebBrowser.FrameLoadEnd += this.FrameLoadEnd;
 

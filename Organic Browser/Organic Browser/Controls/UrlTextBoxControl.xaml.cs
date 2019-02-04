@@ -26,9 +26,13 @@ namespace Organic_Browser.Controls
             set { this.UrlTB.Text = value;}
         }
 
+
         public UrlTextBoxControl()
         {
             InitializeComponent();
+
+            // Select all on double click
+            this.UrlTB.MouseDoubleClick += (object obj, MouseButtonEventArgs e) => UrlTB.SelectAll();
         }
     }
 }
