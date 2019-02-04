@@ -9,6 +9,7 @@ using CefSharp.Wpf;
 using Organic_Browser.Controls;
 using System.Windows.Data;
 using System.Web;
+using System.Windows;
 
 namespace Organic_Browser.Utils
 {
@@ -30,13 +31,14 @@ namespace Organic_Browser.Utils
         /// <param name="navigationBar">Navigation bar control</param>
         /// <param name="webBrowser">Chromium web browser object</param>
         public BrowserTab(NavigationBarControl navigationBar, ChromiumWebBrowser webBrowser)
-        {    
+        {
             // Assign the properties
             this.NavigationBar = navigationBar;
             this.WebBrowser = webBrowser;
 
-            // Bind the Navigation bar and the web browser
-            this.Bind();
+
+            this.Bind();            // Bind the Navigation bar and the web browser
+            this.HandleEvents();    // Handle events of both NavigationBar and WebBrowser objects
         }
 
         /// <summary>
@@ -44,19 +46,6 @@ namespace Organic_Browser.Utils
         /// </summary>
         private void Bind()
         {
-            // Bind the buttons in the navigation bar to the commands of the webbrowser
-            // Back
-            this.NavigationBar.backBtn.MouseUp += NavBar_BackBtnPress;
-            // Forward
-            this.NavigationBar.forwardBtn.MouseUp += NavBar_ForwardBtnPress;
-            // Refresh
-            this.NavigationBar.refreshBtn.MouseUp += (object obj, MouseButtonEventArgs e) => this.WebBrowser.ReloadCommand.Execute(null);
-            // Update url on navigation
-            this.WebBrowser.FrameLoadEnd += this.FrameLoadEnd;
-
-            // Key up (Navigation bar textbox)
-            this.NavigationBar.urlTexBox.KeyUp += UrlTextBox_OnKeyUp;
-
             // Bind the back button to the CanGoBack property
             var backBinding = new Binding("BackEnabled")
             {
@@ -65,13 +54,33 @@ namespace Organic_Browser.Utils
             };
             this.WebBrowser.SetBinding(ChromiumWebBrowser.CanGoBackProperty, backBinding);
 
+            // Bind the forward bottun to the CanGoForward property
             var forwardBinding = new Binding("ForwardEnabled")
             {
                 Source = this.NavigationBar,
                 Mode = BindingMode.OneWayToSource
             };
             this.WebBrowser.SetBinding(ChromiumWebBrowser.CanGoForwardProperty, forwardBinding);
+
+            // Bind the url data to the Address property
+            var urlBinding = new Binding("Url")
+            {
+                Source = this.NavigationBar,
+                Mode = BindingMode.OneWayToSource
+            };
+            this.WebBrowser.SetBinding(ChromiumWebBrowser.AddressProperty, urlBinding);
             // TODO: Bind the home button, settings button and eventually download button
+        }
+
+        /// <summary>
+        /// Assigns the event needed for the tab to work properly
+        /// </summary>
+        private void HandleEvents()
+        {
+            this.NavigationBar.urlTexBox.KeyUp += UrlTextBox_KeyUp;                         // Handle key pressed in the url textbox
+            this.NavigationBar.backBtn.MouseLeftButtonUp += NavBar_BackBtnPress;            // Handle mouse left button up on back button
+            this.NavigationBar.forwardBtn.MouseLeftButtonUp += NavBar_ForwardBtnPress;      // Handle mouse left button up on forward button
+            this.NavigationBar.refreshBtn.MouseLeftButtonUp += NavBar_RefreshBtnPress;      // Handle mouse left button up on refresh button
         }
 
         #region Event handlers
@@ -80,7 +89,7 @@ namespace Organic_Browser.Utils
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="eventArgs"></param>
-        private void UrlTextBox_OnKeyUp(object sender, KeyEventArgs eventArgs)
+        private void UrlTextBox_KeyUp(object sender, KeyEventArgs eventArgs)
         {
             if (eventArgs.Key == Key.Enter)
             {
@@ -114,27 +123,14 @@ namespace Organic_Browser.Utils
         }
 
         /// <summary>
-        /// Executes when the frame ends loading
+        /// Executes when the refresh button is pressed
         /// </summary>
-        /// <param name="obj">event sender</param>
+        /// <param name="obj">sender object</param>
         /// <param name="e">event args</param>
-        private void FrameLoadEnd(object obj, FrameLoadEndEventArgs e)
+        private void NavBar_RefreshBtnPress(object obj, MouseButtonEventArgs e)
         {
-            this.UpdateUrlTextBox();
+            this.WebBrowser.ReloadCommand.Execute(null);
         }
         #endregion
-
-        /// <summary>
-        /// Updates the url text box with the WebBrowser object url
-        /// </summary>
-        private void UpdateUrlTextBox()
-        {
-            // Update the url from the thread that created the navigation bar
-            void Update()
-            {
-                this.NavigationBar.urlTexBox.Text = this.WebBrowser.Address;
-            }
-            this.NavigationBar.Dispatcher.BeginInvoke((Action)Update);
-        }
     }
 }
