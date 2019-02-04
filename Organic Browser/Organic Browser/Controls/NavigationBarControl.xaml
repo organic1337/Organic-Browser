@@ -11,7 +11,7 @@
         <Style TargetType="ColumnDefinition">
             <Setter Property="Width" Value="50" />
         </Style>
-        
+
         <Style x:Key="imageWrapperBase" TargetType="Border">
             <Setter Property="Height" Value="30" />
             <Setter Property="Width" Value="30" />
@@ -45,7 +45,7 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        
+
     </UserControl.Resources>
     <Grid Background="White">
         <Grid.ColumnDefinitions>
@@ -57,12 +57,12 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        
+
         <!--Back Button-->
         <Border x:Name="backBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}">
             <Image Source="../Resources/Images/left-arrow.png" Style="{StaticResource ResourceKey=imageSize}"/>
         </Border>
-        
+
         <!--Forward Button-->
         <Border x:Name="forwardBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}" Grid.Column="1">
             <Image Source="../Resources/Images/right-arrow.png" Style="{StaticResource ResourceKey=imageSize}"/>
@@ -90,5 +90,8 @@
 
         <local:UrlTextBoxControl x:Name="urlTexBox" Height="30" Grid.Column="4"></local:UrlTextBoxControl>
         <Border Grid.ColumnSpan="1000" VerticalAlignment="Bottom" BorderThickness="0.2" BorderBrush="#FF7F7F7F"></Border>
+        <Canvas FlowDirection="RightToLeft" Grid.ColumnSpan="10000">
+            <local:SettingsDropdownControl x:Name="settingsMenu" Canvas.Top="42" Canvas.Left="12" Visibility="Hidden"/>
+        </Canvas>
     </Grid>
 </UserControl>

@@ -16,22 +16,13 @@ using System.Windows.Shapes;
 namespace Organic_Browser.Controls
 {
     /// <summary>
-    /// Interaction logic for UrlTextBoxControl.xaml
+    /// Interaction logic for SettingsDropdownControl.xaml
     /// </summary>
-    public partial class UrlTextBoxControl : UserControl
+    public partial class SettingsDropdownControl : UserControl
     {
-        // Text property
-        public string Text {    
-            get { return this.UrlTB.Text; }
-            set { this.UrlTB.Text = value;}
-        }
-
-        public UrlTextBoxControl()
+        public SettingsDropdownControl()
         {
             InitializeComponent();
-
-            // Select all on double click
-            this.UrlTB.MouseDoubleClick += (object obj, MouseButtonEventArgs e) => UrlTB.SelectAll();
         }
     }
 }

@@ -21,12 +21,24 @@ namespace Organic_Browser
     /// </summary>
     public partial class MainWindow : Window
     {
+        private List<BrowserTab> tabs = new List<BrowserTab>();
+
         public MainWindow()
         {
             CefInitializer.Initialize();            
             InitializeComponent();
 
             BrowserTab tab = new BrowserTab(this.navBar, this.webBrowser);
+            tabs.Add(tab);
+        }
+
+        /// <summary>
+        /// Executes when the mouse's left button is down
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Grid_LeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
         }
     }
 }

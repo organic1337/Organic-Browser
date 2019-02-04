@@ -27,8 +27,8 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <control:NavigationBarControl x:Name="navBar" VerticalAlignment="Top" Height="57" Margin="0,0,0.2,0" Grid.RowSpan="2"/>
                     <cefSharp:ChromiumWebBrowser x:Name="webBrowser"  Address="www.google.com" Grid.Row="1" Margin="0,57,0.2,-0.2"/>
+                    <control:NavigationBarControl x:Name="navBar" VerticalAlignment="Top" Height="57" Margin="0,0,0.2,0" Grid.RowSpan="2"/>
                 </Grid>
             </TabItem>
 

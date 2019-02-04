@@ -50,6 +50,19 @@ namespace Organic_Browser.Controls
         public NavigationBarControl()
         {
             InitializeComponent();
+
+            this.settingsBtn.MouseLeftButtonDown += (object obj, MouseButtonEventArgs e) => ChangeSettingsMenuVisibility();            
+        }
+
+        /// <summary>
+        /// Change the settings menu visibility
+        /// </summary>
+        private void ChangeSettingsMenuVisibility()
+        {
+            if (this.settingsMenu.Visibility == Visibility.Hidden)
+                this.settingsMenu.Visibility = Visibility.Visible;
+            else
+                this.settingsMenu.Visibility = Visibility.Hidden;
         }
     }
 }

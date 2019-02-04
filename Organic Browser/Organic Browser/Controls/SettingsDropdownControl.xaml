@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="Organic_Browser.Controls.SettingsDropdownControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Organic_Browser.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="200">
+
+    <UserControl.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Foreground" Value="#FF131313" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Width" Value="200" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FFCECECE" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Border BorderThickness="0.5" BorderBrush="#FF131313">
+    <StackPanel Orientation="Vertical">
+        <Label>Setting1</Label>
+        <Label>Setting2</Label>
+        <Label>Setting3</Label>
+    </StackPanel>
+    </Border>
+</UserControl>
