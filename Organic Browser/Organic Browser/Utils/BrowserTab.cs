@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using CefSharp;
 using CefSharp.Wpf;
 using Organic_Browser.Controls;
 using System.Windows.Data;
+using System.Web;
 
 namespace Organic_Browser.Utils
 {
@@ -19,6 +20,9 @@ namespace Organic_Browser.Utils
         // public properties 
         public NavigationBarControl NavigationBar { get; set; }     // Navigation bar control
         public ChromiumWebBrowser WebBrowser { get; set; }          // Web Browser control
+
+        // Private -  Read only data
+        private readonly Regex UrlRegex = new Regex(@"^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$", RegexOptions.Compiled | RegexOptions.Compiled);
 
         /// <summary>
         /// Browser tab constructor
@@ -80,7 +84,14 @@ namespace Organic_Browser.Utils
         private void UrlTextBox_OnKeyUp(object sender, KeyEventArgs eventArgs)
         {
             if (eventArgs.Key == Key.Enter)
-                this.WebBrowser.Address = this.NavigationBar.urlTexBox.Text;
+            {
+                // In case the given url is a valid address
+                if (UrlRegex.IsMatch(this.NavigationBar.Url))
+                    this.WebBrowser.Address = this.NavigationBar.Url;
+                // In case the given url is NOT actually a url
+                else
+                    this.WebBrowser.Address = "https://www.google.com/search?q=" + HttpUtility.UrlEncode(this.NavigationBar.Url);
+            }
         }
 
         /// <summary>
