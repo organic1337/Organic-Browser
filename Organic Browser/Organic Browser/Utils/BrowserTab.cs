@@ -71,12 +71,16 @@ namespace Organic_Browser.Utils
         /// </summary>
         private void HandleEvents()
         {
-            this.NavigationBar.urlTexBox.KeyUp += UrlTextBox_KeyUp;                         // Handle key pressed in the url textbox
-            this.NavigationBar.backBtn.MouseLeftButtonUp += NavBar_BackBtnPress;            // Handle mouse left button up on back button
-            this.NavigationBar.forwardBtn.MouseLeftButtonUp += NavBar_ForwardBtnPress;      // Handle mouse left button up on forward button
-            this.NavigationBar.refreshBtn.MouseLeftButtonUp += NavBar_RefreshBtnPress;      // Handle mouse left button up on refresh button
-
-            this.WebBrowser.PreviewMouseLeftButtonUp += WebBrowser_MouseLeftButtonUp;
+            // Navigation bar events
+            this.NavigationBar.urlTexBox.KeyUp += UrlTextBox_KeyUp;                             // Handle key pressed in the url textbox
+            this.NavigationBar.backBtn.MouseLeftButtonUp += NavBar_BackBtnPress;                // Handle mouse click on Back button
+            this.NavigationBar.forwardBtn.MouseLeftButtonUp += NavBar_ForwardBtnPress;          // Handle mouse click on Forward button
+            this.NavigationBar.refreshBtn.MouseLeftButtonUp += NavBar_RefreshBtnPress;          // Handle mouse click on Refresh button
+            this.NavigationBar.homeBtn.MouseLeftButtonUp += NavBar_HomeBtnPress;                // Handle mouse click on Home button
+            this.NavigationBar.settingsMenu.setHomePageLabel.MouseDown += NavBar_SetAsHomePress;  // Handle mouse click on Set as home setting
+            
+            // Web browser events
+            this.WebBrowser.PreviewMouseLeftButtonUp += WebBrowser_MouseLeftButtonUp;           // Handle mouse click on the web browser
         }
 
         #region Event handlers
@@ -98,10 +102,38 @@ namespace Organic_Browser.Utils
             }
         }
 
+        /// <summary>
+        /// Executes when the mouse left button is up on the web browser
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="e"></param>
         private void WebBrowser_MouseLeftButtonUp(object obj, MouseButtonEventArgs e)
         {
-            System.Console.WriteLine("Hello");
             this.NavigationBar.MakeSettingsMenuInvisible();
+        }
+
+        /// <summary>
+        /// Executes when the home button is pressed
+        /// </summary>
+        /// <param name="obj">sender</param>
+        /// <param name="e">event args</param>
+        private void NavBar_HomeBtnPress(object obj, MouseButtonEventArgs e)
+        {
+            UserSettings settings = UserSettings.Load();
+            this.WebBrowser.Address = settings.HomePage;    // Navigate to home page
+        }
+
+        /// <summary>
+        /// Execute
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="e"></param>
+        private void NavBar_SetAsHomePress(object obj, MouseButtonEventArgs e)
+        {
+            UserSettings settings = UserSettings.Load();
+            settings.HomePage = this.WebBrowser.Address;
+            settings.Save();
+            System.Console.WriteLine("DEBUG: {0} Is set as home page", settings.HomePage);
         }
 
         /// <summary>

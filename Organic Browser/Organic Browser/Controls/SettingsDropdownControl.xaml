@@ -9,10 +9,11 @@
 
     <UserControl.Resources>
         <Style TargetType="Label">
+            <Setter Property="FontSize" Value="12" />
             <Setter Property="Background" Value="White" />
             <Setter Property="Foreground" Value="#FF131313" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
-            <Setter Property="Height" Value="30" />
+            <Setter Property="Height" Value="28" />
             <Setter Property="Width" Value="200" />
             <Setter Property="Cursor" Value="Hand" />
             <Style.Triggers>
@@ -24,7 +25,7 @@
     </UserControl.Resources>
     <Border BorderThickness="0.5" BorderBrush="#FF131313">
     <StackPanel Orientation="Vertical">
-        <Label>Setting1</Label>
+        <Label x:Name="setHomePageLabel">Set as home page</Label>
         <Label>Setting2</Label>
         <Label>Setting3</Label>
     </StackPanel>
