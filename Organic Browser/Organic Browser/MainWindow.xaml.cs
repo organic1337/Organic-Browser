@@ -32,14 +32,5 @@ namespace Organic_Browser
             webBrowser.Address = UserSettings.Load().HomePage;
             tabs.Add(tab);
         }
-
-        /// <summary>
-        /// Executes when the mouse's left button is down
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Grid_LeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-        }
     }
 }
