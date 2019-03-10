@@ -30,6 +30,7 @@ namespace Organic_Browser.Utils
                 settings.CefCommandLineArgs.Add(command);
             }
 
+
             // Initialize Cef
             CefSharp.Cef.Initialize(settings);
         }

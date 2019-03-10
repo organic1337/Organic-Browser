@@ -17,7 +17,7 @@ namespace Organic_Browser.Utils
         public ChromiumWebBrowser WebBrowser { get; set; }          // Web Browser control
 
         // Private -  Read only data
-        private readonly Regex UrlRegex = new Regex(@"^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$", RegexOptions.Compiled | RegexOptions.Compiled);
+        private readonly Regex UrlRegex = new Regex(@"^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$", RegexOptions.Compiled | RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         /// <summary>
         /// Browser tab constructor
@@ -72,15 +72,16 @@ namespace Organic_Browser.Utils
         private void HandleEvents()
         {
             // Navigation bar events
-            this.NavigationBar.urlTexBox.KeyUp += UrlTextBox_KeyUp;                             // Handle key pressed in the url textbox
-            this.NavigationBar.backBtn.MouseLeftButtonUp += NavBar_BackBtnPress;                // Handle mouse click on Back button
-            this.NavigationBar.forwardBtn.MouseLeftButtonUp += NavBar_ForwardBtnPress;          // Handle mouse click on Forward button
-            this.NavigationBar.refreshBtn.MouseLeftButtonUp += NavBar_RefreshBtnPress;          // Handle mouse click on Refresh button
-            this.NavigationBar.homeBtn.MouseLeftButtonUp += NavBar_HomeBtnPress;                // Handle mouse click on Home button
-            this.NavigationBar.settingsMenu.setHomePageLabel.MouseDown += NavBar_SetAsHomePress;  // Handle mouse click on Set as home setting
+            this.NavigationBar.urlTexBox.KeyUp += UrlTextBox_KeyUp;                                 // Handle key pressed in the url textbox
+            this.NavigationBar.backBtn.MouseLeftButtonUp += NavBar_BackBtnPress;                    // Handle mouse click on Back button
+            this.NavigationBar.forwardBtn.MouseLeftButtonUp += NavBar_ForwardBtnPress;              // Handle mouse click on Forward button
+            this.NavigationBar.refreshBtn.MouseLeftButtonUp += NavBar_RefreshBtnPress;              // Handle mouse click on Refresh button
+            this.NavigationBar.homeBtn.MouseLeftButtonUp += NavBar_HomeBtnPress;                    // Handle mouse click on Home button
+            this.NavigationBar.settingsMenu.setHomePageLabel.MouseDown += NavBar_SetAsHomePress;    // Handle mouse click on Set as home setting
             
             // Web browser events
-            this.WebBrowser.PreviewMouseLeftButtonUp += WebBrowser_MouseLeftButtonUp;           // Handle mouse click on the web browser
+            this.WebBrowser.PreviewMouseLeftButtonUp += WebBrowser_MouseLeftButtonUp;               // Handle mouse click on the web browser
+            this.WebBrowser.LoadError += WebBrowser_LoadError;
         }
 
         #region Event handlers
@@ -164,6 +165,21 @@ namespace Organic_Browser.Utils
         private void NavBar_RefreshBtnPress(object obj, MouseButtonEventArgs e)
         {
             this.WebBrowser.ReloadCommand.Execute(null);
+        }
+
+        /// <summary>
+        /// Executes when loading error is occured.
+        /// 
+        /// Basically, show an html page for each error.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WebBrowser_LoadError(object sender, CefSharp.LoadErrorEventArgs e)
+        {
+            if (e.ErrorCode == CefSharp.CefErrorCode.NameNotResolved)
+            {
+                // TODO: Add error handler for Name Not Resolved
+            }
         }
         #endregion
     }

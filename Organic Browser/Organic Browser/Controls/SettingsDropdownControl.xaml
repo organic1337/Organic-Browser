@@ -26,8 +26,8 @@
     <Border BorderThickness="0.5" BorderBrush="#FF131313">
     <StackPanel Orientation="Vertical">
         <Label x:Name="setHomePageLabel">Set as home page</Label>
-        <Label>Setting2</Label>
-        <Label>Setting3</Label>
+        <Label x:Name="history">History</Label>
+            <Label x:Name="exit">Exit</Label>
     </StackPanel>
     </Border>
 </UserControl>
