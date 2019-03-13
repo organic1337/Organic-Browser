@@ -176,10 +176,26 @@ namespace Organic_Browser.Utils
         /// <param name="e"></param>
         private void WebBrowser_LoadError(object sender, CefSharp.LoadErrorEventArgs e)
         {
+            // Save the original url
+            string originalUrl = null;
+            this.NavigationBar.Dispatcher.Invoke(() => originalUrl = this.NavigationBar.urlTexBox.Text);
+
+            System.Console.WriteLine("DEBUG: " + e.ErrorCode.ToString());
+
+            // Handle loading errors
             if (e.ErrorCode == CefSharp.CefErrorCode.NameNotResolved)
             {
-                // TODO: Add error handler for Name Not Resolved
+                this.WebBrowser.Dispatcher.Invoke(() => this.WebBrowser.Address = string.Format("file:///{0}pages/could_not_find/index.html", System.AppDomain.CurrentDomain.BaseDirectory.Replace('\\', '/')));
             }
+            else
+            {
+                
+            }
+
+            // Handle more loading errors here
+
+            // Restore the url
+            this.NavigationBar.Dispatcher.Invoke(() => this.NavigationBar.urlTexBox.Text = originalUrl); 
         }
         #endregion
     }

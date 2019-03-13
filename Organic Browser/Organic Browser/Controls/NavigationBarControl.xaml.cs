@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace Organic_Browser.Controls
 {
     /// <summary>
@@ -44,7 +45,20 @@ namespace Organic_Browser.Controls
         public string Url
         {
             get { return this.urlTexBox.Text; }
-            set { this.urlTexBox.Text = value; }
+            set
+            {
+                // Make sure that the value is not null or empty
+                if (string.IsNullOrEmpty(value))
+                    return;
+
+                // The beginning of an html page url that belongs to the browser (is on the browser's directory)
+                string browserPageUrl = string.Format("file:///{0}", System.AppDomain.CurrentDomain.BaseDirectory.Replace('\\', '/').ToLower());
+                string browserPageUrlEncoded = Uri.EscapeUriString(browserPageUrl);
+
+                // Insert the url to the textbox ONLY if the url is not from inside the browser's directory
+                if (!value.ToLower().StartsWith(browserPageUrl) && !value.ToLower().StartsWith(browserPageUrlEncoded))
+                    this.urlTexBox.Text = value;
+            }
         }
 
         public NavigationBarControl()
