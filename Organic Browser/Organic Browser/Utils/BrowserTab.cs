@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System.Net;
+using System.Web;
 using CefSharp.Wpf;
 using System.Windows.Data;
 using System.Windows.Input;
@@ -180,22 +181,52 @@ namespace Organic_Browser.Utils
             string originalUrl = null;
             this.NavigationBar.Dispatcher.Invoke(() => originalUrl = this.NavigationBar.urlTexBox.Text);
 
-            System.Console.WriteLine("DEBUG: " + e.ErrorCode.ToString());
-
             // Handle loading errors
-            if (e.ErrorCode == CefSharp.CefErrorCode.NameNotResolved)
+            string errorPageDirectoryName = string.Empty;
+            if (IsConnected() == false)
             {
-                this.WebBrowser.Dispatcher.Invoke(() => this.WebBrowser.Address = string.Format("file:///{0}pages/could_not_find/index.html", System.AppDomain.CurrentDomain.BaseDirectory.Replace('\\', '/')));
+                // In case of no internet
+                errorPageDirectoryName = "no_internet";
+            }
+            else if (e.ErrorCode == CefSharp.CefErrorCode.NameNotResolved)
+            {
+                // In case of domain could not be resolved
+                errorPageDirectoryName = "could_not_find";
             }
             else
             {
-                
+                // Default loading error page
+                errorPageDirectoryName = "error_occured";
             }
 
             // Handle more loading errors here
 
+            this.WebBrowser.Dispatcher.Invoke(() => this.WebBrowser.Address = string.Format("file:///{0}pages/{1}/index.html", System.AppDomain.CurrentDomain.BaseDirectory.Replace('\\', '/'), errorPageDirectoryName));
+
             // Restore the url
             this.NavigationBar.Dispatcher.Invoke(() => this.NavigationBar.urlTexBox.Text = originalUrl); 
+        }
+        #endregion
+
+        #region Private functions
+        /// <summary>
+        /// Checks whether the computer is connected to the internet
+        /// </summary>
+        /// <returns></returns>
+        private static bool IsConnected()
+        {
+            try
+            {
+                using (var client = new WebClient())
+                using (client.OpenRead("http://clients3.google.com/generate_204"))
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
         }
         #endregion
     }
