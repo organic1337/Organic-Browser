@@ -27,8 +27,8 @@
     <StackPanel Orientation="Vertical">
         <Label x:Name="setHomePageLabel">Set as home page</Label>
         <Label x:Name="history">History</Label>
-        <Label x:Name="exit">Exit</Label>
         <Label x:Name="preferences" MouseDown="Preferences_MouseDown">Preferences</Label>
+        <Label x:Name="exit" MouseDown="Exit_MouseDown">Exit</Label>
     </StackPanel>
     </Border>
 </UserControl>

@@ -25,20 +25,29 @@ namespace Organic_Browser.Controls
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Executes when the preferences setting is clicked
+        /// </summary>
+        /// <param name="sender"> Event sender </param>
+        /// <param name="e">Event args</param>
         private void Preferences_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (!PreferencesWindow.IsRunning)
             {                
-                System.Threading.Thread preferencesThread = new System.Threading.Thread(() =>
-                {
-                    var window = new PreferencesWindow();
-                    window.Show();
-                    System.Windows.Threading.Dispatcher.Run();
-                });
-                preferencesThread.IsBackground = true;
-                preferencesThread.SetApartmentState(System.Threading.ApartmentState.STA);
-                preferencesThread.Start();
+                var window = new PreferencesWindow();
+                window.Show();
+                System.Windows.Threading.Dispatcher.Run();
             }
+        }
+
+        /// <summary>
+        /// Executes when the exit setting is clicked. CLOSES THE APPLICATION!
+        /// </summary>
+        /// <param name="sender">Event sender</param>
+        /// <param name="e">Event args</param>
+        private void Exit_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Environment.Exit(0);    // Exit the application, close all open windows
         }
     }
 }

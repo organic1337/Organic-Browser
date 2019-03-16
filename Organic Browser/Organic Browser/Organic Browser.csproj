@@ -89,6 +89,9 @@
     <Compile Include="Controls\NavigationBarControl.xaml.cs">
       <DependentUpon>NavigationBarControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\PreferenceField.xaml.cs">
+      <DependentUpon>PreferenceField.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SettingsDropdownControl.xaml.cs">
       <DependentUpon>SettingsDropdownControl.xaml</DependentUpon>
     </Compile>
@@ -102,6 +105,10 @@
     <Compile Include="Utils\CefInitializer.cs" />
     <Compile Include="Utils\UserSettings.cs" />
     <Page Include="Controls\NavigationBarControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PreferenceField.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

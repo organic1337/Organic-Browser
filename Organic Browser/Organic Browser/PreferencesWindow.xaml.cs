@@ -27,11 +27,14 @@ namespace Organic_Browser
         {
             InitializeComponent();
 
-            IsRunning = true; // Mention that the window is running
+            // Mention that the window is running
+            IsRunning = true;
+
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             // Fill the preferences from the usersettings file
             UserSettings settings = UserSettings.Load();
-            this.pagesDownloadLocation.Text = settings.DownloadWebpagesLocation;
+            this.pageDownloadLocation.Value = settings.DownloadWebpagesLocation;
         }
 
         // Read only data
@@ -65,7 +68,7 @@ namespace Organic_Browser
             if (!isValid) return;
 
             // Save each field in the user settings 
-            settings.DownloadWebpagesLocation = this.pagesDownloadLocation.Text;
+            settings.DownloadWebpagesLocation = this.pageDownloadLocation.Value;
             settings.Save();
 
             // Prompt success 
@@ -82,7 +85,7 @@ namespace Organic_Browser
             UserSettings settings = UserSettings.Load();    // Load the user settings
 
             // Reset each field to the original one from the user settings
-            this.pagesDownloadLocation.Text = settings.DownloadWebpagesLocation;
+            this.pageDownloadLocation.Value = settings.DownloadWebpagesLocation;
         }
 
         #endregion
@@ -97,7 +100,7 @@ namespace Organic_Browser
             string errorMessage = string.Empty;
 
             // Validate the page download location
-            if (!Directory.Exists(this.pagesDownloadLocation.Text))
+            if (!Directory.Exists(this.pageDownloadLocation.Value))
             {
                 errorMessage = "The given path does not exist";
             }
