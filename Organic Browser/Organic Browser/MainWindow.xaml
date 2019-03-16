@@ -16,5 +16,5 @@
         </Style>
     </Window.Resources>
 
-    <control:TabControl></control:TabControl>
+    <control:BrowserTabControl x:Name="browserTabControl"></control:BrowserTabControl>
 </Window>

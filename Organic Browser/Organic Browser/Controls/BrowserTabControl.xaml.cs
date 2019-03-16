@@ -18,14 +18,20 @@ namespace Organic_Browser.Controls
     /// <summary>
     /// Interaction logic for TabControl.xaml
     /// </summary>
-    public partial class TabControl : UserControl
+    public partial class BrowserTabControl : UserControl
     {
-        private int tabCount = 1;                           // Counts the number of tabs
+        // Private fields
+        private int tabCount = 0;                           // Counts the number of tabs
+
+        // Private constants
         private const double TabWidth = 150;                // Width of the tab header
         private const double PlusButtonMarginTop = 5;       // The margin of the + button from top
         private const double PlusButtonMarginLeft = 5;      // The margin of the + button from top
 
-        public TabControl()
+        // public events
+        public event EventHandler NewTabButtonClicked;
+
+        public BrowserTabControl()
         {
             InitializeComponent();
 
@@ -33,7 +39,12 @@ namespace Organic_Browser.Controls
             this.addNewTabButton.Margin = this.GetAddNewTabButtonMargin;    
         }
 
-        private void AddTab(string header, UIElement content)
+        /// <summary>
+        /// Adds tab to the tab control
+        /// </summary>
+        /// <param name="header">tab's header</param>
+        /// <param name="content">tab's content</param>
+        public void AddTab(string header, UIElement content)
         {
             tabCount++; // Increase the tab count by 1
 
@@ -53,7 +64,8 @@ namespace Organic_Browser.Controls
         /// <param name="e">event args</param>
         private void AddNewTabButton_Click(object sender, RoutedEventArgs e)
         {
-            AddTab("New Tab", null);
+            if (this.NewTabButtonClicked != null)
+                this.NewTabButtonClicked(this, EventArgs.Empty);
         }
 
         /// <summary>

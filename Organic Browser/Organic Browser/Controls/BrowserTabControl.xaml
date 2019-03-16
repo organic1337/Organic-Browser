@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Organic_Browser.Controls.TabControl"
+﻿<UserControl x:Class="Organic_Browser.Controls.BrowserTabControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -53,6 +53,7 @@
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="Foreground" Value="#FF242424" />
         </Style>
 
         <Style TargetType="Image" x:Key="xImage">
@@ -107,6 +108,11 @@
     
     <Grid>
         <TabControl x:Name="tabControl">
+            
+            <!-- All the TabItem objects are inserted HERE-->
+            
+            <!-- 
+            Example of a tabItem
             <TabItem>
                 <TabItem.Header>
                     <DockPanel>
@@ -121,9 +127,9 @@
                         </Border>
                     </DockPanel>
                 </TabItem.Header>
-
             </TabItem>
-
+            -->
+            
         </TabControl>
 
         <Border
