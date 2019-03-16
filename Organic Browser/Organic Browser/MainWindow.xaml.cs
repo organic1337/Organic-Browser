@@ -16,11 +16,6 @@ namespace Organic_Browser
         {
             CefInitializer.Initialize();            
             InitializeComponent();
-
-            BrowserTab tab = new BrowserTab(this.navBar, this.webBrowser);
-            webBrowser.Address = UserSettings.Load().HomePage;
-        
-            tabs.Add(tab);
         }
     }
 }

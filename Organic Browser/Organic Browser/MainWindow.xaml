@@ -1,4 +1,4 @@
-﻿    <Window x:Class="Organic_Browser.MainWindow"
+﻿<Window x:Class="Organic_Browser.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -12,31 +12,9 @@
     <Window.Resources>
         <Style x:Key="TabItemStyle" TargetType="TabItem">
             <Setter Property="Width" Value="180" />
-            <Setter Property="Height" Value="30" />            
+            <Setter Property="Height" Value="30" />
         </Style>
     </Window.Resources>
 
-    <Grid>
-        <TabControl>
-            <TabItem Style="{StaticResource TabItemStyle}">
-                <TabItem.Header>
-                    <Label>Tab1</Label>
-                </TabItem.Header>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <cefSharp:ChromiumWebBrowser x:Name="webBrowser"  Address="www.google.com" Grid.Row="1" Margin="0,57,0.2,-0.2"/>
-                    <control:NavigationBarControl x:Name="navBar" VerticalAlignment="Top" Height="57" Margin="0,0,0.2,0" Grid.RowSpan="2"/>
-                </Grid>
-            </TabItem>
-
-            <TabItem Style="{StaticResource TabItemStyle}">
-                <TabItem.Header>
-                    <Label>Tab2</Label>
-                </TabItem.Header>
-            </TabItem>
-        </TabControl>
-    </Grid>
+    <control:TabControl></control:TabControl>
 </Window>
