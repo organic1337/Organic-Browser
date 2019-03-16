@@ -24,5 +24,21 @@ namespace Organic_Browser.Controls
         {
             InitializeComponent();
         }
+
+        private void Preferences_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (!PreferencesWindow.IsRunning)
+            {                
+                System.Threading.Thread preferencesThread = new System.Threading.Thread(() =>
+                {
+                    var window = new PreferencesWindow();
+                    window.Show();
+                    System.Windows.Threading.Dispatcher.Run();
+                });
+                preferencesThread.IsBackground = true;
+                preferencesThread.SetApartmentState(System.Threading.ApartmentState.STA);
+                preferencesThread.Start();
+            }
+        }
     }
 }

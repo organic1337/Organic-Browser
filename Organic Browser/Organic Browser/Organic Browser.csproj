@@ -95,6 +95,9 @@
     <Compile Include="Controls\UrlTextBoxControl.xaml.cs">
       <DependentUpon>UrlTextBoxControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PreferencesWindow.xaml.cs">
+      <DependentUpon>PreferencesWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utils\BrowserTab.cs" />
     <Compile Include="Utils\CefInitializer.cs" />
     <Compile Include="Utils\UserSettings.cs" />
@@ -122,6 +125,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PreferencesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -151,7 +158,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="WebsiteDownloader\" />
+    <Folder Include="Utils\WebsiteDownloader\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\dark-gray-download.png" />

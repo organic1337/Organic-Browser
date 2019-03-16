@@ -79,7 +79,7 @@ namespace Organic_Browser.Utils
             this.NavigationBar.refreshBtn.MouseLeftButtonUp += NavBar_RefreshBtnPress;              // Handle mouse click on Refresh button
             this.NavigationBar.homeBtn.MouseLeftButtonUp += NavBar_HomeBtnPress;                    // Handle mouse click on Home button
             this.NavigationBar.settingsMenu.setHomePageLabel.MouseDown += NavBar_SetAsHomePress;    // Handle mouse click on Set as home setting
-            
+
             // Web browser events
             this.WebBrowser.PreviewMouseLeftButtonUp += WebBrowser_MouseLeftButtonUp;               // Handle mouse click on the web browser
             this.WebBrowser.LoadError += WebBrowser_LoadError;

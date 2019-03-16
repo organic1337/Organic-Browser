@@ -62,8 +62,8 @@ namespace Organic_Browser.Utils
                     // Return a result with default settings
                     var result = new UserSettings
                     {
-                        HomePage = "www.google.com",
-                        DownloadWebpagesLocation = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
+                        HomePage = DefaultHomePage,
+                        DownloadWebpagesLocation = DefaultDownloadPagesLocation
                     };
                     result.Save();  // Create a new json file with default values
                     Instance = result;

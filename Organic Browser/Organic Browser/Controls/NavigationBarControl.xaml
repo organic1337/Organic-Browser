@@ -20,6 +20,7 @@
 
         <Style x:Key="buttonImageWrapper" TargetType="Border" BasedOn="{StaticResource imageWrapperBase}">
             <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="Background" Value="Transparent" />
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#FFDADADA" />
@@ -65,7 +66,7 @@
 
         <!--Forward Button-->
         <Border x:Name="forwardBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}" Grid.Column="1">
-            <Image Source="../Resources/Images/right-arrow.png" Style="{StaticResource ResourceKey=imageSize}"/>
+            <Image Source="../Resources/Images/right-arrow.png" Style="{StaticResource ResourceKey=imageSize}" Margin="0,7,0,0" VerticalAlignment="Top"/>
         </Border>
 
         <!--Refresh Button-->
