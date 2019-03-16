@@ -181,6 +181,10 @@ namespace Organic_Browser.Utils
             string originalUrl = null;
             this.NavigationBar.Dispatcher.Invoke(() => originalUrl = this.NavigationBar.urlTexBox.Text);
 
+            // In case error aborted by CEF, do nothing
+            if (e.ErrorCode == CefSharp.CefErrorCode.Aborted)
+                return;
+
             // Handle loading errors
             string errorPageDirectoryName = string.Empty;
             if (IsConnected() == false)
@@ -196,11 +200,13 @@ namespace Organic_Browser.Utils
             else
             {
                 // Default loading error page
+                System.Console.WriteLine(e.ErrorText);
                 errorPageDirectoryName = "error_occured";
             }
 
             // Handle more loading errors here
 
+            // Load the error page
             this.WebBrowser.Dispatcher.Invoke(() => this.WebBrowser.Address = string.Format("file:///{0}pages/{1}/index.html", System.AppDomain.CurrentDomain.BaseDirectory.Replace('\\', '/'), errorPageDirectoryName));
 
             // Restore the url

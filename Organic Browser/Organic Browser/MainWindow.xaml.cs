@@ -19,6 +19,7 @@ namespace Organic_Browser
 
             BrowserTab tab = new BrowserTab(this.navBar, this.webBrowser);
             webBrowser.Address = UserSettings.Load().HomePage;
+        
             tabs.Add(tab);
         }
     }
