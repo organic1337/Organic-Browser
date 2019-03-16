@@ -22,34 +22,45 @@ namespace Organic_Browser.Controls
     {
         private int tabCount = 1;                           // Counts the number of tabs
         private const double TabWidth = 150;                // Width of the tab header
-        private const double PlusButtonMarginTop = 5;      // The margin of the + button from top
+        private const double PlusButtonMarginTop = 5;       // The margin of the + button from top
         private const double PlusButtonMarginLeft = 5;      // The margin of the + button from top
 
         public TabControl()
         {
             InitializeComponent();
 
-            this.addNewTabButton.Margin = this.GetAddNewTabButtonMargin;
+            // Margin the add new tab button
+            this.addNewTabButton.Margin = this.GetAddNewTabButtonMargin;    
         }
 
-        private void AddTab(string header)
+        private void AddTab(string header, UIElement content)
         {
             tabCount++; // Increase the tab count by 1
 
             // Move the + button right
             this.addNewTabButton.Margin = this.GetAddNewTabButtonMargin;
 
-            // Create a tabitem and add it to the tab control;
+            // Create a tab item and add it to the tab control;
             TabItem item = this.CreateTabItem(header);
-
-            this.tabControl.Items.Add(item);                        // Add the complete tab to the UI
+            item.Content = content;                         // Put the given content inside the tab item
+            this.tabControl.Items.Add(item);                // Add the complete tab to the UI
         }
 
+        /// <summary>
+        /// Executes when the add new tab button is clicked
+        /// </summary>
+        /// <param name="sender">object sender</param>
+        /// <param name="e">event args</param>
         private void AddNewTabButton_Click(object sender, RoutedEventArgs e)
         {
-            AddTab("New Tab");
+            AddTab("New Tab", null);
         }
 
+        /// <summary>
+        /// Creates a new tab item
+        /// </summary>
+        /// <param name="header"></param>
+        /// <returns></returns>
         private TabItem CreateTabItem(string header)
         {
             TabItem item = new TabItem();
@@ -86,6 +97,9 @@ namespace Organic_Browser.Controls
             return item;
         }
 
+        /// <summary>
+        /// Current margin of the add new tab button
+        /// </summary>
         private Thickness GetAddNewTabButtonMargin
         {
             get
@@ -94,5 +108,4 @@ namespace Organic_Browser.Controls
             }            
         }
     }
-    
 }
