@@ -44,8 +44,7 @@ namespace Organic_Browser
             BrowserTab browserTab = new BrowserTab(navigationBar, webBrowser);
             webBrowser.Address = UserSettings.Load().HomePage;
             Grid tabContent = this.CreateGrid(navigationBar, webBrowser);
-            this.browserTabControl.AddTab("New Tab", tabContent);
-
+            this.browserTabControl.AddTab(webBrowser, "Home page", tabContent);          
 
             // TODO: Fix tab titles
             // Enable tab adding
@@ -56,7 +55,7 @@ namespace Organic_Browser
                 browserTab = new BrowserTab(navigationBar, webBrowser);
                 webBrowser.Address = UserSettings.Load().NewTabPage;         
                 tabContent = this.CreateGrid(navigationBar, webBrowser);
-                this.browserTabControl.AddTab("New Tab", tabContent);
+                this.browserTabControl.AddTab(webBrowser, "New Tab", tabContent);
                 };
         }
 

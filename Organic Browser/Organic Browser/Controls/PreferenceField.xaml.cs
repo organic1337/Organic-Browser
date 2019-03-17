@@ -27,6 +27,10 @@ namespace Organic_Browser.Controls
             InitializeComponent();
 
             this.DataContext = this;
+            this.valueTextBox.MouseDoubleClick += (object Sender, MouseButtonEventArgs e) => 
+            {
+                this.valueTextBox.SelectAll();
+            };
         }
 
         /// <summary>

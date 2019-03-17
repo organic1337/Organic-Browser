@@ -50,10 +50,11 @@
 
         <Style TargetType="Label" x:Key="headerLabel">
             <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
-            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
             <Setter Property="Foreground" Value="#FF242424" />
+            <Setter Property="Width" Value="120" />
         </Style>
 
         <Style TargetType="Image" x:Key="xImage">
@@ -110,8 +111,8 @@
         <TabControl x:Name="tabControl">
             
             <!-- All the TabItem objects are inserted HERE-->
-            
-            <!-- 
+
+            <!--
             Example of a tabItem
             <TabItem>
                 <TabItem.Header>

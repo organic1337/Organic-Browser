@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CefSharp.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,7 +30,7 @@ namespace Organic_Browser.Controls
         public int TabCount { get; set; }                   // Counts the number of tabs
 
         // public events
-        public event EventHandler NewTabButtonClick;      // Event for adding a new tab
+        public event EventHandler NewTabButtonClick;        // Event for adding a new tab
         public event EventHandler TabClosed;                // Event for closing a tab
 
         public BrowserTabControl()
@@ -40,12 +41,14 @@ namespace Organic_Browser.Controls
             this.addNewTabButton.Margin = this.GetAddNewTabButtonMargin;    
         }
 
+
         /// <summary>
         /// Adds tab to the tab control
         /// </summary>
-        /// <param name="header">tab's header</param>
-        /// <param name="content">tab's content</param>
-        public void AddTab(string header, UIElement content)
+        /// <param name="chromiumWebBrowser">Web browser object ( USED FOR BINDING THE TITLE ONLY )</param>
+        /// <param name="alternativeTitle">A title that will be desplayed before the browser's title finished loading</param>
+        /// <param name="content">UI element to place inside the tab</param>
+        public void AddTab(ChromiumWebBrowser chromiumWebBrowser, string alternativeTitle, UIElement content)
         {
             TabCount++; // Increase the tab count by 1
 
@@ -53,7 +56,7 @@ namespace Organic_Browser.Controls
             this.addNewTabButton.Margin = this.GetAddNewTabButtonMargin;
 
             // Create a tab item and add it to the tab control;
-            TabItem item = this.CreateTabItem(header);
+            TabItem item = this.CreateTabItem(chromiumWebBrowser, alternativeTitle);
             item.Content = content;                         // Put the given content inside the tab item
             this.tabControl.Items.Add(item);                // Add the complete tab to the UI
         }
@@ -105,16 +108,16 @@ namespace Organic_Browser.Controls
         /// <summary>
         /// Creates a new tab item
         /// </summary>
-        /// <param name="header"></param>
-        /// <returns></returns>
-        private TabItem CreateTabItem(string header)
+        /// <param name="chromiumWebBrowser">Web browser object ( USED FOR BINDING THE TITLE ONLY )</param>
+        /// <param name="alternativeTitle">A title that will be desplayed before the browser's title finished loading</param>
+        /// <returns>Tab item</returns>
+        private TabItem CreateTabItem(ChromiumWebBrowser chromiumWebBrowser, string alternativeTitle)
         {
             TabItem item = new TabItem();
             // Create all the UI elements
             var dockPanel = new DockPanel();                   
             var label = new Label()
             {                                                    
-                Content = header,
                 Style = FindResource("headerLabel") as Style
             };
             var imageWrapper = new Border()                         
@@ -140,6 +143,17 @@ namespace Organic_Browser.Controls
                 this.addNewTabButton.Margin = this.GetAddNewTabButtonMargin;    // Margin the add new tab button
                 this.OnTabClosed(); 
             };
+
+            // Bind the forward bottun to the CanGoForward property
+            var titleBinding = new Binding("Title")
+            {
+                Source = chromiumWebBrowser,
+                Mode = BindingMode.OneWay,
+                UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,
+                TargetNullValue=alternativeTitle
+            };
+            label.SetBinding(Label.ContentProperty, titleBinding);
+            
 
             return item;
         }

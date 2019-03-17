@@ -18,6 +18,8 @@
         </Style>
 
         <Style x:Key="fieldTextBox" TargetType="TextBox">
+            <Setter Property="Foreground" Value="#FF3F3F3F" />
+            <Setter Property="SelectionBrush" Value="#FF00A815" />
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="BorderThickness" Value="1" />
