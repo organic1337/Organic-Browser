@@ -7,8 +7,12 @@
         xmlns:control="clr-namespace:Organic_Browser.Controls"
         xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf" 
         mc:Ignorable="d"
-        Title="Organic Browser" Height="450" Width="800" WindowState="Maximized">
-
+        Title="Organic Browser" 
+        Height="450" Width="800" 
+        WindowState="Maximized"
+        MinHeight="450"
+        MinWidth="800">
+        
     <Window.Resources>
         <Style x:Key="TabItemStyle" TargetType="TabItem">
             <Setter Property="Width" Value="180" />

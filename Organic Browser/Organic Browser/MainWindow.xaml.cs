@@ -37,7 +37,6 @@ namespace Organic_Browser
                 }
             };
 
-            // TODO: Fix Tab Titles
             // Start with one tab (Homepage)
             var webBrowser = new ChromiumWebBrowser();
             var navigationBar = new NavigationBarControl();
@@ -46,7 +45,6 @@ namespace Organic_Browser
             Grid tabContent = this.CreateGrid(navigationBar, webBrowser);
             this.browserTabControl.AddTab(webBrowser, "Home page", tabContent);          
 
-            // TODO: Fix tab titles
             // Enable tab adding
             this.browserTabControl.NewTabButtonClick += (object sender, EventArgs e) =>
             {
