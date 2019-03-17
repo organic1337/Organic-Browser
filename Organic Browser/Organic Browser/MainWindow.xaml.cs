@@ -54,7 +54,7 @@ namespace Organic_Browser
                 webBrowser = new ChromiumWebBrowser();
                 navigationBar = new NavigationBarControl();
                 browserTab = new BrowserTab(navigationBar, webBrowser);
-                webBrowser.Address = UserSettings.Load().HomePage;          // TODO: Change from home page to different page
+                webBrowser.Address = UserSettings.Load().NewTabPage;         
                 tabContent = this.CreateGrid(navigationBar, webBrowser);
                 this.browserTabControl.AddTab("New Tab", tabContent);
                 };

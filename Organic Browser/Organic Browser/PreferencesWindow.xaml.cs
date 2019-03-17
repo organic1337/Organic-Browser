@@ -21,7 +21,11 @@ namespace Organic_Browser
     /// </summary>
     public partial class PreferencesWindow : Window
     {
-        public static bool IsRunning = false;
+        public static bool IsRunning = false;           // Whether the window is running or not
+
+        // Read only data
+        private static readonly Color RedColor = Color.FromRgb(0xa8, 0x03, 0x13);
+        private static readonly Color GrayColor = Color.FromRgb(0x56, 0x56, 0x56);
 
         public PreferencesWindow()
         {
@@ -35,11 +39,9 @@ namespace Organic_Browser
             // Fill the preferences from the usersettings file
             UserSettings settings = UserSettings.Load();
             this.pageDownloadLocation.Value = settings.DownloadWebpagesLocation;
+            this.homePage.Value = settings.HomePage;
+            this.newTabPage.Value = settings.NewTabPage;
         }
-
-        // Read only data
-        private static readonly Color RedColor = Color.FromRgb(0xa8, 0x03, 0x13);
-        private static readonly Color GrayColor = Color.FromRgb(0x56, 0x56, 0x56);
 
         #region Event Handlers
         /// <summary>
@@ -69,6 +71,8 @@ namespace Organic_Browser
 
             // Save each field in the user settings 
             settings.DownloadWebpagesLocation = this.pageDownloadLocation.Value;
+            settings.HomePage = this.homePage.Value;
+            settings.NewTabPage = this.newTabPage.Value;
             settings.Save();
 
             // Prompt success 
@@ -86,6 +90,8 @@ namespace Organic_Browser
 
             // Reset each field to the original one from the user settings
             this.pageDownloadLocation.Value = settings.DownloadWebpagesLocation;
+            this.homePage.Value = settings.HomePage;
+            this.newTabPage.Value = settings.NewTabPage;
         }
 
         #endregion
@@ -103,6 +109,16 @@ namespace Organic_Browser
             if (!Directory.Exists(this.pageDownloadLocation.Value))
             {
                 errorMessage = "The given path does not exist";
+            }
+            // Validate the home page
+            else if (!OrganicWebUtility.IsValidUrl(this.homePage.Value))
+            {
+                errorMessage = "The given URL for the home page is invalid";
+            }
+            // Validate the new tab page
+            else if (!OrganicWebUtility.IsValidUrl(this.newTabPage.Value))
+            {
+                errorMessage = "The given URL for the new tab page is invalid";
             }
 
             // Prompt the error message and return whether valid or not

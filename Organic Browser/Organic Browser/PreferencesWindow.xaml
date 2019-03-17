@@ -48,6 +48,10 @@
             <Setter Property="Height" Value="22" />
             <Setter Property="Width" Value="64" />
         </Style>
+
+        <Style TargetType="local:PreferenceField" x:Key="preferenceField">
+            <Setter Property="Margin" Value="5" />
+        </Style>
     </Window.Resources> 
 
     <Grid Margin="20" Background="White">
@@ -72,7 +76,25 @@
             HorizontalAlignment="Center" 
             VerticalAlignment="Center" 
             Height="auto">
-            <local:PreferenceField x:Name="pageDownloadLocation" Field="Page Download Location"></local:PreferenceField>
+            
+            <local:PreferenceField 
+                x:Name="pageDownloadLocation" 
+                Field="Page Download Location"
+                Style="{StaticResource ResourceKey=preferenceField }">                
+            </local:PreferenceField>
+            
+            <local:PreferenceField 
+                x:Name="homePage" 
+                Field="Home Page"
+                Style="{StaticResource ResourceKey=preferenceField }">                
+            </local:PreferenceField>
+
+            <local:PreferenceField 
+                x:Name="newTabPage" 
+                Field="New Tab Page"
+                Style="{StaticResource ResourceKey=preferenceField }">
+            </local:PreferenceField>
+
         </StackPanel>
 
         <!-- Buttons -->

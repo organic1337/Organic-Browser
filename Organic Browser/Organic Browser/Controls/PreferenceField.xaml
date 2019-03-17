@@ -23,6 +23,7 @@
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="BorderBrush" Value="Black" />
             <Setter Property="Background" Value="White" />
+            <Setter Property="Padding" Value="4,0,0,0" />
 
             <Style.Triggers>
                 <Trigger Property="IsFocused" Value="True">

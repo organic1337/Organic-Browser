@@ -9,7 +9,8 @@ using System.Text.RegularExpressions;
 namespace Organic_Browser.Utils
 {
     /// <summary>
-    /// Represents a browser tab
+    /// Represents a browser tab, Links the ChromiumWebBrowser object 
+    /// with the NavigationBarControl object
     /// </summary>
     class BrowserTab
     {
@@ -17,9 +18,7 @@ namespace Organic_Browser.Utils
         public NavigationBarControl NavigationBar { get; set; }     // Navigation bar control
         public ChromiumWebBrowser WebBrowser { get; set; }          // Web Browser control
 
-        // Private -  Read only data
-        private readonly Regex UrlRegex = new Regex(@"^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$", RegexOptions.Compiled | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-
+    
         /// <summary>
         /// Browser tab constructor
         /// </summary>
@@ -96,7 +95,7 @@ namespace Organic_Browser.Utils
             if (eventArgs.Key == Key.Enter)
             {
                 // In case the given url is a valid address
-                if (UrlRegex.IsMatch(this.NavigationBar.Url))
+                if (OrganicWebUtility.IsValidUrl(this.NavigationBar.Url))
                     this.WebBrowser.Address = this.NavigationBar.Url;
                 // In case the given url is NOT actually a url
                 else

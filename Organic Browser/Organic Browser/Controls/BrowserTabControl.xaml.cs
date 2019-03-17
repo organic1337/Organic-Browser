@@ -111,17 +111,17 @@ namespace Organic_Browser.Controls
         {
             TabItem item = new TabItem();
             // Create all the UI elements
-            var dockPanel = new DockPanel();                        // Header's dockpanel
+            var dockPanel = new DockPanel();                   
             var label = new Label()
-            {                                                       // Header's label
+            {                                                    
                 Content = header,
                 Style = FindResource("headerLabel") as Style
             };
-            var imageWrapper = new Border()                         // Header's x image wrapper
+            var imageWrapper = new Border()                         
             {
                 Style = this.FindResource("xButtonImageWrapper") as Style
             };
-            var image = new Image()                                 // Header's x Image
+            var image = new Image()                          
             {
                 Style = this.FindResource("xImage") as Style
             };

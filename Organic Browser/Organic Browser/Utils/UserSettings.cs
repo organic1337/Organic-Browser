@@ -13,16 +13,19 @@ namespace Organic_Browser.Utils
     [DataContract]
     class UserSettings
     {
-        private static UserSettings Instance = null;    // Single instance
+        private static UserSettings Instance = null;    // Single instance  
 
         // Private readonly attributes
-        private const string JsonPath = "settings.json";                                                                                // Path to the json file
-        private const string DefaultHomePage = "www.google.com";                                                                        // Default path to home page
-        private static readonly string DefaultDownloadPagesLocation = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);     // Default location to download webpages
+        private const string JsonPath = "settings.json";                                            // Path to the json file
+        private const string DefaultHomePage = "www.google.com";                                    // Default path to home page
+        private const string DefaultNewTabPage = "www.google.com";
+        private static readonly string DefaultDownloadPagesLocation = Environment.GetFolderPath(    // Default location to download webpages
+            Environment.SpecialFolder.Desktop);     
 
-        // Public properties
-        [DataMember] public string HomePage { get; set; }                       // Home page name
+        // Public properties (Data members in the json file)
+        [DataMember] public string HomePage { get; set; }                       // Home page URL
         [DataMember] public string DownloadWebpagesLocation { get; set; }       // Downloaded webpage location
+        [DataMember] public string NewTabPage { get; set; }                     // Page that opens a new tab
 
         // Private constructor
         private UserSettings() { }
@@ -63,7 +66,8 @@ namespace Organic_Browser.Utils
                     var result = new UserSettings
                     {
                         HomePage = DefaultHomePage,
-                        DownloadWebpagesLocation = DefaultDownloadPagesLocation
+                        DownloadWebpagesLocation = DefaultDownloadPagesLocation,
+                        NewTabPage = DefaultNewTabPage
                     };
                     result.Save();  // Create a new json file with default values
                     Instance = result;
