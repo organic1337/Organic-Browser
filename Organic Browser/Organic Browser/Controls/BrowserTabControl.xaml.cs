@@ -20,16 +20,17 @@ namespace Organic_Browser.Controls
     /// </summary>
     public partial class BrowserTabControl : UserControl
     {
-        // Private fields
-        private int tabCount = 0;                           // Counts the number of tabs
-
         // Private constants
         private const double TabWidth = 150;                // Width of the tab header
         private const double PlusButtonMarginTop = 5;       // The margin of the + button from top
         private const double PlusButtonMarginLeft = 5;      // The margin of the + button from top
 
+        // public Properties
+        public int TabCount { get; set; }                   // Counts the number of tabs
+
         // public events
-        public event EventHandler NewTabButtonClicked;
+        public event EventHandler NewTabButtonClick;      // Event for adding a new tab
+        public event EventHandler TabClosed;                // Event for closing a tab
 
         public BrowserTabControl()
         {
@@ -46,7 +47,7 @@ namespace Organic_Browser.Controls
         /// <param name="content">tab's content</param>
         public void AddTab(string header, UIElement content)
         {
-            tabCount++; // Increase the tab count by 1
+            TabCount++; // Increase the tab count by 1
 
             // Move the + button right
             this.addNewTabButton.Margin = this.GetAddNewTabButtonMargin;
@@ -57,6 +58,40 @@ namespace Organic_Browser.Controls
             this.tabControl.Items.Add(item);                // Add the complete tab to the UI
         }
 
+        #region Private properties
+        /// <summary>
+        /// Current margin of the add new tab button
+        /// </summary>
+        private Thickness GetAddNewTabButtonMargin
+        {
+            get
+            {
+                return new Thickness(TabWidth * this.TabCount + PlusButtonMarginLeft, PlusButtonMarginTop, 0, 0);
+            }
+        }
+        #endregion
+
+        #region Events Functions
+        /// <summary>
+        /// Shold be called when a new tab is created
+        /// </summary>
+        protected virtual void OnNewTabButtonClick()
+        {
+            if (this.NewTabButtonClick != null)
+                this.NewTabButtonClick(this, EventArgs.Empty);
+        }
+
+        /// <summary>
+        /// SHould be called when a tab is closed
+        /// </summary>
+        protected virtual void OnTabClosed()
+        {
+            if (this.TabClosed != null)
+                this.TabClosed(this, EventArgs.Empty);
+        }
+        #endregion
+
+        #region private functions
         /// <summary>
         /// Executes when the add new tab button is clicked
         /// </summary>
@@ -64,8 +99,7 @@ namespace Organic_Browser.Controls
         /// <param name="e">event args</param>
         private void AddNewTabButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.NewTabButtonClicked != null)
-                this.NewTabButtonClicked(this, EventArgs.Empty);
+            this.OnNewTabButtonClick();
         }
 
         /// <summary>
@@ -101,23 +135,14 @@ namespace Organic_Browser.Controls
             // Handle the x button press
             imageWrapper.MouseDown += (object sender, MouseButtonEventArgs e) =>
             {
-                this.tabCount--;                                                // Decrease the tabCount
+                this.TabCount--;                                                // Decrease the tabCount
                 this.tabControl.Items.Remove(item);                             // Remove the tab from the UI
                 this.addNewTabButton.Margin = this.GetAddNewTabButtonMargin;    // Margin the add new tab button
+                this.OnTabClosed(); 
             };
 
             return item;
         }
-
-        /// <summary>
-        /// Current margin of the add new tab button
-        /// </summary>
-        private Thickness GetAddNewTabButtonMargin
-        {
-            get
-            {
-                return new Thickness(TabWidth * this.tabCount + PlusButtonMarginLeft, PlusButtonMarginTop, 0, 0);
-            }            
-        }
+        #endregion
     }
 }

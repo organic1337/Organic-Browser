@@ -28,7 +28,14 @@ namespace Organic_Browser
         /// </summary>
         private void ManageTabs()
         {
-            //TODO: Close the browser in case all tabs are closed
+            // Close the app in case all tabs are closed
+            this.browserTabControl.TabClosed += (object sender, EventArgs e) =>
+            {
+                if (this.browserTabControl.TabCount == 0)
+                {
+                    Environment.Exit(0);
+                }
+            };
 
             // TODO: Fix Tab Titles
             // Start with one tab (Homepage)
@@ -42,7 +49,7 @@ namespace Organic_Browser
 
             // TODO: Fix tab titles
             // Enable tab adding
-            this.browserTabControl.NewTabButtonClicked += (object sender, EventArgs e) =>
+            this.browserTabControl.NewTabButtonClick += (object sender, EventArgs e) =>
             {
                 webBrowser = new ChromiumWebBrowser();
                 navigationBar = new NavigationBarControl();
