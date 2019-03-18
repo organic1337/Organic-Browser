@@ -38,6 +38,10 @@ namespace Organic_Browser.Controls
                 window.Show();
                 System.Windows.Threading.Dispatcher.Run();
             }
+            else
+            {
+                PreferencesWindow.CurrentRunningWindow.Focus();   
+            }
         }
 
         /// <summary>

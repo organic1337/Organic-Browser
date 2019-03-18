@@ -18,10 +18,12 @@ namespace Organic_Browser
 {
     /// <summary>
     /// Interaction logic for PreferencesWindow.xaml
+    /// 
     /// </summary>
     public partial class PreferencesWindow : Window
     {
-        public static bool IsRunning = false;           // Whether the window is running or not
+        public static bool IsRunning = false;                               // Whether the window is running or not
+        public static PreferencesWindow CurrentRunningWindow { get; private set; }  // The current running window
 
         // Read only data
         private static readonly Color RedColor = Color.FromRgb(0xa8, 0x03, 0x13);
@@ -33,6 +35,7 @@ namespace Organic_Browser
 
             // Mention that the window is running
             IsRunning = true;
+            PreferencesWindow.CurrentRunningWindow = this;
 
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
