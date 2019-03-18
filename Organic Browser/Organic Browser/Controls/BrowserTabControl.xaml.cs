@@ -57,6 +57,7 @@ namespace Organic_Browser.Controls
 
             // Create a tab item and add it to the tab control;
             TabItem item = this.CreateTabItem(chromiumWebBrowser, alternativeTitle);
+            
             item.Content = content;                         // Put the given content inside the tab item
             this.tabControl.Items.Add(item);                // Add the complete tab to the UI
         }
@@ -76,7 +77,7 @@ namespace Organic_Browser.Controls
 
         #region Events Functions
         /// <summary>
-        /// Shold be called when a new tab is created
+        /// Should be called when a new tab is created
         /// </summary>
         protected virtual void OnNewTabButtonClick()
         {
@@ -85,7 +86,7 @@ namespace Organic_Browser.Controls
         }
 
         /// <summary>
-        /// SHould be called when a tab is closed
+        /// Should be called when a tab is closed
         /// </summary>
         protected virtual void OnTabClosed()
         {
@@ -95,6 +96,7 @@ namespace Organic_Browser.Controls
         #endregion
 
         #region private functions
+
         /// <summary>
         /// Executes when the add new tab button is clicked
         /// </summary>
@@ -141,7 +143,8 @@ namespace Organic_Browser.Controls
                 this.TabCount--;                                                // Decrease the tabCount
                 this.tabControl.Items.Remove(item);                             // Remove the tab from the UI
                 this.addNewTabButton.Margin = this.GetAddNewTabButtonMargin;    // Margin the add new tab button
-                this.OnTabClosed(); 
+                this.OnTabClosed();
+                chromiumWebBrowser.Dispose();                                   // Dispose the ChromiumWebBrowser object after tab closed
             };
 
             // Bind the forward bottun to the CanGoForward property
