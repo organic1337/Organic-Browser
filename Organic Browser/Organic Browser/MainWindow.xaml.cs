@@ -20,7 +20,8 @@ namespace Organic_Browser
             CefInitializer.Initialize();            
             InitializeComponent();
 
-            ManageTabs();
+            ManageTabs();                                                           // Manage the browser tabs
+            this.Closed += (object sender, EventArgs e) => Environment.Exit(0);     //  When the main window is closed, close the browser
         }
 
         /// <summary>
@@ -54,14 +55,15 @@ namespace Organic_Browser
                 webBrowser.Address = UserSettings.Load().NewTabPage;         
                 tabContent = this.CreateGrid(navigationBar, webBrowser);
                 this.browserTabControl.AddTab(webBrowser, "New Tab", tabContent);
-                };
+            };
         }
 
         /// <summary>
-        /// Creates a grid that contains all the given UI elements
+        /// Creates a grid of the navigation bar combined 
         /// </summary>
-        /// <param name="elements">UI elements</param>
-        /// <returns>A Grid containing the elements</returns>
+        /// <param name="navigationBar"></param>
+        /// <param name="webBrowser"></param>
+        /// <returns></returns>
         private Grid CreateGrid(NavigationBarControl navigationBar, ChromiumWebBrowser webBrowser)
         {
             Grid grid = new Grid();

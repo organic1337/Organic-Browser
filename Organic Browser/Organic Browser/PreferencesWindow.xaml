@@ -44,13 +44,28 @@
             <Setter Property="Height" Value="15" />
         </Style>
 
-        <!-- TODO: Change the style at the template level -->
-        <Style TargetType="Button" x:Key="buttonStyle">
+        <Style TargetType="Button" x:Key="buttonStyle">          
             <Setter Property="Height" Value="22" />
             <Setter Property="Width" Value="64" />
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="BorderThickness" Value="0" />
-        
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Cursor" Value="Hand" />
+            
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FFDADADA"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
         <Style TargetType="local:PreferenceField" x:Key="preferenceField">
