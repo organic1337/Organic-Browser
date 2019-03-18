@@ -32,12 +32,14 @@ namespace Organic_Browser.Controls
         /// <param name="e">Event args</param>
         private void Preferences_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            // In case preference window is not running
             if (!PreferencesWindow.IsRunning)
             {                
                 var window = new PreferencesWindow();
                 window.Show();
                 System.Windows.Threading.Dispatcher.Run();
             }
+            // In case preference window is already running
             else
             {
                 PreferencesWindow.CurrentRunningWindow.Focus();   
