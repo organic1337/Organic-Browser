@@ -6,7 +6,6 @@
              xmlns:local="clr-namespace:Organic_Browser.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-
     <UserControl.Resources>
         <Style x:Key="imageWrapperBase" TargetType="Border">
             <Setter Property="Height" Value="30" />
@@ -33,10 +32,10 @@
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="Height" Value="13" />
             <Setter Property="Width" Value="13" />
+            <Setter Property="MinWidth" Value="13" />
             <Setter Property="Padding" Value="0" />
-            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="0,0,10,0" />
 
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
@@ -50,11 +49,12 @@
 
         <Style TargetType="Label" x:Key="headerLabel">
             <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="MinWidth" Value="0" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
             <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="Padding" Value="10,0,0,0" />
             <Setter Property="Foreground" Value="#FF242424" />
-            <Setter Property="Width" Value="120" />
         </Style>
 
         <Style TargetType="Image" x:Key="xImage">
@@ -64,11 +64,12 @@
             <Setter Property="Height" Value="7" />
             <Setter Property="Width" Value="7" />
         </Style>
-        
+
         <Style TargetType="TabItem">
             <Setter Property="Padding" Value="0" />
             <Setter Property="Height" Value="30" />
-            <Setter Property="Width" Value="150" />
+            <Setter Property="Width" Value="160" />
+            <Setter Property="MaxWidth" Value="160" />
             <Setter Property="Background" Value="Blue" />
 
             <!-- Change the tabitem in the template level -->
@@ -106,31 +107,38 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    
+
     <Grid>
         <TabControl x:Name="tabControl">
-            
+
             <!-- All the TabItem objects are inserted HERE-->
 
+            <!-- TabItem example -->
             <!--
-            Example of a tabItem
             <TabItem>
                 <TabItem.Header>
-                    <DockPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition  Width="25"/>
+                        </Grid.ColumnDefinitions>
+
                         <Label 
-                            Style="{StaticResource ResourceKey=headerLabel}">
+                            Style="{StaticResource ResourceKey=headerLabel}"
+                            Grid.Column="0">
                             Tab1
                         </Label>
                         <Border
-                            Style="{StaticResource ResourceKey=xButtonImageWrapper}">
+                            Style="{StaticResource ResourceKey=xButtonImageWrapper}"
+                            Grid.Column="1">
                             <Image
                                 Style="{StaticResource ResourceKey=xImage}"/>
                         </Border>
-                    </DockPanel>
+                    </Grid>
                 </TabItem.Header>
-            </TabItem>
-            -->
-            
+            </TabItem> -->
+
+
         </TabControl>
 
         <Border
@@ -147,8 +155,8 @@
             Height="10" Width="10" 
             HorizontalAlignment="Center" 
             VerticalAlignment="Center"  
-            Source="../Resources/images/plus.png"/>
+            Source="../Resources/Images/plus.png"/>
         </Border>
-        
+
     </Grid>
 </UserControl>
