@@ -39,7 +39,7 @@ namespace Organic_Browser
             };
 
             // Start with one tab (Homepage)
-            var webBrowser = new ChromiumWebBrowser();
+            var webBrowser = new ChromiumWebBrowser();           
             var navigationBar = new NavigationBarControl();
             BrowserTab browserTab = new BrowserTab(navigationBar, webBrowser);
             webBrowser.Address = UserSettings.Load().HomePage;
