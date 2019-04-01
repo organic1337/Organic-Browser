@@ -23,9 +23,12 @@ namespace Organic_Browser.Utils
             Environment.SpecialFolder.Desktop);     
 
         // Public properties (Data members in the json file)
-        [DataMember] public string HomePage { get; set; }                       // Home page URL
-        [DataMember] public string DownloadWebpagesLocation { get; set; }       // Downloaded webpage location
-        [DataMember] public string NewTabPage { get; set; }                     // Page that opens a new tab
+        [DataMember(Name = "homePage")]
+        public string HomePage { get; set; }                       // Home page URL
+        [DataMember(Name = "downloadWebPagesLocation")]
+        public string DownloadWebpagesLocation { get; set; }       // Downloaded webpage location
+        [DataMember(Name = "newTabPage")]
+        public string NewTabPage { get; set; }                     // Page that opens a new tab
 
         // Private constructor
         private UserSettings() { }
@@ -36,9 +39,15 @@ namespace Organic_Browser.Utils
         public void Save()
         {
             Stream stream = new StreamWriter(JsonPath).BaseStream;
-            var serializer = new DataContractJsonSerializer(typeof(UserSettings));
-            serializer.WriteObject(stream, this);
-            stream.Dispose();
+            try
+            {
+                var serializer = new DataContractJsonSerializer(typeof(UserSettings));
+                serializer.WriteObject(stream, this);
+            }
+            finally
+            {
+                stream.Dispose();
+            }
         }
 
         /// <summary>

@@ -38,10 +38,11 @@ namespace Organic_Browser.Utils
             // Set the cache path in the CefSettings object
             ValidateCacheFolder();              // Make sure that the cache folder exists
             settings.CachePath = CachePath;
-            
 
             // Initialize Cef
             CefSharp.Cef.Initialize(settings);
+
+            settings.Dispose();
         }
 
         /// <summary>
@@ -50,6 +51,11 @@ namespace Organic_Browser.Utils
         /// </summary>
         private static void ValidateCacheFolder()
         {
+            // In case history file does not exist, it means that someone deleted the hostory, therefore
+            // the cached data should be deleted as well.
+            if (!File.Exists(History.HistoryPath))
+                Directory.Delete(CachePath, recursive: true);
+           
             if (!Directory.Exists(CachePath))
                 Directory.CreateDirectory(CachePath);
         }

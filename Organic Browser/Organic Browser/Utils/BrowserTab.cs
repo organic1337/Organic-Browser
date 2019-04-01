@@ -82,6 +82,7 @@ namespace Organic_Browser.Utils
             // Web browser events
             this.WebBrowser.PreviewMouseLeftButtonUp += WebBrowser_MouseLeftButtonUp;               // Handle mouse click on the web browser
             this.WebBrowser.LoadError += WebBrowser_LoadError;
+            this.WebBrowser.FrameLoadEnd += WebBrowser_FrameLoadEnd;
         }
 
         #region Event handlers
@@ -186,7 +187,7 @@ namespace Organic_Browser.Utils
 
             // Handle loading errors
             string errorPageDirectoryName = string.Empty;
-            if (IsConnected() == false)
+            if (OrganicWebUtility.IsConnected() == false)
             {
                 // In case of no internet
                 errorPageDirectoryName = "no_internet";
@@ -211,28 +212,24 @@ namespace Organic_Browser.Utils
             // Restore the url
             this.NavigationBar.Dispatcher.Invoke(() => this.NavigationBar.urlTexBox.Text = originalUrl); 
         }
+
+        /// <summary>
+        /// Executes when the Embedded chromium web browser finished to load a frame.
+        /// </summary>
+        /// <param name="sender">event sender</param>
+        /// <param name="e">event args</param>
+        private void WebBrowser_FrameLoadEnd(object sender, CefSharp.FrameLoadEndEventArgs e)
+        {
+            if (e.Frame.IsMain && !e.Url.StartsWith("file"))
+            {
+                History history = History.Load();
+                history.AddUrlVisit(e.Url);
+            }
+        }
         #endregion
 
         #region Private functions
-        /// <summary>
-        /// Checks whether the computer is connected to the internet
-        /// </summary>
-        /// <returns></returns>
-        private static bool IsConnected()
-        {
-            try
-            {
-                using (var client = new WebClient())
-                using (client.OpenRead("http://clients3.google.com/generate_204"))
-                {
-                    return true;
-                }
-            }
-            catch
-            {
-                return false;
-            }
-        }
+
         #endregion
     }
 }

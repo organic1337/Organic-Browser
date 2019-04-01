@@ -107,8 +107,9 @@
     </Compile>
     <Compile Include="Utils\BrowserTab.cs" />
     <Compile Include="Utils\CefInitializer.cs" />
+    <Compile Include="Utils\History.cs" />
     <Compile Include="Utils\UserSettings.cs" />
-    <Compile Include="Utils\OrganicWebUtils.cs" />
+    <Compile Include="Utils\OrganicWebUtility.cs" />
     <Page Include="Controls\BrowserTabControl.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
