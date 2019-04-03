@@ -72,7 +72,7 @@ namespace Organic_Browser.Utils
         private void HandleEvents()
         {
             // Navigation bar events
-            this.NavigationBar.urlTexBox.KeyUp += UrlTextBox_KeyUp;                                 // Handle key pressed in the url textbox
+            this.NavigationBar.urlTextBox.KeyUp += UrlTextBox_KeyUp;                                 // Handle key pressed in the url textbox
             this.NavigationBar.backBtn.MouseLeftButtonUp += NavBar_BackBtnPress;                    // Handle mouse click on Back button
             this.NavigationBar.forwardBtn.MouseLeftButtonUp += NavBar_ForwardBtnPress;              // Handle mouse click on Forward button
             this.NavigationBar.refreshBtn.MouseLeftButtonUp += NavBar_RefreshBtnPress;              // Handle mouse click on Refresh button
@@ -98,6 +98,9 @@ namespace Organic_Browser.Utils
                 // In case the given url is a valid address
                 if (OrganicWebUtility.IsValidUrl(this.NavigationBar.Url))
                     this.WebBrowser.Address = this.NavigationBar.Url;
+                // In case the given url is an organic url (such as organic://history)
+                else if (OrganicWebUtility.IsOrganicUrl(this.NavigationBar.Url))
+                    this.WebBrowser.Address = OrganicWebUtility.GetLocalPageActualUrl(this.NavigationBar.Url);
                 // In case the given url is NOT actually a url
                 else
                     this.WebBrowser.Address = "https://www.google.com/search?q=" + HttpUtility.UrlEncode(this.NavigationBar.Url);
@@ -179,38 +182,38 @@ namespace Organic_Browser.Utils
         {
             // Save the original url
             string originalUrl = null;
-            this.NavigationBar.Dispatcher.Invoke(() => originalUrl = this.NavigationBar.urlTexBox.Text);
+            this.NavigationBar.Dispatcher.Invoke(() => originalUrl = this.NavigationBar.urlTextBox.Text);
 
             // In case error aborted by CEF, do nothing
             if (e.ErrorCode == CefSharp.CefErrorCode.Aborted)
                 return;
 
             // Handle loading errors
-            string errorPageDirectoryName = string.Empty;
+            string errorPagePath = string.Empty;
             if (OrganicWebUtility.IsConnected() == false)
             {
                 // In case of no internet
-                errorPageDirectoryName = "no_internet";
+                errorPagePath = "organic://error/no_internet";
             }
             else if (e.ErrorCode == CefSharp.CefErrorCode.NameNotResolved)
             {
                 // In case of domain could not be resolved
-                errorPageDirectoryName = "could_not_find";
+                errorPagePath = "organic://error/could_not_resolve";
             }
             else
             {
                 // Default loading error page
                 System.Console.WriteLine(e.ErrorText);
-                errorPageDirectoryName = "error_occured";
+                errorPagePath = "organic://error/general";
             }
 
             // Handle more loading errors here
 
             // Load the error page
-            this.WebBrowser.Dispatcher.Invoke(() => this.WebBrowser.Address = string.Format("file:///{0}pages/{1}/index.html", System.AppDomain.CurrentDomain.BaseDirectory.Replace('\\', '/'), errorPageDirectoryName));
+            this.WebBrowser.Dispatcher.Invoke(() => this.WebBrowser.Address = OrganicWebUtility.GetLocalPageActualUrl(errorPagePath));
 
             // Restore the url
-            this.NavigationBar.Dispatcher.Invoke(() => this.NavigationBar.urlTexBox.Text = originalUrl); 
+            this.NavigationBar.Dispatcher.Invoke(() => this.NavigationBar.urlTextBox.Text = originalUrl);
         }
 
         /// <summary>

@@ -89,7 +89,7 @@
             <Image Source="../Resources/Images/settings.png" Style="{StaticResource ResourceKey=imageSize}"/>
         </Border>
 
-        <local:UrlTextBoxControl x:Name="urlTexBox" Height="30" Grid.Column="4"></local:UrlTextBoxControl>
+        <local:UrlTextBoxControl x:Name="urlTextBox" Height="30" Grid.Column="4"></local:UrlTextBoxControl>
         <Border Grid.ColumnSpan="1000" VerticalAlignment="Bottom" BorderThickness="0.2" BorderBrush="#FF7F7F7F"></Border>
         <Canvas FlowDirection="RightToLeft" Grid.ColumnSpan="10000">
             <local:SettingsDropdownControl x:Name="settingsMenu" Canvas.Top="42" Canvas.Left="12" Visibility="Hidden"/>

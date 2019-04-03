@@ -39,21 +39,23 @@ namespace Organic_Browser
             };
 
             // Start with one tab (Homepage)
-            var webBrowser = new ChromiumWebBrowser();           
+            var webBrowser = new ChromiumWebBrowser();
+            webBrowser.BrowserSettings.FileAccessFromFileUrls = CefSharp.CefState.Enabled;      // Enable loading local files through the browser
             var navigationBar = new NavigationBarControl();
             BrowserTab browserTab = new BrowserTab(navigationBar, webBrowser);
             webBrowser.Address = UserSettings.Load().HomePage;
-            Grid tabContent = this.CreateGrid(navigationBar, webBrowser);
+            Grid tabContent = CreateGrid(navigationBar, webBrowser);
             this.browserTabControl.AddTab(webBrowser, "Home page", tabContent);          
 
             // Enable tab adding
             this.browserTabControl.NewTabButtonClick += (object sender, EventArgs e) =>
             {
                 webBrowser = new ChromiumWebBrowser();
+                webBrowser.BrowserSettings.FileAccessFromFileUrls = CefSharp.CefState.Enabled;  // Enable loading local files through the browser
                 navigationBar = new NavigationBarControl();
                 browserTab = new BrowserTab(navigationBar, webBrowser);
                 webBrowser.Address = UserSettings.Load().NewTabPage;         
-                tabContent = this.CreateGrid(navigationBar, webBrowser);
+                tabContent = CreateGrid(navigationBar, webBrowser);
                 this.browserTabControl.AddTab(webBrowser, "New Tab", tabContent);
             };
         }
@@ -64,7 +66,7 @@ namespace Organic_Browser
         /// <param name="navigationBar"></param>
         /// <param name="webBrowser"></param>
         /// <returns></returns>
-        private Grid CreateGrid(NavigationBarControl navigationBar, ChromiumWebBrowser webBrowser)
+        public static Grid CreateGrid(NavigationBarControl navigationBar, ChromiumWebBrowser webBrowser)
         {
             Grid grid = new Grid();
             grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });

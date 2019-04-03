@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using Organic_Browser.Utils;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +13,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 
 namespace Organic_Browser.Controls
@@ -44,20 +45,29 @@ namespace Organic_Browser.Controls
         /// </summary>
         public string Url
         {
-            get { return this.urlTexBox.Text; }
+            get {
+                return this.urlTextBox.Text;
+            }
             set
             {
                 // Make sure that the value is not null or empty
                 if (string.IsNullOrEmpty(value))
                     return;
 
-                // The beginning of an html page url that belongs to the browser (is on the browser's directory)
-                string browserPageUrl = string.Format("file:///{0}", System.AppDomain.CurrentDomain.BaseDirectory.Replace('\\', '/').ToLower());
-                string browserPageUrlEncoded = Uri.EscapeUriString(browserPageUrl);
+                // In case the url is not a local url
+                if (!OrganicWebUtility.IsLocalPageUrl(value))
+                    this.urlTextBox.Text = value;    
+                // In case the url IS a local url
+                else
+                {
+                    // Show the url only if the url is not an error
+                    string organicUrl = OrganicWebUtility.GetOrganicUrl(value);
+                    if (!OrganicWebUtility.IsErrorPage(organicUrl))
+                        this.urlTextBox.Text = organicUrl;
 
-                // Insert the url to the textbox ONLY if the url is not from inside the browser's directory
-                if (!value.ToLower().StartsWith(browserPageUrl) && !value.ToLower().StartsWith(browserPageUrlEncoded))
-                    this.urlTexBox.Text = value;
+                }
+                
+               
             }
         }
 

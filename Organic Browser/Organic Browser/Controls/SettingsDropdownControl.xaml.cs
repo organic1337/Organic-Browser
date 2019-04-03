@@ -55,5 +55,23 @@ namespace Organic_Browser.Controls
         {
             Environment.Exit(0);    // Exit the application, close all open windows
         }
+
+        /// <summary>
+        /// Executes when the history settings is clicked. Opens a new tab with the history
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void History_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var webBrowser = new CefSharp.Wpf.ChromiumWebBrowser();
+            webBrowser.BrowserSettings.FileAccessFromFileUrls = CefSharp.CefState.Enabled;  // Enable loading local files through the browser
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+
+            
+            NavigationBarControl navigationBar = new NavigationBarControl();
+            var browserTab = new Utils.BrowserTab(navigationBar, webBrowser);
+            webBrowser.Address = Organic_Browser.Utils.OrganicWebUtility.GetLocalPageActualUrl("organic://history");
+            mainWindow.browserTabControl.AddTab(webBrowser, "History", MainWindow.CreateGrid(navigationBar, webBrowser));
+        }
     }
 }

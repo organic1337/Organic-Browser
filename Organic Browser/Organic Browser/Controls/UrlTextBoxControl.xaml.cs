@@ -23,7 +23,7 @@ namespace Organic_Browser.Controls
         // Text property
         public string Text {    
             get { return this.UrlTB.Text; }
-            set { this.UrlTB.Text = value;}
+            set { Console.WriteLine("UrlChanges: {0}", value); this.UrlTB.Text = value;}
         }
 
         public UrlTextBoxControl()

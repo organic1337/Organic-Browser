@@ -17,7 +17,7 @@ namespace Organic_Browser.Utils
         private static History Instance = null;
 
         // public read only data
-        public const string HistoryPath = "history.json";      // Path of the history json file 
+        public const string HistoryPath = "pages\\history\\history.json";      // Path of the history json file 
 
         /// <summary>
         /// Single url visit

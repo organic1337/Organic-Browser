@@ -63,6 +63,7 @@ namespace Organic_Browser.Controls
             TabItem item = this.CreateTabItem(chromiumWebBrowser, alternativeTitle);
             item.Content = content;                         // Put the given content inside the tab item
             this.tabControl.Items.Add(item);                // Add the complete tab to the UI
+            item.Focus();
             this.tabItems.Add(item);
 
             // Move the + button right
