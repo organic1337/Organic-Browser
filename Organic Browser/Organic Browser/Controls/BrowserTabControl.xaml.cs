@@ -63,13 +63,13 @@ namespace Organic_Browser.Controls
             TabItem item = this.CreateTabItem(chromiumWebBrowser, alternativeTitle);
             item.Content = content;                         // Put the given content inside the tab item
             this.tabControl.Items.Add(item);                // Add the complete tab to the UI
-            item.Focus();
             this.tabItems.Add(item);
 
             // Move the + button right
             this.addNewTabButton.Margin = this.AddNewTabMargin;
 
             EnsureFit();        // Ensure fit when a new tab is added
+            item.Loaded += (object sender, RoutedEventArgs e) => item.Focus();  // Focus on the new tab after loaded
         }
 
         #region Private properties
