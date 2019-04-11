@@ -3,6 +3,7 @@ using System.Web;
 using CefSharp.Wpf;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Threading.Tasks;
 using Organic_Browser.Controls;
 using System.Text.RegularExpressions;
 
@@ -72,12 +73,13 @@ namespace Organic_Browser.Utils
         private void HandleEvents()
         {
             // Navigation bar events
-            this.NavigationBar.urlTextBox.KeyUp += UrlTextBox_KeyUp;                                 // Handle key pressed in the url textbox
+            this.NavigationBar.urlTextBox.KeyUp += UrlTextBox_KeyUp;                                // Handle key pressed in the url textbox
             this.NavigationBar.backBtn.MouseLeftButtonUp += NavBar_BackBtnPress;                    // Handle mouse click on Back button
             this.NavigationBar.forwardBtn.MouseLeftButtonUp += NavBar_ForwardBtnPress;              // Handle mouse click on Forward button
             this.NavigationBar.refreshBtn.MouseLeftButtonUp += NavBar_RefreshBtnPress;              // Handle mouse click on Refresh button
             this.NavigationBar.homeBtn.MouseLeftButtonUp += NavBar_HomeBtnPress;                    // Handle mouse click on Home button
             this.NavigationBar.settingsMenu.setHomePageLabel.MouseDown += NavBar_SetAsHomePress;    // Handle mouse click on Set as home setting
+            this.NavigationBar.downloadBtn.MouseLeftButtonUp += NavBar_DownloadButtonPress;         // Handle mouse click on download button
 
             // Web browser events
             this.WebBrowser.PreviewMouseLeftButtonUp += WebBrowser_MouseLeftButtonUp;               // Handle mouse click on the web browser
@@ -172,6 +174,33 @@ namespace Organic_Browser.Utils
         }
 
         /// <summary>
+        /// Executes when the download button in the navigation bar is pressed.
+        /// 
+        /// </summary>
+        /// <param name="obj">Event sender</param>
+        /// <param name="e">Event args</param>
+        private void NavBar_DownloadButtonPress(object obj, MouseButtonEventArgs e)
+        {
+            string url = this.WebBrowser.Address;   // Url to download
+            var webpageDownloader = new WebsiteDownloader.WebpageDownloader(url, UserSettings.Load().DownloadWebpagesLocation);
+
+            // When the download is started enable the loading animation
+            // When finished disable the loading animation
+            webpageDownloader.StartedDownloading += (object sender, System.EventArgs ea) =>
+            {
+                this.NavigationBar.Dispatcher.Invoke(() => this.NavigationBar.loadingWebpageControl.IsEnabled = true);                
+            };
+            webpageDownloader.FinishedDownloading += (object sender, System.EventArgs ea) =>
+            {
+                this.NavigationBar.Dispatcher.Invoke(() => this.NavigationBar.loadingWebpageControl.IsEnabled = false);
+            };
+
+            // Download the page asynchronously      
+            Task downloadTask = new Task(webpageDownloader.Download);
+            downloadTask.Start();                          
+        }
+
+        /// <summary>
         /// Executes when loading error is occured.
         /// 
         /// Basically, show an html page for each error.
@@ -229,10 +258,6 @@ namespace Organic_Browser.Utils
                 history.AddUrlVisit(e.Url);
             }
         }
-        #endregion
-
-        #region Private functions
-
         #endregion
     }
 }

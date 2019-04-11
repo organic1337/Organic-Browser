@@ -66,8 +66,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -90,6 +92,9 @@
       <DependentUpon>BrowserTabControl.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controls\LoadingWebpageControl.xaml.cs">
+      <DependentUpon>LoadingWebpageControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\NavigationBarControl.xaml.cs">
       <DependentUpon>NavigationBarControl.xaml</DependentUpon>
     </Compile>
@@ -110,9 +115,17 @@
     <Compile Include="Utils\History.cs" />
     <Compile Include="Utils\UserSettings.cs" />
     <Compile Include="Utils\OrganicWebUtility.cs" />
+    <Compile Include="Utils\WebsiteDownloader\Extensions.cs" />
+    <Compile Include="Utils\WebsiteDownloader\HtmlDocument.cs" />
+    <Compile Include="Utils\WebsiteDownloader\MimeTypeUtility.cs" />
+    <Compile Include="Utils\WebsiteDownloader\WebpageDownloader.cs" />
     <Page Include="Controls\BrowserTabControl.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Controls\LoadingWebpageControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\NavigationBarControl.xaml">
       <SubType>Designer</SubType>
@@ -175,7 +188,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Utils\WebsiteDownloader\" />
+    <Resource Include="Resources\Images\green_loading.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\dark-gray-download.png" />

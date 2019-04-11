@@ -14,7 +14,7 @@
             <Setter Property="Foreground" Value="#FF131313" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="Height" Value="28" />
-            <Setter Property="Width" Value="200" />
+            <Setter Property="Width" Value="180" />
             <Setter Property="Cursor" Value="Hand" />
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
@@ -23,12 +23,13 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    <Border BorderThickness="0.5" BorderBrush="#FF131313">
-    <StackPanel Orientation="Vertical">
+    <StackPanel Orientation="Vertical" Margin="10">
+        <StackPanel.Effect>
+            <DropShadowEffect BlurRadius="10" Direction="-90" RenderingBias="Quality" ShadowDepth="0.5" Opacity="0.4"/>
+        </StackPanel.Effect>
         <Label x:Name="setHomePageLabel">Set as home page</Label>
         <Label x:Name="history" MouseDown="History_MouseDown">History</Label>
         <Label x:Name="preferences" MouseDown="Preferences_MouseDown">Preferences</Label>
         <Label x:Name="exit" MouseDown="Exit_MouseDown">Exit</Label>
     </StackPanel>
-    </Border>
 </UserControl>

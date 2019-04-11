@@ -76,7 +76,10 @@ namespace Organic_Browser.Controls
             InitializeComponent();
 
             this.mainGrid.MouseLeftButtonDown += (object obj, MouseButtonEventArgs e) => this.MakeSettingsMenuInvisible();
-            this.settingsBtn.MouseLeftButtonUp += (object obj, MouseButtonEventArgs e) => this.MakeSettingsMenuVisible();            
+            this.settingsBtn.MouseLeftButtonUp += (object obj, MouseButtonEventArgs e) => this.MakeSettingsMenuVisible();
+
+            this.downloadBtn.MouseEnter += (object obj, MouseEventArgs e) => this.loadingWebpageControl.Visibility = Visibility.Visible;
+            this.downloadBtn.MouseLeave += (object obj, MouseEventArgs e) => this.loadingWebpageControl.Visibility = Visibility.Hidden;
         }
 
         /// <summary>

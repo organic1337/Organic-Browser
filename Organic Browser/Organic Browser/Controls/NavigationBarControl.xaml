@@ -79,11 +79,6 @@
             <Image Source="../Resources/Images/home.png" Style="{StaticResource ResourceKey=imageSize}"/>
         </Border>
 
-        <!--Download Button-->
-        <Border x:Name="downloadBtn" Style="{StaticResource ResourceKey=imageWrapperBase}" Grid.Column="5">
-            <Image Style="{StaticResource ResourceKey=DownloadButtonImage}"/>
-        </Border>
-
         <!--Settings Button-->
         <Border x:Name="settingsBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}" Grid.Column="6">
             <Image Source="../Resources/Images/settings.png" Style="{StaticResource ResourceKey=imageSize}"/>
@@ -91,8 +86,21 @@
 
         <local:UrlTextBoxControl x:Name="urlTextBox" Height="30" Grid.Column="4"></local:UrlTextBoxControl>
         <Border Grid.ColumnSpan="1000" VerticalAlignment="Bottom" BorderThickness="0.2" BorderBrush="#FF7F7F7F"></Border>
+
+        
         <Canvas FlowDirection="RightToLeft" Grid.ColumnSpan="10000">
-            <local:SettingsDropdownControl x:Name="settingsMenu" Canvas.Top="42" Canvas.Left="12" Visibility="Hidden"/>
+            <!--Loading webpages control -->
+            <local:LoadingWebpageControl x:Name="loadingWebpageControl" Canvas.Top="0" Canvas.Left="44" IsEnabled="False"/>
+        </Canvas>
+        
+        <!--Download Button-->
+        <Border x:Name="downloadBtn" Style="{StaticResource ResourceKey=imageWrapperBase}" Grid.Column="5">
+            <Image Style="{StaticResource ResourceKey=DownloadButtonImage}"/>
+        </Border>
+
+        <!--Settings Dropdown canvas-->
+        <Canvas FlowDirection="RightToLeft" Grid.ColumnSpan="10000">
+            <local:SettingsDropdownControl x:Name="settingsMenu" Canvas.Top="34" Canvas.Left="4" Visibility="Hidden"/>
         </Canvas>
     </Grid>
 </UserControl>
