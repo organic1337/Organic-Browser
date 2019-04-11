@@ -223,7 +223,7 @@ namespace Organic_Browser.Utils
         /// <param name="e">event args</param>
         private void WebBrowser_FrameLoadEnd(object sender, CefSharp.FrameLoadEndEventArgs e)
         {
-            if (e.Frame.IsMain && !e.Url.StartsWith("file"))
+            if (e.Frame.IsMain && !e.Url.StartsWith("file") && !e.Url.StartsWith("chrome"))
             {
                 History history = History.Load();
                 history.AddUrlVisit(e.Url);
