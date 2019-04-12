@@ -181,6 +181,11 @@ namespace Organic_Browser.Utils
         /// <param name="e">Event args</param>
         private void NavBar_DownloadButtonPress(object obj, MouseButtonEventArgs e)
         {
+            // In case the app is loading a download of another webpage,
+            // do not download anything else
+            if (this.NavigationBar.loadingWebpageControl.IsEnabled)
+                return;
+
             string url = this.WebBrowser.Address;   // Url to download
             var webpageDownloader = new WebsiteDownloader.WebpageDownloader(url, UserSettings.Load().DownloadWebpagesLocation);
 
