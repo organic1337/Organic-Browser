@@ -98,11 +98,11 @@ namespace Organic_Browser.Utils
             if (eventArgs.Key == Key.Enter)
             {
                 // In case the given url is a valid address
-                if (OrganicWebUtility.IsValidUrl(this.NavigationBar.Url))
+                if (OrganicUtility.IsValidUrl(this.NavigationBar.Url))
                     this.WebBrowser.Address = this.NavigationBar.Url;
                 // In case the given url is an organic url (such as organic://history)
-                else if (OrganicWebUtility.IsOrganicUrl(this.NavigationBar.Url))
-                    this.WebBrowser.Address = OrganicWebUtility.GetLocalPageActualUrl(this.NavigationBar.Url);
+                else if (OrganicUtility.IsOrganicUrl(this.NavigationBar.Url))
+                    this.WebBrowser.Address = OrganicUtility.GetLocalPageActualUrl(this.NavigationBar.Url);
                 // In case the given url is NOT actually a url
                 else
                     this.WebBrowser.Address = "https://www.google.com/search?q=" + HttpUtility.UrlEncode(this.NavigationBar.Url);
@@ -224,7 +224,7 @@ namespace Organic_Browser.Utils
 
             // Handle loading errors
             string errorPagePath = string.Empty;
-            if (OrganicWebUtility.IsConnected() == false)
+            if (OrganicUtility.IsConnected() == false)
             {
                 // In case of no internet
                 errorPagePath = "organic://error/no_internet";
@@ -244,7 +244,7 @@ namespace Organic_Browser.Utils
             // Handle more loading errors here
 
             // Load the error page
-            this.WebBrowser.Dispatcher.Invoke(() => this.WebBrowser.Address = OrganicWebUtility.GetLocalPageActualUrl(errorPagePath));
+            this.WebBrowser.Dispatcher.Invoke(() => this.WebBrowser.Address = OrganicUtility.GetLocalPageActualUrl(errorPagePath));
 
             // Restore the url
             this.NavigationBar.Dispatcher.Invoke(() => this.NavigationBar.urlTextBox.Text = originalUrl);

@@ -9,8 +9,8 @@ namespace Organic_Browser.Utils
     class CefInitializer
     {
         // Private attributes
-        private const string CachePath = ".cache";
-        private static readonly Dictionary<string, string> Commands;
+        private const string CachePath = ".cache";                      // Path to the cache directory
+        private static readonly Dictionary<string, string> Commands;    // Cef commands
 
         static CefInitializer()
         {
@@ -18,7 +18,7 @@ namespace Organic_Browser.Utils
             Commands = new Dictionary<string, string>
             {
                 // Improve performence on high resolutions
-                {"disable-gpu-vsync", "1"},     
+                {"disable-gpu-vsync", "1"},
                 {"disable-gpu", "1"},
             };
         }
@@ -37,7 +37,7 @@ namespace Organic_Browser.Utils
 
             // Set the cache path in the CefSettings object
             ValidateCacheFolder();              // Make sure that the cache folder exists
-            settings.CachePath = CachePath;
+            settings.CachePath = OrganicUtility.GetAbsolutePath(CachePath);
 
             // Initialize Cef
             CefSharp.Cef.Initialize(settings);
@@ -51,13 +51,15 @@ namespace Organic_Browser.Utils
         /// </summary>
         private static void ValidateCacheFolder()
         {
+            string absCachePath = OrganicUtility.GetAbsolutePath(CachePath);
+
             // In case history file does not exist, it means that someone deleted the hostory, therefore
             // the cached data should be deleted as well.
-            if (!File.Exists(History.HistoryPath))
-                Directory.Delete(CachePath, recursive: true);
-           
-            if (!Directory.Exists(CachePath))
-                Directory.CreateDirectory(CachePath);
+            if (!File.Exists(OrganicUtility.GetAbsolutePath(History.HistoryPath)) && File.Exists(absCachePath))
+                Directory.Delete(absCachePath, recursive: true);
+
+            if (!Directory.Exists(absCachePath))
+                Directory.CreateDirectory(absCachePath);
         }
     }
 }

@@ -70,7 +70,7 @@ namespace Organic_Browser.Controls
             
             NavigationBarControl navigationBar = new NavigationBarControl();
             var browserTab = new Utils.BrowserTab(navigationBar, webBrowser);
-            webBrowser.Address = Utils.OrganicWebUtility.GetLocalPageActualUrl("organic://history");
+            webBrowser.Address = Utils.OrganicUtility.GetLocalPageActualUrl("organic://history");
             mainWindow.browserTabControl.AddTab(webBrowser, "History", MainWindow.CreateGrid(navigationBar, webBrowser));
         }
     }

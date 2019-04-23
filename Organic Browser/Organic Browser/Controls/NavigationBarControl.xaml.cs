@@ -55,14 +55,14 @@ namespace Organic_Browser.Controls
                     return;
 
                 // In case the url is not a local url
-                if (!OrganicWebUtility.IsLocalPageUrl(value))
+                if (!OrganicUtility.IsLocalPageUrl(value))
                     this.urlTextBox.Text = value;    
                 // In case the url IS a local url
                 else
                 {
                     // Show the url only if the url is not an error
-                    string organicUrl = OrganicWebUtility.GetOrganicUrl(value);
-                    if (!OrganicWebUtility.IsErrorPage(organicUrl))
+                    string organicUrl = OrganicUtility.GetOrganicUrl(value);
+                    if (!OrganicUtility.IsErrorPage(organicUrl))
                         this.urlTextBox.Text = organicUrl;
 
                 }

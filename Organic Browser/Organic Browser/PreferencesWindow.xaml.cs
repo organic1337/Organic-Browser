@@ -114,12 +114,12 @@ namespace Organic_Browser
                 errorMessage = "The given path does not exist";
             }
             // Validate the home page
-            else if (!OrganicWebUtility.IsValidUrl(this.homePage.Value))
+            else if (!OrganicUtility.IsValidUrl(this.homePage.Value))
             {
                 errorMessage = "The given URL for the home page is invalid";
             }
             // Validate the new tab page
-            else if (!OrganicWebUtility.IsValidUrl(this.newTabPage.Value))
+            else if (!OrganicUtility.IsValidUrl(this.newTabPage.Value))
             {
                 errorMessage = "The given URL for the new tab page is invalid";
             }

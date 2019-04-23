@@ -1,14 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Linq;
+using System.Reflection;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace Organic_Browser.Utils
 {
-    class OrganicWebUtility
+    class OrganicUtility
     {
+        #region Web Utilities
+
         // Private -  Read only data
         private readonly static Regex UrlRegex = new Regex(@"^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
@@ -62,7 +65,7 @@ namespace Organic_Browser.Utils
         // Path to the local pages directory
         public static readonly string LocalPagesPath = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "pages");
 
-        static OrganicWebUtility()
+        static OrganicUtility()
         {
             // Regular Pages
             LocalPages.Add("organic://history", GetUrlFromPath(Path.Combine(LocalPagesPath, "history", "index.html")));
@@ -130,6 +133,19 @@ namespace Organic_Browser.Utils
                 throw new Exception("The given url does not exist");
             
             return LocalPages.First((pair) => pair.Value == url.ToLower()).Key;
+        }
+        #endregion
+
+        #endregion
+
+        #region General Utilities
+        /// <summary>
+        /// Returns the absolute path of a relative path, relatively to the executable location
+        /// </summary>
+        /// <returns>Absolute path</returns>
+        public static string GetAbsolutePath(string relativePath)
+        {
+            return Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), relativePath);
         }
         #endregion
     }

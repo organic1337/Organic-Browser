@@ -114,7 +114,7 @@
     <Compile Include="Utils\CefInitializer.cs" />
     <Compile Include="Utils\History.cs" />
     <Compile Include="Utils\UserSettings.cs" />
-    <Compile Include="Utils\OrganicWebUtility.cs" />
+    <Compile Include="Utils\OrganicUtility.cs" />
     <Compile Include="Utils\WebsiteDownloader\Extensions.cs" />
     <Compile Include="Utils\WebsiteDownloader\HtmlDocument.cs" />
     <Compile Include="Utils\WebsiteDownloader\MimeTypeUtility.cs" />

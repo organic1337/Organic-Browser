@@ -6,6 +6,7 @@ using CefSharp.Wpf;
 using Organic_Browser.Utils;
 using Organic_Browser.Controls;
 using System;
+using System.IO;
 
 namespace Organic_Browser
 {
@@ -17,7 +18,7 @@ namespace Organic_Browser
         public MainWindow()
         {
             // Initialize
-            CefInitializer.Initialize();            
+            CefInitializer.Initialize();
             InitializeComponent();
 
             ManageTabs();                                                           // Manage the browser tabs
@@ -43,7 +44,7 @@ namespace Organic_Browser
             webBrowser.BrowserSettings.FileAccessFromFileUrls = CefSharp.CefState.Enabled;      // Enable loading local files through the browser
             var navigationBar = new NavigationBarControl();
             BrowserTab browserTab = new BrowserTab(navigationBar, webBrowser);
-            webBrowser.Address = UserSettings.Load().HomePage;
+            webBrowser.Address = GetInitialUrl();
             Grid tabContent = CreateGrid(navigationBar, webBrowser);
             this.browserTabControl.AddTab(webBrowser, "Home page", tabContent);          
 
@@ -78,6 +79,26 @@ namespace Organic_Browser
             grid.Children.Add(navigationBar);
 
             return grid;
+        }
+
+        /// <summary>
+        /// Returns the initial url to start from.
+        /// The url may be a file opened with the browser or the home page
+        /// </summary>
+        /// <returns></returns>
+        private static string GetInitialUrl()
+        {
+            string[] args = Environment.GetCommandLineArgs();
+
+            if (args.Length == 2 && File.Exists(args[1]))
+            {
+                // In case a file was opened with the browser, show the file
+                return OrganicUtility.GetUrlFromPath(args[1]);
+            }
+            else
+                return UserSettings.Load().HomePage;
+            
+            
         }
     }
 }
