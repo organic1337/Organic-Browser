@@ -24,6 +24,7 @@ namespace Organic_Browser.Controls
         // Private constants
         private const double PlusButtonMarginTop = 5;       // The margin of the + button from top
         private const double PlusButtonMarginLeft = 5;      // The margin of the + button from top
+        private const int TabCountLimit = 25;                    // Maximum number of tabs
 
         // Private fields
         private List<TabItem> tabItems;                     // List of all the tab items within the tab control
@@ -49,6 +50,7 @@ namespace Organic_Browser.Controls
 
             // Margin the add new tab button
             this.addNewTabButton.Margin = this.AddNewTabMargin;
+
         }
 
         /// <summary>
@@ -70,6 +72,10 @@ namespace Organic_Browser.Controls
 
             EnsureFit();        // Ensure fit when a new tab is added
             item.Loaded += (object sender, RoutedEventArgs e) => item.Focus();  // Focus on the new tab after loaded
+
+            // Disable the add new tab button if reached the maximum number of tabs
+            if (this.TabCount == TabCountLimit)
+                this.addNewTabButton.IsEnabled = false;            
         }
 
         #region Private properties
@@ -184,6 +190,10 @@ namespace Organic_Browser.Controls
                 this.tabControl.Items.Remove(item);                             // Remove the tab from the UI
                 this.addNewTabButton.Margin = this.AddNewTabMargin;             // Margin the add new tab button
                 this.OnTabClosed();
+
+                // In case tab is closed, enabled the add new tab button
+                if (this.TabCount < TabCountLimit)
+                    this.addNewTabButton.IsEnabled = true;
 
                 chromiumWebBrowser.Dispose();                                   // Dispose the ChromiumWebBrowser object after tab closed
                 EnsureFit();                                                    // Ensure fit when a tab is closed

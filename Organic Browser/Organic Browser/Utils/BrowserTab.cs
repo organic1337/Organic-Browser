@@ -183,7 +183,8 @@ namespace Organic_Browser.Utils
         {
             // In case the app is loading a download of another webpage,
             // do not download anything else
-            if (this.NavigationBar.loadingWebpageControl.IsEnabled)
+            if (this.NavigationBar.loadingWebpageControl.IsEnabled ||
+                OrganicUtility.IsLocalPageUrl(this.WebBrowser.Address))
                 return;
 
             string url = this.WebBrowser.Address;   // Url to download
@@ -202,7 +203,7 @@ namespace Organic_Browser.Utils
 
             // Download the page asynchronously      
             Task downloadTask = new Task(webpageDownloader.Download);
-            downloadTask.Start();                          
+            downloadTask.Start();                 
         }
 
         /// <summary>

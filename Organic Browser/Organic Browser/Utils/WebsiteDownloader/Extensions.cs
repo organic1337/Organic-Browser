@@ -40,17 +40,13 @@ namespace Organic_Browser.Utils.WebsiteDownloader
             // Find the index of the string start (without whitespace)
             int startIndex = 0;
             while (Char.IsWhiteSpace(result[startIndex]))
-            {
                 startIndex++;
-            }
 
             // Find the index of the end of the string (without whitespaces
             int endIndex = result.Length - 1;
             while (Char.IsWhiteSpace(result[endIndex]))
-            {
                 endIndex--;
-            }
-
+            
             return result.Slice(startIndex, endIndex + 1);
         }
         #endregion

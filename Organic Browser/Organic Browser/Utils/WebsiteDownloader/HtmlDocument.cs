@@ -47,7 +47,6 @@ namespace Organic_Browser.Utils.WebsiteDownloader
                     yield return element;
         }
 
-
         /// <summary>
         /// Returns all the elements in the code that has an attribute as mentiond.
         /// </summary>
