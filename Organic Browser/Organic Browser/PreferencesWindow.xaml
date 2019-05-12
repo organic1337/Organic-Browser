@@ -29,10 +29,10 @@
 
         <Style x:Key="buttonImageWrapper" TargetType="Border" BasedOn="{StaticResource imageWrapperBase}">
             <Setter Property="CornerRadius" Value="10" />
-            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Background" Value="{DynamicResource PreferencesButtonBackground}" />
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#FFDADADA" />
+                    <Setter Property="Background" Value="{DynamicResource PreferencesButtonMouseOverBackground}" />
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
                     <Setter Property="Opacity" Value="0.5" />
@@ -47,9 +47,9 @@
         <Style TargetType="Button" x:Key="buttonStyle">          
             <Setter Property="Height" Value="22" />
             <Setter Property="Width" Value="64" />
-            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Background" Value="{DynamicResource PreferencesTextButtonBackground}" />
             <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Foreground" Value="{DynamicResource PreferencesTextButtonForeground}"/>
             <Setter Property="Cursor" Value="Hand" />
             
             <Setter Property="Template">
@@ -63,7 +63,7 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#FFDADADA"/>
+                    <Setter Property="Background" Value="{DynamicResource preferencesTextButtonMouseOverBackground}"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -85,7 +85,7 @@
             Margin="20" 
             MouseDown="XButton_MouseDown">
             <Image 
-                Source="Resources/Images/x.png" 
+                Source="Resources/Images/Buttons/Light/x.png" 
                 Style="{StaticResource ResourceKey=imageSize}"  
                 />
         </Border>

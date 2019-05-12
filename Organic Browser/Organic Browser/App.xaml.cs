@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Navigation;
 
 namespace Organic_Browser
 {
@@ -13,5 +14,6 @@ namespace Organic_Browser
     /// </summary>
     public partial class App : Application
     {
+
     }
 }

@@ -23,7 +23,18 @@ namespace Organic_Browser
 
             ManageTabs();                                                           // Manage the browser tabs
             this.Closed += (object sender, EventArgs e) => Environment.Exit(0);     //  When the main window is closed, close the browser
+
+
+            this.Loaded += (object sender, RoutedEventArgs e) =>
+            {
+                Application.Current.Resources.MergedDictionaries.Clear();
+
+                Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary()
+                { Source = new Uri("pack://application:,,,/Resources/Themes/DarkTheme.xaml", UriKind.RelativeOrAbsolute) });
+            };
         }
+
+       
 
         /// <summary>
         /// Manages the browser tabs

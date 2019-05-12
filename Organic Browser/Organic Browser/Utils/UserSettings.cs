@@ -14,7 +14,7 @@ namespace Organic_Browser.Utils
     class UserSettings
     {
         private static UserSettings Instance = null;    // Single instance  
-
+        
         // Private readonly attributes
         private const string JsonPath = "settings.json";                                            // Path to the json file
         private const string DefaultHomePage = "www.google.com";                                    // Default path to home page

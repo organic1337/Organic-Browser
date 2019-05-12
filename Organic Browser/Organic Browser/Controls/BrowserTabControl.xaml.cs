@@ -50,7 +50,6 @@ namespace Organic_Browser.Controls
 
             // Margin the add new tab button
             this.addNewTabButton.Margin = this.AddNewTabMargin;
-
         }
 
         /// <summary>

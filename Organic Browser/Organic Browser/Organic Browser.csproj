@@ -107,6 +107,7 @@
     <Compile Include="Controls\UrlTextBoxControl.xaml.cs">
       <DependentUpon>UrlTextBoxControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\StringToUriConverter.cs" />
     <Compile Include="PreferencesWindow.xaml.cs">
       <DependentUpon>PreferencesWindow.xaml</DependentUpon>
     </Compile>
@@ -159,6 +160,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\Themes\DarkTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Themes\LightTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -188,25 +197,38 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\green_loading.png" />
+    <Resource Include="Resources\Images\Buttons\Light\green_loading.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\dark-gray-download.png" />
-    <Resource Include="Resources\Images\green-download.png" />
-    <Resource Include="Resources\Images\home.png" />
-    <Resource Include="Resources\Images\left-arrow.png" />
-    <Resource Include="Resources\Images\refresh.png" />
-    <Resource Include="Resources\Images\right-arrow.png" />
-    <Resource Include="Resources\Images\x.png" />
+    <Resource Include="Resources\Images\Buttons\Light\download.png" />
+    <Resource Include="Resources\Images\Buttons\Light\green-download.png" />
+    <Resource Include="Resources\Images\Buttons\Light\home.png" />
+    <Resource Include="Resources\Images\Buttons\Light\left-arrow.png" />
+    <Resource Include="Resources\Images\Buttons\Light\refresh.png" />
+    <Resource Include="Resources\Images\Buttons\Light\right-arrow.png" />
+    <Resource Include="Resources\Images\Buttons\Light\x.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\settings.png" />
+    <Resource Include="Resources\Images\Buttons\Light\settings.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\organic-browser-icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\plus.png" />
+    <Resource Include="Resources\Images\Buttons\Light\plus.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Images\Buttons\Dark\download.png" />
+    <Resource Include="Resources\Images\Buttons\Dark\green-download.png" />
+    <Resource Include="Resources\Images\Buttons\Dark\green_loading.png" />
+    <Resource Include="Resources\Images\Buttons\Dark\home.png" />
+    <Resource Include="Resources\Images\Buttons\Dark\left-arrow.png" />
+    <Resource Include="Resources\Images\Buttons\Dark\plus.png" />
+    <Resource Include="Resources\Images\Buttons\Dark\refresh.png" />
+    <Resource Include="Resources\Images\Buttons\Dark\right-arrow.png" />
+    <Resource Include="Resources\Images\Buttons\Dark\settings.png" />
+    <Resource Include="Resources\Images\Buttons\Dark\x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

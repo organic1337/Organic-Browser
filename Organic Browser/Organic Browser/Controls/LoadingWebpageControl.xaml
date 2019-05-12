@@ -26,7 +26,7 @@
     
     
     <Grid 
-        Background="White"
+        Background="{DynamicResource DownloadingBackground}"
         Height="120"
         Width="180"
         Margin="10">
@@ -42,7 +42,7 @@
         <Image 
             x:Name="RotateImage" 
             Stretch="Uniform" 
-            Source="../Resources/Images/green_loading.png"
+            Source="../Resources/Images/Buttons/Light/green_loading.png"
             RenderTransformOrigin=".5,.5"
             Height="45"
             >
@@ -63,7 +63,7 @@
             FontFamily="Calibri"
             FontSize="16"
             Margin="0,5,0,0"
-            Foreground="#474747">
+            Foreground="{DynamicResource DownloadingLabelForeground}">
             Downloading
         </Label>
         </StackPanel>

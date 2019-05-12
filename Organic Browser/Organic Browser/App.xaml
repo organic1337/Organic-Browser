@@ -2,8 +2,15 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Organic_Browser"
+             xmlns:converters="clr-namespace:Organic_Browser.Converters"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Resources/Themes/LightTheme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <converters:StringToUriConverter x:Key="stringToUriConverter"/>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

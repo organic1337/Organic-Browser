@@ -18,7 +18,7 @@
             <Setter Property="Background" Value="Transparent" />
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#FFDADADA" />
+                    <Setter Property="Background" Value="{DynamicResource AddNewTabButtonBackground}" />
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
                     <Setter Property="Opacity" Value="0.5" />
@@ -39,7 +39,7 @@
 
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#FFA3A3A3" />
+                    <Setter Property="Background" Value="{DynamicResource TabXButtonMouseOver}" />
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
                     <Setter Property="Opacity" Value="0.5" />
@@ -54,13 +54,13 @@
             <Setter Property="VerticalContentAlignment" Value="Center" />
             <Setter Property="HorizontalContentAlignment" Value="Left" />
             <Setter Property="Padding" Value="10,0,0,0" />
-            <Setter Property="Foreground" Value="#FF242424" />
+            <Setter Property="Foreground" Value="{DynamicResource TabHeaderForeground}" />
         </Style>
 
         <Style TargetType="Image" x:Key="xImage">
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="Source" Value="../Resources/Images/x.png" />
+            <Setter Property="Source" Value="../Resources/Images/Buttons/Light/x.png" />
             <Setter Property="Height" Value="7" />
             <Setter Property="Width" Value="7" />
         </Style>
@@ -81,7 +81,7 @@
                                 <Grid>
                                     <Border x:Name="border" 
                                             CornerRadius="3,3,0,0"
-                                            Background="WhiteSmoke"/>
+                                            Background="{DynamicResource NonSelectedTabBackground}"/>
                                 </Grid>
                                 <ContentPresenter ContentSource="Header"
                                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -93,13 +93,13 @@
                                      Value="True">
                                 <Setter TargetName="border"
                                         Property="Background"
-                                        Value="LightGray" />
+                                        Value="{DynamicResource TabMouseOverBackground}" />
                             </Trigger>
                             <Trigger Property="IsSelected"
                                      Value="True">
                                 <Setter TargetName="border"
                                         Property="Background"
-                                        Value="LightGray" />
+                                        Value="{DynamicResource SelectedTabBackground}" />                                
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -155,7 +155,7 @@
             Height="10" Width="10" 
             HorizontalAlignment="Center" 
             VerticalAlignment="Center"  
-            Source="../Resources/Images/plus.png"/>
+            Source="../Resources/Images/Buttons/Light/plus.png"/>
         </Border>
 
     </Grid>

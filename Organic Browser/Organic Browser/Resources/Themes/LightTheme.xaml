@@ -1,0 +1,43 @@
+﻿<!--
+    Contains all the colors used for the light theme.
+    -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    
+    <!-- Tab Control Colors -->
+    <SolidColorBrush x:Key="SelectedTabBackground" Color="LightGray" />
+    <SolidColorBrush x:Key="TabMouseOverBackground" Color="LightGray" />
+    <SolidColorBrush x:Key="NotSelectedTabBackground" Color="WhiteSmoke" />
+    <SolidColorBrush x:Key="TabHeaderForeground" Color="#FF242424" />
+    <SolidColorBrush x:Key="TabXButtonMouseOver" Color="#FFA3A3A3" />
+    <SolidColorBrush x:Key="AddNewTabButtonBackground" Color="#FFDADADA"/>
+    
+    <!-- LoadingWebPageControl colors -->
+    <SolidColorBrush x:Key="DownloadingLabelForeground" Color="#474747" />
+    <SolidColorBrush x:Key="DownloadingBackground" Color="White" />
+
+    <!--UrlTextBoxControl colors-->
+    <SolidColorBrush x:Key="UrlForeground" Color="#FF3F3F3F" />
+    <SolidColorBrush x:Key="UrlSelectionBrush" Color="#FF00A815" />
+    <SolidColorBrush x:Key="UrlBackground" Color="#FFDBDBDB" />
+
+    <!-- NavigationBarControl colors -->
+    <SolidColorBrush x:Key="NavBarButtonBackground" Color="Transparent" />
+    <SolidColorBrush x:Key="NavBarButtonMouseOverBackground" Color="#FFDADADA" />
+    <SolidColorBrush x:Key="NavBarBackground" Color="White" />
+    
+    <!--SettingsDropdownControl colors-->
+    <SolidColorBrush x:Key="SettingsDropdownForeground" Color="#FF131313" />
+    <SolidColorBrush x:Key="SettingsDropdownBackground" Color="White" />
+    <SolidColorBrush x:Key="SettingsDropdownMouseOverBackground" Color="#FFCECECE" />
+    
+    <!--PreferencesWindow colors-->
+    <SolidColorBrush x:Key="PreferencesButtonBackground" Color="Transparent" />
+    <SolidColorBrush x:Key="PreferencesButtonMouseOverBackground" Color="#FFDADADA" />
+    <SolidColorBrush x:Key="PreferencesTextButtonBackground" Color="Transparent" />
+    <SolidColorBrush x:Key="PreferencesTextButtonForeground" Color="Black" />
+    <SolidColorBrush x:Key="preferencesTextButtonMouseOverBackground" Color="#FFDADADA" />
+
+    <system:String x:Key="BackBtnPath">pack://application:,,,/Resources/Images/Buttons/Light/left-arrow.png</system:String>
+</ResourceDictionary>

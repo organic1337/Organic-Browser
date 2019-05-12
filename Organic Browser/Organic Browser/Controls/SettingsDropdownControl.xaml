@@ -10,8 +10,8 @@
     <UserControl.Resources>
         <Style TargetType="Label">
             <Setter Property="FontSize" Value="12" />
-            <Setter Property="Background" Value="White" />
-            <Setter Property="Foreground" Value="#FF131313" />
+            <Setter Property="Background" Value="{DynamicResource SettingsDropdownBackground}" />
+            <Setter Property="Foreground" Value="{DynamicResource SettingsDropdownForeground}" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="Height" Value="28" />
             <Setter Property="Width" Value="180" />

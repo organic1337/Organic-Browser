@@ -20,10 +20,10 @@
 
         <Style x:Key="buttonImageWrapper" TargetType="Border" BasedOn="{StaticResource imageWrapperBase}">
             <Setter Property="CornerRadius" Value="10" />
-            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Background" Value="{DynamicResource NavBarButtonBackground}" />
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#FFDADADA" />
+                    <Setter Property="Background" Value="{DynamicResource NavBarButtonMouseOverBackground}" />
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
                     <Setter Property="Opacity" Value="0.5" />
@@ -38,17 +38,17 @@
 
 
         <Style x:Key="DownloadButtonImage" TargetType="Image" BasedOn="{StaticResource ResourceKey=imageSize}">
-            <Setter Property="Source" Value="../Resources/Images/dark-gray-download.png" />
+            <Setter Property="Source" Value="pack://application:,,,/Resources/Images/Buttons/Light/download.png" />
             <Setter Property="Height" Value="20" />
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Source" Value="../Resources/Images/green-download.png" />
+                    <Setter Property="Source" Value="pack://application:,,,/Resources/Images/Buttons/Light/green-download.png" />
                 </Trigger>
             </Style.Triggers>
         </Style>
 
     </UserControl.Resources>
-    <Grid Background="White" x:Name="mainGrid">
+    <Grid Background="{DynamicResource NavBarBackground}" x:Name="mainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
@@ -61,27 +61,27 @@
 
         <!--Back Button-->
         <Border x:Name="backBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}">
-            <Image Source="../Resources/Images/left-arrow.png" Style="{StaticResource ResourceKey=imageSize}"/>
+            <Image Source="{Binding Source={StaticResource BackBtnPath}, Converter={StaticResource stringToUriConverter}}" Style="{StaticResource ResourceKey=imageSize}"/>
         </Border>
 
         <!--Forward Button-->
         <Border x:Name="forwardBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}" Grid.Column="1">
-            <Image Source="../Resources/Images/right-arrow.png" Style="{StaticResource ResourceKey=imageSize}" Margin="0,7,0,0" VerticalAlignment="Top"/>
+            <Image Source="pack://application:,,,/Resources/Images/Buttons/Light/right-arrow.png" Style="{StaticResource ResourceKey=imageSize}" Margin="0,7,0,0" VerticalAlignment="Top"/>
         </Border>
 
         <!--Refresh Button-->
         <Border x:Name="refreshBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}" Grid.Column="2">
-            <Image Source="../Resources/Images/refresh.png" Style="{StaticResource ResourceKey=imageSize}"/>
+            <Image Source="pack://application:,,,/Resources/Images/Buttons/Light/refresh.png" Style="{StaticResource ResourceKey=imageSize}"/>
         </Border>
 
         <!--Home Button-->
         <Border x:Name="homeBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}" Grid.Column="3">
-            <Image Source="../Resources/Images/home.png" Style="{StaticResource ResourceKey=imageSize}"/>
+            <Image Source="pack://application:,,,/Resources/Images/Buttons/Light/home.png" Style="{StaticResource ResourceKey=imageSize}"/>
         </Border>
 
         <!--Settings Button-->
         <Border x:Name="settingsBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}" Grid.Column="6">
-            <Image Source="../Resources/Images/settings.png" Style="{StaticResource ResourceKey=imageSize}"/>
+            <Image Source="pack://application:,,,/Resources/Images/Buttons/Light/settings.png" Style="{StaticResource ResourceKey=imageSize}"/>
         </Border>
 
         <local:UrlTextBoxControl x:Name="urlTextBox" Height="30" Grid.Column="4"></local:UrlTextBoxControl>

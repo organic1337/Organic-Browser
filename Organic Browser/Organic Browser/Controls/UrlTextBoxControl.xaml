@@ -9,13 +9,13 @@
     
     <UserControl.Resources>
         <Style x:Key="UrlTBStyle" TargetType="TextBox">
-            <Setter Property="Foreground" Value="#FF3F3F3F" />
-            <Setter Property="SelectionBrush" Value="#FF00A815" />
+            <Setter Property="Foreground" Value="{DynamicResource UrlForeground}" />
+            <Setter Property="SelectionBrush" Value="{DynamicResource UrlSelectionBrush}" />
             <Setter Property="BorderBrush" Value="Transparent" />
             <Setter Property="FontSize" Value="13" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
             <Setter Property="Padding" Value="10, 0, 10, 0" />
-            <Setter Property="Background" Value="#FFDBDBDB" />
+            <Setter Property="Background" Value="{DynamicResource UrlBackground}" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TextBox}">
