@@ -73,7 +73,7 @@
         </Style>
     </Window.Resources> 
 
-    <Grid Margin="20" Background="White">
+    <Grid Margin="20" Background="{DynamicResource preferencesWindowBackground}">
         <Grid.Effect>
             <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2" Opacity="0.4"/>
         </Grid.Effect>
@@ -85,7 +85,7 @@
             Margin="20" 
             MouseDown="XButton_MouseDown">
             <Image 
-                Source="Resources/Images/Buttons/Light/x.png" 
+                Source="{Binding Source={StaticResource xSource}, Converter={StaticResource stringToUriConverter}}" 
                 Style="{StaticResource ResourceKey=imageSize}"  
                 />
         </Border>

@@ -8,6 +8,8 @@
              d:DesignHeight="60" d:DesignWidth="800">
 
     <UserControl.Resources>
+        <!-- Styles -->
+        
         <Style TargetType="ColumnDefinition">
             <Setter Property="Width" Value="50" />
         </Style>
@@ -38,17 +40,20 @@
 
 
         <Style x:Key="DownloadButtonImage" TargetType="Image" BasedOn="{StaticResource ResourceKey=imageSize}">
-            <Setter Property="Source" Value="pack://application:,,,/Resources/Images/Buttons/Light/download.png" />
+            <Setter Property="Source" 
+                    Value="{Binding Source={StaticResource downloadSource}, Converter={StaticResource stringToUriConverter}}" />
             <Setter Property="Height" Value="20" />
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Source" Value="pack://application:,,,/Resources/Images/Buttons/Light/green-download.png" />
+                    <Setter Property="Source" 
+                            Value="{Binding Source={StaticResource greenDownloadSource}, Converter={StaticResource stringToUriConverter}}" />
                 </Trigger>
             </Style.Triggers>
         </Style>
 
     </UserControl.Resources>
-    <Grid Background="{DynamicResource NavBarBackground}" x:Name="mainGrid">
+    <Grid Background="{DynamicResource NavBarBackground}" 
+          x:Name="mainGrid" Margin="0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
@@ -61,27 +66,34 @@
 
         <!--Back Button-->
         <Border x:Name="backBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}">
-            <Image Source="{Binding Source={StaticResource BackBtnPath}, Converter={StaticResource stringToUriConverter}}" Style="{StaticResource ResourceKey=imageSize}"/>
+            <Image Source="{Binding Source={StaticResource leftArrowSource}, Converter={StaticResource stringToUriConverter}}" 
+                   Style="{StaticResource ResourceKey=imageSize}"/>
         </Border>
 
         <!--Forward Button-->
         <Border x:Name="forwardBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}" Grid.Column="1">
-            <Image Source="pack://application:,,,/Resources/Images/Buttons/Light/right-arrow.png" Style="{StaticResource ResourceKey=imageSize}" Margin="0,7,0,0" VerticalAlignment="Top"/>
+            <Image Source="{Binding Source={StaticResource rightArrowSource}, Converter={StaticResource stringToUriConverter}}" 
+                   Style="{StaticResource ResourceKey=imageSize}" 
+                   Margin="0,7,0,0" 
+                   VerticalAlignment="Top"/>
         </Border>
 
         <!--Refresh Button-->
         <Border x:Name="refreshBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}" Grid.Column="2">
-            <Image Source="pack://application:,,,/Resources/Images/Buttons/Light/refresh.png" Style="{StaticResource ResourceKey=imageSize}"/>
+            <Image Source="{Binding Source={StaticResource refreshSource}, Converter={StaticResource stringToUriConverter}}" 
+                   Style="{StaticResource ResourceKey=imageSize}"/>
         </Border>
 
         <!--Home Button-->
         <Border x:Name="homeBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}" Grid.Column="3">
-            <Image Source="pack://application:,,,/Resources/Images/Buttons/Light/home.png" Style="{StaticResource ResourceKey=imageSize}"/>
+            <Image Source="{Binding Source={StaticResource homeSource}, Converter={StaticResource stringToUriConverter}}" 
+                   Style="{StaticResource ResourceKey=imageSize}"/>
         </Border>
 
         <!--Settings Button-->
         <Border x:Name="settingsBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}" Grid.Column="6">
-            <Image Source="pack://application:,,,/Resources/Images/Buttons/Light/settings.png" Style="{StaticResource ResourceKey=imageSize}"/>
+            <Image Source="{Binding Source={StaticResource settingsSource}, Converter={StaticResource stringToUriConverter}}" 
+                   Style="{StaticResource ResourceKey=imageSize}"/>
         </Border>
 
         <local:UrlTextBoxControl x:Name="urlTextBox" Height="30" Grid.Column="4"></local:UrlTextBoxControl>
@@ -90,17 +102,27 @@
         
         <Canvas FlowDirection="RightToLeft" Grid.ColumnSpan="10000">
             <!--Loading webpages control -->
-            <local:LoadingWebpageControl x:Name="loadingWebpageControl" Canvas.Top="0" Canvas.Left="44" IsEnabled="False"/>
+            <local:LoadingWebpageControl x:Name="loadingWebpageControl" 
+                                         Canvas.Top="0" 
+                                         Canvas.Left="44" 
+                                         IsEnabled="False"/>
         </Canvas>
         
         <!--Download Button-->
-        <Border x:Name="downloadBtn" Style="{StaticResource ResourceKey=imageWrapperBase}" Grid.Column="5">
+        <Border 
+            x:Name="downloadBtn" 
+            Style="{StaticResource ResourceKey=imageWrapperBase}" 
+            Grid.Column="5">
             <Image Style="{StaticResource ResourceKey=DownloadButtonImage}"/>
         </Border>
 
         <!--Settings Dropdown canvas-->
         <Canvas FlowDirection="RightToLeft" Grid.ColumnSpan="10000">
-            <local:SettingsDropdownControl x:Name="settingsMenu" Canvas.Top="34" Canvas.Left="4" Visibility="Hidden"/>
+            <local:SettingsDropdownControl
+                x:Name="settingsMenu" 
+                Canvas.Top="34" 
+                Canvas.Left="4"
+                Visibility="Hidden"/>
         </Canvas>
     </Grid>
 </UserControl>

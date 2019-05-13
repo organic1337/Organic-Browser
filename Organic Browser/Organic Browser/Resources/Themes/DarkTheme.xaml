@@ -1,44 +1,67 @@
 ﻿<!--
-    Contains all the colors used for the dark theme.
+    Contains all the colors and icon paths used for the dark theme.
     -->
 
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <!--========= COLORS ==========-->
 
+    <!-- Main window colors -->
+    <SolidColorBrush x:Key="MainWindowBackground" Color="#191818" />
+    
     <!-- Tab Control Colors -->
-    <SolidColorBrush x:Key="SelectedTabBackground" Color="LightGray" />
-    <SolidColorBrush x:Key="TabMouseOverBackground" Color="LightGray" />
-    <SolidColorBrush x:Key="NotSelectedTabBackground" Color="WhiteSmoke" />
-    <SolidColorBrush x:Key="TabHeaderForeground" Color="#FF242424" />
-    <SolidColorBrush x:Key="TabXButtonMouseOver" Color="#FFA3A3A3" />
-    <SolidColorBrush x:Key="AddNewTabButtonBackground" Color="#FFDADADA"/>
+    <SolidColorBrush x:Key="SelectedTabBackground" Color="#3b3b40" />
+    <SolidColorBrush x:Key="TabMouseOverBackground" Color="#3b3b40" />
+    <SolidColorBrush x:Key="NonSelectedTabBackground" Color="#202021" />
+    <SolidColorBrush x:Key="TabHeaderForeground" Color="#c3c3cc" />
+    <SolidColorBrush x:Key="TabXButtonMouseOver" Color="#525259" />
+    <SolidColorBrush x:Key="AddNewTabButtonBackground" Color="#2e2e31"/>
 
     <!-- LoadingWebPageControl colors -->
-    <SolidColorBrush x:Key="DownloadingLabelForeground" Color="#474747" />
-    <SolidColorBrush x:Key="DownloadingBackground" Color="White" />
+    <SolidColorBrush x:Key="DownloadingLabelForeground" Color="#9b9ba1" />
+    <SolidColorBrush x:Key="DownloadingBackground" Color="#2b2b2d" />
 
     <!--UrlTextBoxControl colors-->
-    <SolidColorBrush x:Key="UrlForeground" Color="#FF3F3F3F" />
+    <SolidColorBrush x:Key="UrlForeground" Color="#9b9ba1" />
     <SolidColorBrush x:Key="UrlSelectionBrush" Color="#FF00A815" />
-    <SolidColorBrush x:Key="UrlBackground" Color="#FFDBDBDB" />
+    <SolidColorBrush x:Key="UrlBackground" Color="#3b3b40" />
 
     <!-- NavigationBarControl colors -->
     <SolidColorBrush x:Key="NavBarButtonBackground" Color="Transparent" />
-    <SolidColorBrush x:Key="NavBarButtonMouseOverBackground" Color="#FFDADADA" />
-    <SolidColorBrush x:Key="NavBarBackground" Color="#333333" />
+    <SolidColorBrush x:Key="NavBarButtonMouseOverBackground" Color="#3a3a3f" />
+    <SolidColorBrush x:Key="NavBarBackground" Color="#202021" />
 
     <!--SettingsDropdownControl colors-->
-    <SolidColorBrush x:Key="SettingsDropdownForeground" Color="#FF131313" />
-    <SolidColorBrush x:Key="SettingsDropdownBackground" Color="White" />
-    <SolidColorBrush x:Key="SettingsDropdownMouseOverBackground" Color="#FFCECECE" />
+    <SolidColorBrush x:Key="SettingsDropdownForeground" Color="#c3c3cc" />
+    <SolidColorBrush x:Key="SettingsDropdownBackground" Color="#2b2b2d" />
+    <SolidColorBrush x:Key="SettingsDropdownMouseOverBackground" Color="#3b3b40" />
+
+    <!--PreferenceField colors-->
+    <SolidColorBrush x:Key="preferenceFieldLabelBackground" Color="#2e2e31" />
+    <SolidColorBrush x:Key="preferenceFieldLabelForeground" Color="#9b9ba1" />
+    <SolidColorBrush x:Key="fieldTextBoxForeground" Color="#c3c3cc" />
+    <SolidColorBrush x:Key="fieldTextBoxSelectionBrush" Color="#FF00A815" />
+    <SolidColorBrush x:Key="fieldLabelBorderBrush" Color="#2e2e31" />
 
     <!--PreferencesWindow colors-->
     <SolidColorBrush x:Key="PreferencesButtonBackground" Color="Transparent" />
-    <SolidColorBrush x:Key="PreferencesButtonMouseOverBackground" Color="#FFDADADA" />
+    <SolidColorBrush x:Key="PreferencesButtonMouseOverBackground" Color="#3a3a3f" />
     <SolidColorBrush x:Key="PreferencesTextButtonBackground" Color="Transparent" />
-    <SolidColorBrush x:Key="PreferencesTextButtonForeground" Color="Black" />
-    <SolidColorBrush x:Key="preferencesTextButtonMouseOverBackground" Color="#FFDADADA" />
+    <SolidColorBrush x:Key="PreferencesTextButtonForeground" Color="#9b9ba1" />
+    <SolidColorBrush x:Key="preferencesTextButtonMouseOverBackground" Color="#3b3b40" />
+    <SolidColorBrush x:Key="preferencesWindowBackground" Color="#202021" />
 
-    <system:String x:Key="BackBtnPath">pack://application:,,,/Resources/Images/Buttons/Dark/left-arrow.png</system:String>
+    <!--========= Sources ==========-->
+    <system:String x:Key="downloadSource">pack://application:,,,/Resources/Images/Buttons/Dark/download.png</system:String>
+    <system:String x:Key="greenDownloadSource">pack://application:,,,/Resources/Images/Buttons/Dark/green-download.png</system:String>
+    <system:String x:Key="greenLoadingSource">pack://application:,,,/Resources/Images/Buttons/Dark/green_loading.png</system:String>
+    <system:String x:Key="homeSource">pack://application:,,,/Resources/Images/Buttons/Dark/home.png</system:String>
+    <system:String x:Key="leftArrowSource">pack://application:,,,/Resources/Images/Buttons/Dark/left-arrow.png</system:String>
+    <system:String x:Key="plusSource">pack://application:,,,/Resources/Images/Buttons/Dark/plus.png</system:String>
+    <system:String x:Key="refreshSource">pack://application:,,,/Resources/Images/Buttons/Dark/refresh.png</system:String>
+    <system:String x:Key="rightArrowSource">pack://application:,,,/Resources/Images/Buttons/Dark/right-arrow.png</system:String>
+    <system:String x:Key="settingsSource">pack://application:,,,/Resources/Images/Buttons/Dark/settings.png</system:String>
+    <system:String x:Key="xSource">pack://application:,,,/Resources/Images/Buttons/Dark/x.png</system:String>
+
 </ResourceDictionary>

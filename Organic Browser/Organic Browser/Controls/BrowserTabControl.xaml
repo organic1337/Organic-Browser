@@ -60,7 +60,7 @@
         <Style TargetType="Image" x:Key="xImage">
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="Source" Value="../Resources/Images/Buttons/Light/x.png" />
+            <Setter Property="Source" Value="{Binding Source={StaticResource xSource}, Converter={StaticResource stringToUriConverter}}" />
             <Setter Property="Height" Value="7" />
             <Setter Property="Width" Value="7" />
         </Style>
@@ -109,7 +109,7 @@
     </UserControl.Resources>
 
     <Grid>
-        <TabControl x:Name="tabControl">
+        <TabControl x:Name="tabControl" Padding="0" BorderThickness="0">
 
             <!-- All the TabItem objects are inserted HERE-->
 
@@ -155,7 +155,7 @@
             Height="10" Width="10" 
             HorizontalAlignment="Center" 
             VerticalAlignment="Center"  
-            Source="../Resources/Images/Buttons/Light/plus.png"/>
+            Source="{Binding Source={StaticResource plusSource}, Converter={StaticResource stringToUriConverter}}"/>
         </Border>
 
     </Grid>

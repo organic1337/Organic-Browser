@@ -1,14 +1,18 @@
 ﻿<!--
-    Contains all the colors used for the light theme.
+    Contains all the colors and icon paths used for the light theme.
     -->
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <!--========= COLORS ==========-->
     
+    <!-- Main window colors -->
+    <SolidColorBrush x:Key="MainWindowBackground" Color="#FFF0F0F0" />
+
     <!-- Tab Control Colors -->
     <SolidColorBrush x:Key="SelectedTabBackground" Color="LightGray" />
     <SolidColorBrush x:Key="TabMouseOverBackground" Color="LightGray" />
-    <SolidColorBrush x:Key="NotSelectedTabBackground" Color="WhiteSmoke" />
+    <SolidColorBrush x:Key="NonSelectedTabBackground" Color="WhiteSmoke" />
     <SolidColorBrush x:Key="TabHeaderForeground" Color="#FF242424" />
     <SolidColorBrush x:Key="TabXButtonMouseOver" Color="#FFA3A3A3" />
     <SolidColorBrush x:Key="AddNewTabButtonBackground" Color="#FFDADADA"/>
@@ -32,12 +36,32 @@
     <SolidColorBrush x:Key="SettingsDropdownBackground" Color="White" />
     <SolidColorBrush x:Key="SettingsDropdownMouseOverBackground" Color="#FFCECECE" />
     
+    <!--PreferenceField colors-->
+    <SolidColorBrush x:Key="preferenceFieldLabelBackground" Color="#dddddd" />
+    <SolidColorBrush x:Key="preferenceFieldLabelForeground" Color="Black" />
+    <SolidColorBrush x:Key="fieldTextBoxForeground" Color="#FF3F3F3F" />
+    <SolidColorBrush x:Key="fieldTextBoxSelectionBrush" Color="#FF00A815" />
+    <SolidColorBrush x:Key="fieldLabelBorderBrush" Color="#dddddd" />
+
     <!--PreferencesWindow colors-->
     <SolidColorBrush x:Key="PreferencesButtonBackground" Color="Transparent" />
     <SolidColorBrush x:Key="PreferencesButtonMouseOverBackground" Color="#FFDADADA" />
     <SolidColorBrush x:Key="PreferencesTextButtonBackground" Color="Transparent" />
     <SolidColorBrush x:Key="PreferencesTextButtonForeground" Color="Black" />
     <SolidColorBrush x:Key="preferencesTextButtonMouseOverBackground" Color="#FFDADADA" />
+    <SolidColorBrush x:Key="preferencesWindowBackground" Color="White" />
 
-    <system:String x:Key="BackBtnPath">pack://application:,,,/Resources/Images/Buttons/Light/left-arrow.png</system:String>
+
+    <!--========= Sources ==========-->
+    <system:String x:Key="downloadSource">pack://application:,,,/Resources/Images/Buttons/Light/download.png</system:String>
+    <system:String x:Key="greenDownloadSource">pack://application:,,,/Resources/Images/Buttons/Light/green-download.png</system:String>
+    <system:String x:Key="greenLoadingSource">pack://application:,,,/Resources/Images/Buttons/Light/green_loading.png</system:String>
+    <system:String x:Key="homeSource">pack://application:,,,/Resources/Images/Buttons/Light/home.png</system:String>
+    <system:String x:Key="leftArrowSource">pack://application:,,,/Resources/Images/Buttons/Light/left-arrow.png</system:String>
+    <system:String x:Key="plusSource">pack://application:,,,/Resources/Images/Buttons/Light/plus.png</system:String>
+    <system:String x:Key="refreshSource">pack://application:,,,/Resources/Images/Buttons/Light/refresh.png</system:String>
+    <system:String x:Key="rightArrowSource">pack://application:,,,/Resources/Images/Buttons/Light/right-arrow.png</system:String>
+    <system:String x:Key="settingsSource">pack://application:,,,/Resources/Images/Buttons/Light/settings.png</system:String>
+    <system:String x:Key="xSource">pack://application:,,,/Resources/Images/Buttons/Light/x.png</system:String>
+
 </ResourceDictionary>

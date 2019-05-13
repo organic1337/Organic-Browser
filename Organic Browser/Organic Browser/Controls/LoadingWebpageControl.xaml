@@ -42,7 +42,7 @@
         <Image 
             x:Name="RotateImage" 
             Stretch="Uniform" 
-            Source="../Resources/Images/Buttons/Light/green_loading.png"
+            Source="{Binding Source={StaticResource greenLoadingSource}, Converter={StaticResource stringToUriConverter}}"
             RenderTransformOrigin=".5,.5"
             Height="45"
             >

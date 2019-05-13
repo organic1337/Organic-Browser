@@ -23,8 +23,9 @@ namespace Organic_Browser.Controls
     {
         // Private constants
         private const double PlusButtonMarginTop = 5;       // The margin of the + button from top
-        private const double PlusButtonMarginLeft = 5;      // The margin of the + button from top
-        private const int TabCountLimit = 25;                    // Maximum number of tabs
+        private const double PlusButtonMarginLeft = 5;      // The margin of the + button from Left
+        private const double headersMarginRight = 100;      // The minimum margin of the headers from the right 
+        private const int TabCountLimit = 25;               // Maximum number of tabs
 
         // Private fields
         private List<TabItem> tabItems;                     // List of all the tab items within the tab control
@@ -223,11 +224,11 @@ namespace Organic_Browser.Controls
 
             if (this.TabCount > 0 && this.tabControl.ActualWidth != 0)
             {
-                if (this.TabCount * this.tabItems[0].MaxWidth > this.tabControl.ActualWidth - addNewTabButtonWidth)
+                if (this.TabCount * this.tabItems[0].MaxWidth > this.tabControl.ActualWidth - addNewTabButtonWidth - headersMarginRight)
                 {
                     // In case the sum of the tabs widths is bigger than the width of the control make the tabs smaller
                     foreach (TabItem item in this.tabItems)
-                        item.Width = (this.tabControl.ActualWidth - addNewTabButtonWidth) / this.TabCount;
+                        item.Width = (this.tabControl.ActualWidth - addNewTabButtonWidth - headersMarginRight) / this.TabCount;
                     this.addNewTabButton.Margin = this.AddNewTabMargin;
                 }
                 else

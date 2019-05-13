@@ -9,7 +9,8 @@
     
     <UserControl.Resources>
         <Style x:Key="fieldLabel" TargetType="Label">
-            <Setter Property="Background" Value="#dddddd" />
+            <Setter Property="Background" Value="{DynamicResource preferenceFieldLabelBackground}" />
+            <Setter Property="Foreground" Value="{DynamicResource preferenceFieldLabelForeground}" />
             <Setter Property="Height" Value="27" />
             <Setter Property="Width" Value="170" />
             <Setter Property="Padding" Value="0" />
@@ -18,8 +19,8 @@
         </Style>
 
         <Style x:Key="fieldTextBox" TargetType="TextBox">
-            <Setter Property="Foreground" Value="#FF3F3F3F" />
-            <Setter Property="SelectionBrush" Value="#FF00A815" />
+            <Setter Property="Foreground" Value="{DynamicResource fieldTextBoxForeground}" />
+            <Setter Property="SelectionBrush" Value="{DynamicResource fieldTextBoxSelectionBrush}" />
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="BorderThickness" Value="1" />
@@ -46,7 +47,7 @@
                 Width="500"
         Height="{Binding ElementName=fieldLabel, Path=Height}">
         <Label x:Name="fieldLabel" Style="{StaticResource ResourceKey=fieldLabel}" Content="{Binding Path=Field, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <Border BorderBrush="#dddddd" BorderThickness="1">
+        <Border BorderBrush="{DynamicResource fieldLabelBorderBrush}" BorderThickness="1">
             <TextBox
                     Style="{StaticResource ResourceKey=fieldTextBox}"
                     x:Name="valueTextBox" 
