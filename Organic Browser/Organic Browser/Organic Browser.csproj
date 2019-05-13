@@ -107,6 +107,9 @@
     <Compile Include="Controls\UrlTextBoxControl.xaml.cs">
       <DependentUpon>UrlTextBoxControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\WindowManagementControl.xaml.cs">
+      <DependentUpon>WindowManagementControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\StringToUriConverter.cs" />
     <Compile Include="PreferencesWindow.xaml.cs">
       <DependentUpon>PreferencesWindow.xaml</DependentUpon>
@@ -141,6 +144,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\UrlTextBoxControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\WindowManagementControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -217,7 +224,9 @@
   <ItemGroup>
     <Resource Include="Resources\Images\Buttons\Light\plus.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Images\Buttons\Light\close.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Buttons\Dark\download.png" />
     <Resource Include="Resources\Images\Buttons\Dark\green-download.png" />
@@ -229,6 +238,21 @@
     <Resource Include="Resources\Images\Buttons\Dark\right-arrow.png" />
     <Resource Include="Resources\Images\Buttons\Dark\settings.png" />
     <Resource Include="Resources\Images\Buttons\Dark\x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Buttons\Light\make-smaller.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Buttons\Light\minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Buttons\Light\make-bigger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Buttons\Dark\close.png" />
+    <Resource Include="Resources\Images\Buttons\Dark\make-bigger.png" />
+    <Resource Include="Resources\Images\Buttons\Dark\make-smaller.png" />
+    <Resource Include="Resources\Images\Buttons\Dark\minimize.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

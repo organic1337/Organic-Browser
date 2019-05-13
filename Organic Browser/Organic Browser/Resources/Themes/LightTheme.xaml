@@ -51,6 +51,9 @@
     <SolidColorBrush x:Key="preferencesTextButtonMouseOverBackground" Color="#FFDADADA" />
     <SolidColorBrush x:Key="preferencesWindowBackground" Color="White" />
 
+    <!-- WindowManagementControl colors -->
+    <SolidColorBrush x:Key="WindowManagementBackground" Color="#FFC9C9C9" />
+    
 
     <!--========= Sources ==========-->
     <system:String x:Key="downloadSource">pack://application:,,,/Resources/Images/Buttons/Light/download.png</system:String>
@@ -63,5 +66,9 @@
     <system:String x:Key="rightArrowSource">pack://application:,,,/Resources/Images/Buttons/Light/right-arrow.png</system:String>
     <system:String x:Key="settingsSource">pack://application:,,,/Resources/Images/Buttons/Light/settings.png</system:String>
     <system:String x:Key="xSource">pack://application:,,,/Resources/Images/Buttons/Light/x.png</system:String>
+    <system:String x:Key="closeSource">pack://application:,,,/Resources/Images/Buttons/Light/close.png</system:String>
+    <system:String x:Key="minimizeSource">pack://application:,,,/Resources/Images/Buttons/Light/minimize.png</system:String>
+    <system:String x:Key="makeBiggerSource">pack://application:,,,/Resources/Images/Buttons/Light/make-bigger.png</system:String>
+    <system:String x:Key="makeSmallerSource">pack://application:,,,/Resources/Images/Buttons/Light/make-smaller.png</system:String>
 
 </ResourceDictionary>

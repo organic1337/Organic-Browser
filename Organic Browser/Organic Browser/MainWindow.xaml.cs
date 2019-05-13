@@ -21,6 +21,9 @@ namespace Organic_Browser
             CefInitializer.Initialize();
             InitializeComponent();
 
+            // Prevent the maximized window from hiding windows taskbar
+            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+
             ManageTabs();                                                           // Manage the browser tabs
             this.Closed += (object sender, EventArgs e) => Environment.Exit(0);     //  When the main window is closed, close the browser
         }
@@ -101,6 +104,23 @@ namespace Organic_Browser
                 return UserSettings.Load().HomePage;
             
             
+        }
+
+        /// <summary>
+        /// DragMove the window when the top WrapPanel is pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WrapPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            // Begin dragging the window
+            if (this.WindowState == WindowState.Maximized)
+            {
+                this.WindowState = WindowState.Normal;
+                this.Top = e.GetPosition(this).Y;
+                this.Left = e.GetPosition(this).X/2;
+            }
+            this.DragMove();
         }
     }
 }

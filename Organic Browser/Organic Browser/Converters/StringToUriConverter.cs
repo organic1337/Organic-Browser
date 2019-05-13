@@ -14,6 +14,11 @@ namespace Organic_Browser.Converters
     class StringToUriConverter : IValueConverter
     {
 
+        public StringToUriConverter()
+        {
+
+        }
+
         /// <summary>
         /// Convert from string to uri
         /// </summary>

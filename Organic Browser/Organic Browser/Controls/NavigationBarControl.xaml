@@ -42,7 +42,7 @@
         <Style x:Key="DownloadButtonImage" TargetType="Image" BasedOn="{StaticResource ResourceKey=imageSize}">
             <Setter Property="Source" 
                     Value="{Binding Source={StaticResource downloadSource}, Converter={StaticResource stringToUriConverter}}" />
-            <Setter Property="Height" Value="20" />
+            <Setter Property="Height" Value="25" />
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Source" 

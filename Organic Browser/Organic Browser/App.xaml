@@ -6,10 +6,11 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/Resources/Themes/DarkTheme.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Resources/Themes/LightTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
+            
             <converters:StringToUriConverter x:Key="stringToUriConverter"/>
         </ResourceDictionary>
     </Application.Resources>
