@@ -24,6 +24,7 @@ namespace Organic_Browser
             // Prevent the maximized window from hiding windows taskbar
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
 
+            BindWindowButtons();
             ManageTabs();                                                           // Manage the browser tabs
             this.Closed += (object sender, EventArgs e) => Environment.Exit(0);     //  When the main window is closed, close the browser
         }
@@ -121,6 +122,34 @@ namespace Organic_Browser
                 this.Left = e.GetPosition(this).X/2;
             }
             this.DragMove();
+        }
+
+        /// <summary>
+        /// Binds the Minimize, Close, MakeBigger functions 
+        /// to the buttons in the top right corner.
+        /// </summary>
+        private void BindWindowButtons()
+        {
+            // Close
+            this.windowManagementControl.closeImageWrapper.MouseLeftButtonDown += (object sender, MouseButtonEventArgs e) =>
+            {
+                this.Close();
+            };
+
+            // Make bigger/smaller
+            this.windowManagementControl.makeBiggerImageWrapper.MouseLeftButtonDown += (object sender, MouseButtonEventArgs e) =>
+            {
+                if (this.WindowState == WindowState.Maximized)
+                    this.WindowState = WindowState.Normal;
+                else
+                    this.WindowState = WindowState.Maximized;
+            };
+
+            // minimize
+            this.windowManagementControl.minimizeImageWrapper.MouseLeftButtonDown += (object sender, MouseButtonEventArgs e) =>
+            {
+                this.WindowState = WindowState.Minimized;
+            };
         }
     }
 }

@@ -53,7 +53,7 @@
     <SolidColorBrush x:Key="preferencesWindowBackground" Color="#202021" />
     
     <!-- WindowManagementControl colors -->
-    <SolidColorBrush x:Key="WindowManagementBackground" Color="White" />
+    <SolidColorBrush x:Key="WindowManagementBackground" Color="#FF35373F" />
 
     
     <!--========= Sources ==========-->

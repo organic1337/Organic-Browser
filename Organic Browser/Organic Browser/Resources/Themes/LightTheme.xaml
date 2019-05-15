@@ -52,7 +52,7 @@
     <SolidColorBrush x:Key="preferencesWindowBackground" Color="White" />
 
     <!-- WindowManagementControl colors -->
-    <SolidColorBrush x:Key="WindowManagementBackground" Color="#FFC9C9C9" />
+    <SolidColorBrush x:Key="WindowManagementBackground" Color="#FF5A5B64" />
     
 
     <!--========= Sources ==========-->
