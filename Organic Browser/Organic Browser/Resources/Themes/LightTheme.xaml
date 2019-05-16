@@ -50,9 +50,10 @@
     <SolidColorBrush x:Key="PreferencesTextButtonForeground" Color="Black" />
     <SolidColorBrush x:Key="preferencesTextButtonMouseOverBackground" Color="#FFDADADA" />
     <SolidColorBrush x:Key="preferencesWindowBackground" Color="White" />
+    <SolidColorBrush x:Key="radioButtonForeground" Color="Black" />
 
     <!-- WindowManagementControl colors -->
-    <SolidColorBrush x:Key="WindowManagementBackground" Color="#FF5A5B64" />
+    <SolidColorBrush x:Key="WindowManagementBackground" Color="#FFC0C0C2" />
     
 
     <!--========= Sources ==========-->

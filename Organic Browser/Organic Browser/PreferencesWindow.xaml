@@ -69,7 +69,25 @@
         </Style>
 
         <Style TargetType="local:PreferenceField" x:Key="preferenceField">
-            <Setter Property="Margin" Value="5" />
+            <Setter Property="Margin" Value="0 10 0 0" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+        </Style>
+
+        <Style TargetType="StackPanel" x:Key="customPreferenceField">
+            <Setter Property="Margin" Value="0 10 0 0" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="Orientation" Value="Horizontal" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="customFieldLabel" BasedOn="{StaticResource fieldLabel}">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+        
+        <Style TargetType="RadioButton" x:Key="radioButton" BasedOn="{StaticResource {x:Type RadioButton}}">
+            <Setter Property="Foreground" Value="{DynamicResource radioButtonForeground}" />
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="30 0 0 0" />
         </Style>
     </Window.Resources> 
 
@@ -96,24 +114,54 @@
             VerticalAlignment="Center" 
             Height="auto">
             
+            <!-- Page Download Location -->
             <local:PreferenceField 
                 x:Name="pageDownloadLocation" 
                 Field="Page Download Location"
                 Style="{StaticResource ResourceKey=preferenceField }">                
             </local:PreferenceField>
             
+            <!-- Home page address -->
             <local:PreferenceField 
                 x:Name="homePage" 
                 Field="Home Page"
                 Style="{StaticResource ResourceKey=preferenceField }">                
             </local:PreferenceField>
 
+            <!-- New tab page address -->
             <local:PreferenceField 
                 x:Name="newTabPage" 
                 Field="New Tab Page"
                 Style="{StaticResource ResourceKey=preferenceField }">
             </local:PreferenceField>
-
+            
+           <!-- GUI Theme -->
+            <StackPanel
+                Style="{StaticResource customPreferenceField}">
+                <Label 
+                    Style="{StaticResource customFieldLabel}" 
+                    Content="Theme"/>
+                <RadioButton 
+                    GroupName="Theme"
+                    x:Name="lightRadioButton" 
+                    Style="{StaticResource radioButton}"
+                    Content="Light"  
+                    Foreground="{DynamicResource radioButtonForeground}"/>
+                
+                <RadioButton 
+                    GroupName="Theme"
+                    x:Name="darkRadioButton" 
+                    Style="{StaticResource radioButton}"
+                    Content="Dark"  
+                    Foreground="{DynamicResource radioButtonForeground}"/>
+                
+                <RadioButton 
+                    GroupName="Theme"
+                    x:Name="autoRadioButton" 
+                    Style="{StaticResource radioButton}"
+                    Content="Auto"  
+                    Foreground="{DynamicResource radioButtonForeground}"/>
+            </StackPanel>
         </StackPanel>
 
         <!-- Buttons -->

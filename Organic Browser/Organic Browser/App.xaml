@@ -8,10 +8,32 @@
         <ResourceDictionary>
             
             <ResourceDictionary.MergedDictionaries>
+                <!-- Theme -->
                 <ResourceDictionary Source="pack://application:,,,/Resources/Themes/DarkTheme.xaml" />
+                
             </ResourceDictionary.MergedDictionaries>
             
+            <!-- Strings -->
             <converters:StringToUriConverter x:Key="stringToUriConverter"/>
+            
+            <!-- Styles -->
+            
+            <!-- Preferences field label-->
+            <Style x:Key="fieldLabel" TargetType="Label">
+                <Setter Property="Background" Value="{DynamicResource preferenceFieldLabelBackground}" />
+                <Setter Property="Foreground" Value="{DynamicResource preferenceFieldLabelForeground}" />
+                <Setter Property="Height" Value="27" />
+                <Setter Property="Width" Value="170" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+            </Style>
+            
+            <!-- Radio Buttons -->
+            <Style TargetType="RadioButton">
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Background" Value="#FFD0D0D0" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
