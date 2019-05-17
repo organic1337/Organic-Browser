@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Organic_Browser.Utils;
 
 namespace Organic_Browser.Controls
 {
@@ -51,6 +52,13 @@ namespace Organic_Browser.Controls
 
             // Margin the add new tab button
             this.addNewTabButton.Margin = this.AddNewTabMargin;
+
+            // Handle theme changing
+            (Application.Current as App).ThemeChanged += (object obj, ThemeChangedEventArgs e) =>
+            {
+                OrganicUtility.UpdateImages(this.mainGrid);
+            };
+            Application.Current.Activated += (object obj, EventArgs e) => OrganicUtility.UpdateImages(this.mainGrid);
         }
 
         /// <summary>

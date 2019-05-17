@@ -41,7 +41,7 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    <Grid>
+    <Grid x:Name="mainLayout">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />

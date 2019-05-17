@@ -75,11 +75,31 @@ namespace Organic_Browser.Controls
         {
             InitializeComponent();
 
+            // Handle visibility/invisibility of settings menu
             this.mainGrid.MouseLeftButtonDown += (object obj, MouseButtonEventArgs e) => this.MakeSettingsMenuInvisible();
             this.settingsBtn.MouseLeftButtonUp += (object obj, MouseButtonEventArgs e) => this.MakeSettingsMenuVisible();
 
+            // Download page loading animation
             this.downloadBtn.MouseEnter += (object obj, MouseEventArgs e) => this.loadingWebpageControl.Visibility = Visibility.Visible;
             this.downloadBtn.MouseLeave += (object obj, MouseEventArgs e) => this.loadingWebpageControl.Visibility = Visibility.Hidden;
+
+            // Download button animation
+            var converter = new ImageSourceConverter();
+            this.downloadBtn.MouseEnter += (object obj, MouseEventArgs e) =>
+            {
+                this.downloadImage.Source = (ImageSource)converter.ConvertFromString((string)this.FindResource("greenDownloadSource"));
+            };
+            this.downloadBtn.MouseLeave += (object obj, MouseEventArgs e) =>
+            {
+                this.downloadImage.Source = (ImageSource)converter.ConvertFromString((string)this.FindResource("downloadSource"));
+            };
+
+            // Handle theme changing
+            (Application.Current as App).ThemeChanged += (object obj, ThemeChangedEventArgs e) =>
+            {
+                OrganicUtility.UpdateImages(this.mainGrid);
+            };
+            Application.Current.Activated += (object obj, EventArgs e) => OrganicUtility.UpdateImages(this.mainGrid);
         }
 
         /// <summary>

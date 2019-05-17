@@ -113,7 +113,7 @@
             x:Name="downloadBtn" 
             Style="{StaticResource ResourceKey=imageWrapperBase}" 
             Grid.Column="5">
-            <Image Style="{StaticResource ResourceKey=DownloadButtonImage}"/>
+            <Image x:Name="downloadImage" Style="{StaticResource ResourceKey=DownloadButtonImage}"/>
         </Border>
 
         <!--Settings Dropdown canvas-->

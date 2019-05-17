@@ -17,10 +17,12 @@ namespace Organic_Browser.Utils
         
         // Private readonly attributes
         private const string JsonPath = "settings.json";                                            // Path to the json file
-        private const string DefaultHomePage = "www.google.com";                                    // Default path to home page
-        private const string DefaultNewTabPage = "www.google.com";
+        private const string DefaultHomePage = "www.google.com";                                    // Default home page address
+        private const string DefaultNewTabPage = "www.google.com";                                  // Default new tab page address
+        private const string DefaultTheme = "auto";                                                 // Default app theme (light/dark/auto)
         private static readonly string DefaultDownloadPagesLocation = Environment.GetFolderPath(    // Default location to download webpages
             Environment.SpecialFolder.Desktop);     
+
 
         // Public properties (Data members in the json file)
         [DataMember(Name = "homePage")]
@@ -29,6 +31,39 @@ namespace Organic_Browser.Utils
         public string DownloadWebpagesLocation { get; set; }       // Downloaded webpage location
         [DataMember(Name = "newTabPage")]
         public string NewTabPage { get; set; }                     // Page that opens a new tab
+        [DataMember(Name = "theme")]
+        public string ThemeString { get; set; }                    // Theme string representation
+
+        public Theme Theme
+        {
+            get
+            {
+                switch (this.ThemeString)
+                {
+                    case "dark":
+                        return Theme.Dark;
+                    case "light":
+                        return Theme.Light;
+                    default:
+                        return Theme.Auto;
+                }
+            }
+            set
+            {
+                switch (value)
+                {
+                    case Theme.Dark:
+                        this.ThemeString = "dark";
+                        break;
+                    case Theme.Light:
+                        this.ThemeString = "light";
+                        break;
+                    default:
+                        this.ThemeString = "auto";
+                        break;
+                }
+            }
+        }                           
 
         // Private constructor
         private UserSettings() { }
@@ -76,7 +111,8 @@ namespace Organic_Browser.Utils
                     {
                         HomePage = DefaultHomePage,
                         DownloadWebpagesLocation = DefaultDownloadPagesLocation,
-                        NewTabPage = DefaultNewTabPage
+                        NewTabPage = DefaultNewTabPage,
+                        ThemeString = DefaultTheme                       
                     };
                     result.Save();  // Create a new json file with default values
                     Instance = result;

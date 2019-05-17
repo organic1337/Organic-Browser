@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Organic_Browser.Utils;
 
 namespace Organic_Browser.Controls
 {
@@ -23,6 +24,13 @@ namespace Organic_Browser.Controls
         public WindowManagementControl()
         {
             InitializeComponent();
+
+            // Handle theme changing
+            (Application.Current as App).ThemeChanged += (object obj, ThemeChangedEventArgs e) =>
+            {
+                OrganicUtility.UpdateImages(this.mainLayout);
+            };
+            Application.Current.Activated += (object obj, EventArgs e) => OrganicUtility.UpdateImages(this.mainLayout);
         }
 
         /// <summary>

@@ -108,7 +108,7 @@
         </Style>
     </UserControl.Resources>
 
-    <Grid>
+    <Grid x:Name="mainGrid">
         <TabControl x:Name="tabControl" Padding="0" BorderThickness="0">
 
             <!-- All the TabItem objects are inserted HERE-->
@@ -150,12 +150,11 @@
             MouseDown="AddNewTabButton_Click" 
             Cursor="Hand">
 
-            <Image 
-            
-            Height="10" Width="10" 
-            HorizontalAlignment="Center" 
-            VerticalAlignment="Center"  
-            Source="{Binding Source={StaticResource plusSource}, Converter={StaticResource stringToUriConverter}}"/>
+            <Image             
+                Height="10" Width="10" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center"  
+                Source="{Binding Source={StaticResource plusSource}, Converter={StaticResource stringToUriConverter}}"/>
         </Border>
 
     </Grid>
