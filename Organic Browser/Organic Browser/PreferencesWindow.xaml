@@ -90,8 +90,10 @@
             <Setter Property="Margin" Value="30 0 0 0" />
         </Style>
     </Window.Resources> 
-
-    <Grid Margin="20" Background="{DynamicResource preferencesWindowBackground}">
+    <Grid 
+        x:Name="mainLayout"
+        Margin="20" 
+        Background="{DynamicResource preferencesWindowBackground}">
         <Grid.Effect>
             <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2" Opacity="0.4"/>
         </Grid.Effect>
@@ -146,21 +148,24 @@
                     x:Name="lightRadioButton" 
                     Style="{StaticResource radioButton}"
                     Content="Light"  
-                    Foreground="{DynamicResource radioButtonForeground}"/>
+                    Foreground="{DynamicResource radioButtonForeground}" 
+                    Checked="LightRadioButton_Checked"/>
                 
                 <RadioButton 
                     GroupName="Theme"
                     x:Name="darkRadioButton" 
                     Style="{StaticResource radioButton}"
                     Content="Dark"  
-                    Foreground="{DynamicResource radioButtonForeground}"/>
+                    Foreground="{DynamicResource radioButtonForeground}"
+                    Checked="DarkRadioButton_Checked"/>
                 
                 <RadioButton 
                     GroupName="Theme"
                     x:Name="autoRadioButton" 
                     Style="{StaticResource radioButton}"
                     Content="Auto"  
-                    Foreground="{DynamicResource radioButtonForeground}"/>
+                    Foreground="{DynamicResource radioButtonForeground}"
+                    Checked="AutoRadioButton_Checked"/>
             </StackPanel>
         </StackPanel>
 

@@ -224,7 +224,6 @@ namespace Organic_Browser.Utils
                     break;
 
             }
-                   
         }
         #endregion
     }

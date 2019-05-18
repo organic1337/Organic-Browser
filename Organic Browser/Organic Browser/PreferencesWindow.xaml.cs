@@ -39,14 +39,34 @@ namespace Organic_Browser
 
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
+            // Handle theme changing
+            (Application.Current as App).ThemeChanged += (object obj, ThemeChangedEventArgs e) =>
+            {
+                OrganicUtility.UpdateImages(this.mainLayout);
+            };
+            Application.Current.Activated += (object obj, EventArgs e) => OrganicUtility.UpdateImages(this.mainLayout);
+
             // Fill the preferences from the usersettings file
             UserSettings settings = UserSettings.Load();
             this.pageDownloadLocation.Value = settings.DownloadWebpagesLocation;
             this.homePage.Value = settings.HomePage;
             this.newTabPage.Value = settings.NewTabPage;
+            this.darkRadioButton.IsChecked = settings.Theme == Theme.Dark;
+            this.lightRadioButton.IsChecked = settings.Theme == Theme.Light;
+            this.autoRadioButton.IsChecked = settings.Theme == Theme.Auto;
         }
 
         #region Event Handlers
+        /// <summary>
+        /// Executes when the window is closed
+        /// </summary>
+        /// <param name="e">Event args</param>
+        protected override void OnClosed(EventArgs e)
+        {
+            this.ApplySavedTheme();
+            base.OnClosed(e);
+        }
+
         /// <summary>
         /// Executes when the preferences X button is clicked 
         /// </summary>
@@ -76,6 +96,9 @@ namespace Organic_Browser
             settings.DownloadWebpagesLocation = this.pageDownloadLocation.Value;
             settings.HomePage = this.homePage.Value;
             settings.NewTabPage = this.newTabPage.Value;
+            if ((bool)this.darkRadioButton.IsChecked) settings.Theme = Theme.Dark;
+            if ((bool)this.lightRadioButton.IsChecked) settings.Theme = Theme.Light;
+            if ((bool)this.autoRadioButton.IsChecked) settings.Theme = Theme.Auto;
             settings.Save();
 
             // Prompt success 
@@ -89,12 +112,16 @@ namespace Organic_Browser
         /// <param name="e">Event args</param>
         private void ResetButton_Click(object sender, RoutedEventArgs e)
         {
+            this.ApplySavedTheme();                         // Apply the saved theme
             UserSettings settings = UserSettings.Load();    // Load the user settings
 
             // Reset each field to the original one from the user settings
             this.pageDownloadLocation.Value = settings.DownloadWebpagesLocation;
             this.homePage.Value = settings.HomePage;
             this.newTabPage.Value = settings.NewTabPage;
+            this.darkRadioButton.IsChecked = settings.Theme == Theme.Dark;
+            this.lightRadioButton.IsChecked = settings.Theme == Theme.Light;
+            this.autoRadioButton.IsChecked = settings.Theme == Theme.Auto;
         }
 
         #endregion
@@ -141,6 +168,49 @@ namespace Organic_Browser
             this.promptLabel.Foreground = new SolidColorBrush(color);
             this.promptLabel.Text = message;
         }
+
+        /// <summary>
+        /// Applies the theme saved in the user settings file
+        /// </summary>
+        private void ApplySavedTheme()
+        {
+            var settings = UserSettings.Load();
+            Theme theme = settings.Theme;
+            if (theme == Theme.Auto)
+                theme = OrganicUtility.GetWindowsTheme();
+            ((App)Application.Current).ApplyTheme(theme);
+        }
         #endregion
+
+        /// <summary>
+        /// Executes when the light theme radio button is checked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LightRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            ((App)Application.Current).ApplyTheme(Theme.Light);
+        }
+
+
+        /// <summary>
+        /// Executes when the Dark theme radio button is checked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DarkRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            ((App)Application.Current).ApplyTheme(Theme.Dark);
+        }
+
+        /// <summary>
+        /// Executes when the Auto theme radio button is checked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AutoRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            ((App)Application.Current).ApplyTheme(OrganicUtility.GetWindowsTheme());
+        }
     }
 }

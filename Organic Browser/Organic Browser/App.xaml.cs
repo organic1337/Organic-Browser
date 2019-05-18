@@ -51,8 +51,11 @@ namespace Organic_Browser
         /// <param name="e"></param>
         protected override void OnStartup(StartupEventArgs e)
         {
-            if (UserSettings.Load().Theme == Theme.Auto)
+            var settings = UserSettings.Load();
+            if (settings.Theme == Theme.Auto)
                 this.CurrentTheme = OrganicUtility.GetWindowsTheme();
+            else
+                this.CurrentTheme = settings.Theme;
             base.OnStartup(e);
         }
 
@@ -115,7 +118,7 @@ namespace Organic_Browser
             this.Resources.MergedDictionaries.Add(
                 new ResourceDictionary()
                 {
-                    Source = new Uri(themePath, UriKind.Relative)
+                    Source = new Uri(themePath, UriKind.Absolute)
                 });
             this.OnThemeChanged();
         }

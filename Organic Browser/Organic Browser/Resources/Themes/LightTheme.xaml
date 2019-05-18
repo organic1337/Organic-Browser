@@ -7,7 +7,7 @@
     <!--========= COLORS ==========-->
     
     <!-- Main window colors -->
-    <SolidColorBrush x:Key="MainWindowBackground" Color="#FFF0F0F0" />
+    <SolidColorBrush x:Key="MainWindowBackground" Color="#FFE4E4E4" />
 
     <!-- Tab Control Colors -->
     <SolidColorBrush x:Key="SelectedTabBackground" Color="LightGray" />

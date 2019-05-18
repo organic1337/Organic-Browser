@@ -180,7 +180,8 @@ namespace Organic_Browser.Controls
             };
             var image = new Image()
             {
-                Style = this.FindResource("xImage") as Style
+                Style = this.FindResource("xImage") as Style,
+                Source = (ImageSource)new ImageSourceConverter().ConvertFromString((string)this.FindResource("xSource"))
             };
 
             // Arrange the UI elements together and set the header to the result
