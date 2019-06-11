@@ -114,6 +114,7 @@
     <Compile Include="PreferencesWindow.xaml.cs">
       <DependentUpon>PreferencesWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utils\AppData.cs" />
     <Compile Include="Utils\BrowserTab.cs" />
     <Compile Include="Utils\CefInitializer.cs" />
     <Compile Include="Utils\History.cs" />

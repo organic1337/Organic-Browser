@@ -48,7 +48,6 @@ namespace Organic_Browser
 
             // Fill the preferences from the usersettings file
             UserSettings settings = UserSettings.Load();
-            this.pageDownloadLocation.Value = settings.DownloadWebpagesLocation;
             this.homePage.Value = settings.HomePage;
             this.newTabPage.Value = settings.NewTabPage;
             this.darkRadioButton.IsChecked = settings.Theme == Theme.Dark;
@@ -93,7 +92,6 @@ namespace Organic_Browser
             if (!isValid) return;
 
             // Save each field in the user settings 
-            settings.DownloadWebpagesLocation = this.pageDownloadLocation.Value;
             settings.HomePage = this.homePage.Value;
             settings.NewTabPage = this.newTabPage.Value;
             if ((bool)this.darkRadioButton.IsChecked) settings.Theme = Theme.Dark;
@@ -116,7 +114,6 @@ namespace Organic_Browser
             UserSettings settings = UserSettings.Load();    // Load the user settings
 
             // Reset each field to the original one from the user settings
-            this.pageDownloadLocation.Value = settings.DownloadWebpagesLocation;
             this.homePage.Value = settings.HomePage;
             this.newTabPage.Value = settings.NewTabPage;
             this.darkRadioButton.IsChecked = settings.Theme == Theme.Dark;
@@ -135,13 +132,8 @@ namespace Organic_Browser
         {
             string errorMessage = string.Empty;
 
-            // Validate the page download location
-            if (!Directory.Exists(this.pageDownloadLocation.Value))
-            {
-                errorMessage = "The given path does not exist";
-            }
             // Validate the home page
-            else if (!OrganicUtility.IsValidUrl(this.homePage.Value))
+            if (!OrganicUtility.IsValidUrl(this.homePage.Value))
             {
                 errorMessage = "The given URL for the home page is invalid";
             }

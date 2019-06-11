@@ -55,7 +55,7 @@ namespace Organic_Browser.Utils
 
             // In case history file does not exist, it means that someone deleted the hostory, therefore
             // the cached data should be deleted as well.
-            if (!File.Exists(OrganicUtility.GetAbsolutePath(History.HistoryPath)) && File.Exists(absCachePath))
+            if (!File.Exists(OrganicUtility.GetAbsolutePath(AppData.HistoryPath)) && File.Exists(absCachePath))
                 Directory.Delete(absCachePath, recursive: true);
 
             if (!Directory.Exists(absCachePath))

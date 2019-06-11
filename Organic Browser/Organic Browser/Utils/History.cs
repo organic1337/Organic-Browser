@@ -16,9 +16,6 @@ namespace Organic_Browser.Utils
         // Single instance
         private static History Instance = null;
 
-        // public read only data
-        public const string HistoryPath = "pages\\history\\history.json";      // Path of the history json file 
-
         /// <summary>
         /// Single url visit
         /// </summary>
@@ -51,9 +48,9 @@ namespace Organic_Browser.Utils
 
             History instance = new History();
             // In case the history file exists
-            if (File.Exists(HistoryPath))
+            if (File.Exists(AppData.HistoryPath))
             {
-                Stream stream = new StreamReader(HistoryPath).BaseStream;
+                Stream stream = new StreamReader(AppData.HistoryPath).BaseStream;
                 try
                 {
                     var serializer = new DataContractJsonSerializer(typeof(List<UrlVisit>));
@@ -82,7 +79,7 @@ namespace Organic_Browser.Utils
         /// </summary>
         public void ClearAllHistory()
         {
-            File.Delete(HistoryPath);   // Delete the history file, a new one will be created when it will be needed
+            File.Delete(AppData.HistoryPath);   // Delete the history file, a new one will be created when it will be needed
         }
 
         /// <summary>
@@ -111,7 +108,7 @@ namespace Organic_Browser.Utils
             Stream stream = null;
             try
             {
-                stream = new StreamWriter(HistoryPath).BaseStream;
+                stream = new StreamWriter(AppData.HistoryPath).BaseStream;
                 var serializer = new DataContractJsonSerializer(this.UrlVisits.GetType());
                 serializer.WriteObject(stream, this.UrlVisits);
             }

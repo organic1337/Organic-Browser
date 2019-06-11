@@ -16,19 +16,14 @@ namespace Organic_Browser.Utils
         private static UserSettings Instance = null;    // Single instance  
         
         // Private readonly attributes
-        private const string JsonPath = "settings.json";                                            // Path to the json file
         private const string DefaultHomePage = "www.google.com";                                    // Default home page address
         private const string DefaultNewTabPage = "www.google.com";                                  // Default new tab page address
         private const string DefaultTheme = "auto";                                                 // Default app theme (light/dark/auto)
-        private static readonly string DefaultDownloadPagesLocation = Environment.GetFolderPath(    // Default location to download webpages
-            Environment.SpecialFolder.Desktop);     
 
 
         // Public properties (Data members in the json file)
         [DataMember(Name = "homePage")]
         public string HomePage { get; set; }                       // Home page URL
-        [DataMember(Name = "downloadWebPagesLocation")]
-        public string DownloadWebpagesLocation { get; set; }       // Downloaded webpage location
         [DataMember(Name = "newTabPage")]
         public string NewTabPage { get; set; }                     // Page that opens a new tab
         [DataMember(Name = "theme")]
@@ -73,7 +68,7 @@ namespace Organic_Browser.Utils
         /// </summary>
         public void Save()
         {
-            Stream stream = new StreamWriter(JsonPath).BaseStream;
+            Stream stream = new StreamWriter(AppData.SettingsPath).BaseStream;
             try
             {
                 var serializer = new DataContractJsonSerializer(typeof(UserSettings));
@@ -95,9 +90,9 @@ namespace Organic_Browser.Utils
             if (Instance == null)
             {
                 // In case file exists
-                if (File.Exists(JsonPath))
+                if (File.Exists(AppData.SettingsPath))
                 {
-                    var stream = new StreamReader(JsonPath).BaseStream;
+                    var stream = new StreamReader(AppData.SettingsPath).BaseStream;
                     var serializer = new DataContractJsonSerializer(typeof(UserSettings));
                     UserSettings result = (UserSettings)serializer.ReadObject(stream);
                     stream.Dispose();
@@ -110,7 +105,6 @@ namespace Organic_Browser.Utils
                     var result = new UserSettings
                     {
                         HomePage = DefaultHomePage,
-                        DownloadWebpagesLocation = DefaultDownloadPagesLocation,
                         NewTabPage = DefaultNewTabPage,
                         ThemeString = DefaultTheme                       
                     };

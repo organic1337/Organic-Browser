@@ -188,7 +188,7 @@ namespace Organic_Browser.Utils
                 return;
 
             string url = this.WebBrowser.Address;   // Url to download
-            var webpageDownloader = new WebsiteDownloader.WebpageDownloader(url, UserSettings.Load().DownloadWebpagesLocation);
+            var webpageDownloader = new WebsiteDownloader.WebpageDownloader(url, AppData.DownloadedPagesLocation);
 
             // When the download is started enable the loading animation
             // When finished disable the loading animation

@@ -27,6 +27,8 @@ namespace Organic_Browser
             BindWindowButtons();
             ManageTabs();                                                           // Manage the browser tabs
             this.Closed += (object sender, EventArgs e) => Environment.Exit(0);     //  When the main window is closed, close the browser
+
+            AppData.Validate();
         }
 
        

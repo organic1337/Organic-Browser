@@ -116,12 +116,6 @@
             VerticalAlignment="Center" 
             Height="auto">
             
-            <!-- Page Download Location -->
-            <local:PreferenceField 
-                x:Name="pageDownloadLocation" 
-                Field="Page Download Location"
-                Style="{StaticResource ResourceKey=preferenceField }">                
-            </local:PreferenceField>
             
             <!-- Home page address -->
             <local:PreferenceField 
