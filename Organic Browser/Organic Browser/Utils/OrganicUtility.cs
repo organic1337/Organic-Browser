@@ -6,7 +6,6 @@ using System.Windows;
 using System.Reflection;
 using System.Windows.Data;
 using System.Windows.Media;
-using System.Windows.Shapes;
 using System.Windows.Controls;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -20,6 +19,7 @@ namespace Organic_Browser.Utils
 
         // Private -  Read only data
         private readonly static Regex UrlRegex = new Regex(@"^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private readonly static Regex DomainNameRegex = new Regex(@"(?:https?://)?(?<domain>[a-zA-Z\.]*)");
 
         /// <summary>
         /// Returns whether the given URL is valid
@@ -64,6 +64,19 @@ namespace Organic_Browser.Utils
             return urlEncoded;
         }
 
+
+        /// <summary>
+        /// Retreives the host from the given url
+        /// </summary>
+        /// <param name="url">Url</param>
+        /// <returns>The domain name of the url</returns>
+        public static string GetDomainName(string url)
+        {
+            if (!IsValidUrl(url))
+                throw new InvalidDataException(string.Format("The url: \"{0}\" is invalid", url));
+
+            return DomainNameRegex.Match(url).Groups["domain"].Value;
+        }
 
         #region Local Pages
         // Map the organic urls with the actual urls ("organic://...": "file://...")

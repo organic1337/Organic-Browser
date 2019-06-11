@@ -6,6 +6,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Text;
+using Organic_Browser.Utils;
 
 namespace Organic_Browser.Utils.WebsiteDownloader
 {
@@ -97,6 +98,7 @@ namespace Organic_Browser.Utils.WebsiteDownloader
             this.OnStartedDownloading();            // downloading is starting
 
             // Download all the resources
+            this.DownloadFavicon();
             this.DownloadImages();
             this.DownloadCss();
             this.DownloadJs();
@@ -222,6 +224,15 @@ namespace Organic_Browser.Utils.WebsiteDownloader
         }
 
         #region Private Methods
+        /// <summary>
+        /// Downloads the page favicon
+        /// </summary>
+        private void DownloadFavicon()
+        {
+            string faviconUrl = "https://www.google.com/s2/favicons?domain=" + OrganicUtility.GetDomainName(this.Url);
+            this.webClient.DownloadFile(faviconUrl, Path.Combine(this.basePath, "favicon.ico"));
+        }
+
         /// <summary>
         /// Returns the mime type of the last response.
         /// for example -> if an image was downloaded, it may return .png, .jpg etc...
@@ -363,6 +374,7 @@ namespace Organic_Browser.Utils.WebsiteDownloader
             else
                 return currentUrl + relativeUrl;
         }
+
 
         /// <summary>
         /// Sometimes the given mime type is invalid, instead of .svg we get .png, 
