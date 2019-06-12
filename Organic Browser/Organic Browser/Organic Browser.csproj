@@ -101,6 +101,9 @@
     <Compile Include="Controls\PreferenceFieldControl.xaml.cs">
       <DependentUpon>PreferenceFieldControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SavedPageControl.xaml.cs">
+      <DependentUpon>SavedPageControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SettingsDropdownControl.xaml.cs">
       <DependentUpon>SettingsDropdownControl.xaml</DependentUpon>
     </Compile>
@@ -111,6 +114,9 @@
       <DependentUpon>WindowManagementControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\StringToUriConverter.cs" />
+    <Compile Include="LibraryWindow.xaml.cs">
+      <DependentUpon>LibraryWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PreferencesWindow.xaml.cs">
       <DependentUpon>PreferencesWindow.xaml</DependentUpon>
     </Compile>
@@ -140,6 +146,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\SavedPageControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\SettingsDropdownControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -149,6 +159,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\WindowManagementControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LibraryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

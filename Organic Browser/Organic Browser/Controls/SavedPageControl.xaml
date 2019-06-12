@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="Organic_Browser.Controls.SavedPageControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Organic_Browser.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="140" d:DesignWidth="180"
+             Height="140" Width="160">
+
+    <!-- All the UserControl resources-->
+    <UserControl.Resources>
+        <!-- Wrapping border style -->
+        <Style TargetType="Border" x:Key="mainBorder">
+            <Setter Property="Background" Value="#f2f2f2"/>
+            <Setter Property="CornerRadius" Value="30"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.Setters>
+                        <Setter Property="Background" Value="#dedede"/>
+                    </Trigger.Setters>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- main stackpanel style -->
+        <Style TargetType="StackPanel" x:Key="mainPanel">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Orientation" Value="Vertical"/>
+        </Style>
+        
+        <!-- Website icon style -->
+        <Style TargetType="Image" x:Key="websiteIcon">
+            <Setter Property="Source" Value="pack://application:,,,/Resources/Images/organic-browser-icon.ico"/>
+            <Setter Property="Height" Value="50"/>
+        </Style>
+    
+        
+        <!-- Title style -->
+        <Style TargetType="Label" x:Key="title">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Content" Value="alskdjasd aldkals asdasd"/>
+            <Setter Property="Width" Value="130" />
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="FontSize" Value="10" />
+        </Style>
+    </UserControl.Resources>
+    
+    <Border Style="{DynamicResource mainBorder}">
+        <StackPanel Style="{DynamicResource mainPanel}">
+            <Image Style="{DynamicResource websiteIcon}"/>
+            <Label Style="{DynamicResource title}" />
+        </StackPanel>
+    </Border>
+</UserControl>

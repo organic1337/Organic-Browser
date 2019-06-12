@@ -9,7 +9,7 @@
             
             <ResourceDictionary.MergedDictionaries>
                 <!-- Theme -->
-                <ResourceDictionary Source="pack://application:,,,/Resources/Themes/DarkTheme.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Resources/Themes/LightTheme.xaml" />
                 
             </ResourceDictionary.MergedDictionaries>
             
