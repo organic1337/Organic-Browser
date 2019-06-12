@@ -17,9 +17,15 @@ namespace Organic_Browser.Controls
 {
     /// <summary>
     /// Interaction logic for SavedPageControl.xaml
+    /// 
+    /// This control represents a single saved page.
     /// </summary>
     public partial class SavedPageControl : UserControl
     {
+        // Public properties
+        public string Title { get; set; }               // Webpage title
+        public ImageSource IconSource { get; set; }     // Webpage icon source
+
         public SavedPageControl()
         {
             InitializeComponent();

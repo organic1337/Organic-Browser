@@ -54,8 +54,12 @@
 
     <!-- WindowManagementControl colors -->
     <SolidColorBrush x:Key="WindowManagementBackground" Color="#FFC0C0C2" />
-    
 
+    <!-- SavedPageControl colors -->
+    <SolidColorBrush x:Key="savedPageControlBackground" Color="#f2f2f2" />
+    <SolidColorBrush x:Key="savedPageControlMouseOverBackground" Color="#dedede" />
+    <SolidColorBrush x:Key="savedPageControlForeground" Color="#202020" />
+    
     <!--========= Sources ==========-->
     <system:String x:Key="downloadSource">pack://application:,,,/Resources/Images/Buttons/Light/download.png</system:String>
     <system:String x:Key="greenDownloadSource">pack://application:,,,/Resources/Images/Buttons/Light/green-download.png</system:String>
