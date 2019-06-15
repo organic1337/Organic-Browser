@@ -2,7 +2,7 @@
 
 
 <p align="center">
-<img src="http://up419.siz.co.il/up3/zilm2mntzyzc.png" Width="153" Height="200" style="float: center;"/>
+<img src="https://i.imgur.com/5cSpxTr.png" Height="200" style="float: center;"/>
 </p>
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/organic5?locale.x=en_US)
