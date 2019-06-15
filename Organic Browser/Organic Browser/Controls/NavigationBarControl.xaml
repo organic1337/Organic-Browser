@@ -14,24 +14,7 @@
             <Setter Property="Width" Value="50" />
         </Style>
 
-        <Style x:Key="imageWrapperBase" TargetType="Border">
-            <Setter Property="Height" Value="30" />
-            <Setter Property="Width" Value="30" />
-            <Setter Property="Cursor" Value="Hand" />
-        </Style>
-
-        <Style x:Key="buttonImageWrapper" TargetType="Border" BasedOn="{StaticResource imageWrapperBase}">
-            <Setter Property="CornerRadius" Value="10" />
-            <Setter Property="Background" Value="{DynamicResource NavBarButtonBackground}" />
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="{DynamicResource NavBarButtonMouseOverBackground}" />
-                </Trigger>
-                <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Opacity" Value="0.5" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
+        <Style TargetType="Border" x:Key="buttonBorder" BasedOn="{StaticResource buttonImageWrapper}" />
 
         <Style x:Key="imageSize" TargetType="Image">
             <Setter Property="Height" Value="15" />
@@ -66,13 +49,13 @@
         </Grid.ColumnDefinitions>
 
         <!--Back Button-->
-        <Border x:Name="backBtn" Style="{DynamicResource ResourceKey=buttonImageWrapper}">
+        <Border x:Name="backBtn" Style="{DynamicResource ResourceKey=buttonBorder}">
             <Image Source="{Binding Source={StaticResource leftArrowSource}, Converter={StaticResource stringToUriConverter}}" 
                    Style="{StaticResource ResourceKey=imageSize}"/>
         </Border>
 
         <!--Forward Button-->
-        <Border x:Name="forwardBtn" Style="{DynamicResource ResourceKey=buttonImageWrapper}" Grid.Column="1">
+        <Border x:Name="forwardBtn" Style="{DynamicResource ResourceKey=buttonBorder}" Grid.Column="1">
             <Image Source="{Binding Source={StaticResource rightArrowSource}, Converter={StaticResource stringToUriConverter}}" 
                    Style="{StaticResource ResourceKey=imageSize}" 
                    Margin="0,7,0,0" 
@@ -80,19 +63,19 @@
         </Border>
 
         <!--Refresh Button-->
-        <Border x:Name="refreshBtn" Style="{DynamicResource ResourceKey=buttonImageWrapper}" Grid.Column="2">
+        <Border x:Name="refreshBtn" Style="{DynamicResource ResourceKey=buttonBorder}" Grid.Column="2">
             <Image Source="{Binding Source={StaticResource refreshSource}, Converter={StaticResource stringToUriConverter}}" 
                    Style="{StaticResource ResourceKey=imageSize}"/>
         </Border>
 
         <!--Home Button-->
-        <Border x:Name="homeBtn" Style="{DynamicResource ResourceKey=buttonImageWrapper}" Grid.Column="3">
+        <Border x:Name="homeBtn" Style="{DynamicResource ResourceKey=buttonBorder}" Grid.Column="3">
             <Image Source="{Binding Source={StaticResource homeSource}, Converter={StaticResource stringToUriConverter}}" 
                    Style="{StaticResource ResourceKey=imageSize}"/>
         </Border>
 
         <!--Settings Button-->
-        <Border x:Name="settingsBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}" Grid.Column="7">
+        <Border x:Name="settingsBtn" Style="{StaticResource ResourceKey=buttonBorder}" Grid.Column="7">
             <Image 
                 Source="{Binding Source={StaticResource settingsSource}, Converter={StaticResource stringToUriConverter}}" 
                 Style="{DynamicResource ResourceKey=imageSize}"/>
@@ -106,7 +89,7 @@
             <!--Loading webpages control -->
             <local:LoadingWebpageControl x:Name="loadingWebpageControl" 
                                          Canvas.Top="0" 
-                                         Canvas.Left="44" 
+                                         Canvas.Left="94" 
                                          IsEnabled="False"/>
         </Canvas>
         
@@ -121,8 +104,9 @@
         <!-- Saved pages button -->
         <Border
             x:Name="savedPagesBtn"
-            Style="{DynamicResource buttonImageWrapper}"
-            Grid.Column="6">
+            Style="{DynamicResource buttonBorder}"
+            Grid.Column="6"
+            MouseLeftButtonUp="SavedPagesBtn_MouseLeftButtonUp">
             <Image 
                 Source="{Binding Source={StaticResource savedPagesImageSource}, Converter={StaticResource stringToUriConverter}}" 
                 Style="{DynamicResource ResourceKey=imageSize}"/>

@@ -29,6 +29,9 @@ namespace Organic_Browser.Controls
         public SavedPageControl()
         {
             InitializeComponent();
+
+            // Set the data context to this in order to enable the data binding
+            this.DataContext = this;    
         }
     }
 }

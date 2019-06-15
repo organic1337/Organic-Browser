@@ -46,6 +46,25 @@
                 </Setter>
             </Style>
             
+            <!-- Custom buttons -->
+            <Style x:Key="imageWrapperBase" TargetType="Border">
+                <Setter Property="Height" Value="30" />
+                <Setter Property="Width" Value="30" />
+                <Setter Property="Cursor" Value="Hand" />
+            </Style>
+            <Style x:Key="buttonImageWrapper" TargetType="Border" BasedOn="{StaticResource imageWrapperBase}">
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="Background" Value="{DynamicResource NavBarButtonBackground}" />
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{DynamicResource NavBarButtonMouseOverBackground}" />
+                    </Trigger>
+                    <Trigger Property="IsEnabled" Value="False">
+                        <Setter Property="Opacity" Value="0.5" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

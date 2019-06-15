@@ -12,10 +12,42 @@
     
     <!-- All the window resources -->
     <Window.Resources>
-
+        <Style TargetType="RowDefinition" x:Key="savedPagesGridRow">
+            <Setter Property="Height" Value="157" />
+        </Style>
     </Window.Resources>
-    
-    <Grid Style="{DynamicResource defaultWindowGridStyle}">
-        
+ 
+    <Grid Style="{DynamicResource defaultWindowGridStyle}"
+          x:Name="mainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="7.5*"/>
+        </Grid.RowDefinitions>
+
+        <Border 
+            x:Name="closeBtn"
+            Style="{StaticResource buttonImageWrapper}"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Right"
+            MouseLeftButtonDown="CloseBtn_MouseLeftButtonDown"
+            Margin="0 0 20 5"
+            Grid.Row="0">
+            <Image 
+                Source="{Binding Source={StaticResource xSource}, Converter={StaticResource stringToUriConverter}}" 
+                Height="10"/>
+        </Border>
+
+        <ScrollViewer
+            Margin="40 0 40 40"
+            Grid.Row="1">
+            <Grid x:Name="savedPagesGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Window>

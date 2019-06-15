@@ -120,12 +120,13 @@
     <Compile Include="PreferencesWindow.xaml.cs">
       <DependentUpon>PreferencesWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Utils\AppData.cs" />
+    <Compile Include="Utils\DataManagement\AppData.cs" />
     <Compile Include="Utils\BrowserTab.cs" />
     <Compile Include="Utils\CefInitializer.cs" />
-    <Compile Include="Utils\History.cs" />
-    <Compile Include="Utils\UserSettings.cs" />
+    <Compile Include="Utils\DataManagement\History.cs" />
+    <Compile Include="Utils\DataManagement\UserSettings.cs" />
     <Compile Include="Utils\OrganicUtility.cs" />
+    <Compile Include="Utils\SavedPage.cs" />
     <Compile Include="Utils\WebsiteDownloader\Extensions.cs" />
     <Compile Include="Utils\WebsiteDownloader\HtmlDocument.cs" />
     <Compile Include="Utils\WebsiteDownloader\MimeTypeUtility.cs" />
@@ -274,6 +275,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Buttons\Dark\saved-pages.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Buttons\Dark\default-favicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Buttons\Light\default-favicon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

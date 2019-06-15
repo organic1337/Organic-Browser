@@ -22,7 +22,7 @@ namespace Organic_Browser
     /// </summary>
     public partial class PreferencesWindow : Window
     {
-        public static bool IsRunning = false;                               // Whether the window is running or not
+        public static bool IsRunning = false;       // Whether the window is running or not
         public static PreferencesWindow CurrentRunningWindow { get; private set; }  // The current running window
 
         // Read only data
@@ -63,6 +63,8 @@ namespace Organic_Browser
         protected override void OnClosed(EventArgs e)
         {
             this.ApplySavedTheme();
+            IsRunning = false;
+            CurrentRunningWindow = null;
             base.OnClosed(e);
         }
 
@@ -73,7 +75,6 @@ namespace Organic_Browser
         /// <param name="e"> event args </param>
         private void XButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            IsRunning = false; // Mention that the window had stopped running
             this.Close();
         }
 

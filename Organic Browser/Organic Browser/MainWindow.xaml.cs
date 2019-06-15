@@ -59,14 +59,22 @@ namespace Organic_Browser
             // Enable tab adding
             this.browserTabControl.NewTabButtonClick += (object sender, EventArgs e) =>
             {
-                webBrowser = new ChromiumWebBrowser();
-                webBrowser.BrowserSettings.FileAccessFromFileUrls = CefSharp.CefState.Enabled;  // Enable loading local files through the browser
-                navigationBar = new NavigationBarControl();
-                browserTab = new BrowserTab(navigationBar, webBrowser);
-                webBrowser.Address = UserSettings.Load().NewTabPage;         
-                tabContent = CreateGrid(navigationBar, webBrowser);
-                this.browserTabControl.AddTab(webBrowser, "New Tab", tabContent);
+                this.AddNewTab();
             };
+        }
+
+        public void AddNewTab(string address="")
+        {
+            var webBrowser = new ChromiumWebBrowser();
+            // In case no address was given use the default new tab address mentioned in user settings
+            if (String.IsNullOrEmpty(address))
+                address = UserSettings.Load().NewTabPage;
+            webBrowser.BrowserSettings.FileAccessFromFileUrls = CefSharp.CefState.Enabled;  // Enable loading local files through the browser
+            var navigationBar = new NavigationBarControl();
+            var browserTab = new BrowserTab(navigationBar, webBrowser);
+            webBrowser.Address = address;
+            Grid tabContent = CreateGrid(navigationBar, webBrowser);
+            this.browserTabControl.AddTab(webBrowser, "New Tab", tabContent);
         }
 
         /// <summary>

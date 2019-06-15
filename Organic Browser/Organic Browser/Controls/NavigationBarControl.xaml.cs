@@ -119,5 +119,26 @@ namespace Organic_Browser.Controls
             if (this.settingsMenu.Visibility == Visibility.Visible)
                 this.settingsMenu.Visibility = Visibility.Hidden;
         }
+
+        /// <summary>
+        /// Executes when the mouse left button is up on the saved page button
+        /// </summary>
+        /// <param name="sender">Event sender</param>
+        /// <param name="e">Event args</param>
+        private void SavedPagesBtn_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            // In case Library window is not running
+            if (!LibraryWindow.IsRunning)
+            {
+                var window = new LibraryWindow();
+                window.Show();
+                System.Windows.Threading.Dispatcher.Run();
+            }
+            // In case preference window is already running
+            else
+            {
+                LibraryWindow.CurrentRunningWindow.Focus();
+            }
+        }
     }
 }
