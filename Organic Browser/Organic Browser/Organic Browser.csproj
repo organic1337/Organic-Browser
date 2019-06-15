@@ -269,6 +269,12 @@
     <Resource Include="Resources\Images\Buttons\Dark\make-smaller.png" />
     <Resource Include="Resources\Images\Buttons\Dark\minimize.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Buttons\Light\saved-pages.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Buttons\Dark\saved-pages.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

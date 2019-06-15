@@ -34,6 +34,18 @@
                 <Setter Property="BorderThickness" Value="0" />
                 <Setter Property="Background" Value="#FFD0D0D0" />
             </Style>
+
+            <!-- Window Grid -->
+            <Style TargetType="Grid" x:Key="defaultWindowGridStyle">
+                <Setter Property="Margin" Value="20" />
+                <Setter Property="Background" Value="{DynamicResource defaultWindowBackground}"/>
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2" Opacity="0.4"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

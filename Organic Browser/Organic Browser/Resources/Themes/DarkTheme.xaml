@@ -50,7 +50,6 @@
     <SolidColorBrush x:Key="PreferencesTextButtonBackground" Color="Transparent" />
     <SolidColorBrush x:Key="PreferencesTextButtonForeground" Color="#9b9ba1" />
     <SolidColorBrush x:Key="preferencesTextButtonMouseOverBackground" Color="#3b3b40" />
-    <SolidColorBrush x:Key="preferencesWindowBackground" Color="#202021" />
     <SolidColorBrush x:Key="radioButtonForeground" Color="#9b9ba1"/>
 
     <!-- WindowManagementControl colors -->
@@ -60,6 +59,9 @@
     <SolidColorBrush x:Key="savedPageControlBackground" Color="#f2f2f2" />
     <SolidColorBrush x:Key="savedPageControlMouseOverBackground" Color="#dedede" />
     <SolidColorBrush x:Key="savedPageControlForeground" Color="#202020" />
+
+    <!-- General Colors -->
+    <SolidColorBrush x:Key="defaultWindowBackground" Color="#202021"/>
 
     <!--========= Sources ==========-->
     <system:String x:Key="downloadSource">pack://application:,,,/Resources/Images/Buttons/Dark/download.png</system:String>
@@ -76,5 +78,5 @@
     <system:String x:Key="minimizeSource">pack://application:,,,/Resources/Images/Buttons/Dark/minimize.png</system:String>
     <system:String x:Key="makeBiggerSource">pack://application:,,,/Resources/Images/Buttons/Dark/make-bigger.png</system:String>
     <system:String x:Key="makeSmallerSource">pack://application:,,,/Resources/Images/Buttons/Dark/make-smaller.png</system:String>
-    
+    <system:String x:Key="savedPagesImageSource">pack://application:,,,/Resources/Images/Buttons/Dark/saved-pages.png</system:String>
 </ResourceDictionary>

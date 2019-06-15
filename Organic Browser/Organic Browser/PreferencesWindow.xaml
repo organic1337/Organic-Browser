@@ -8,9 +8,7 @@
         Title="PreferencesWindow" Height="450" Width="800"
         WindowStyle="None"
         AllowsTransparency="True"
-        Background="Transparent"
-        
->
+        Background="Transparent">
 
     <Window.Resources>
         <Style TargetType="Window">
@@ -93,7 +91,7 @@
     <Grid 
         x:Name="mainLayout"
         Margin="20" 
-        Background="{DynamicResource preferencesWindowBackground}">
+        Background="{DynamicResource defaultWindowBackground}">
         <Grid.Effect>
             <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2" Opacity="0.4"/>
         </Grid.Effect>

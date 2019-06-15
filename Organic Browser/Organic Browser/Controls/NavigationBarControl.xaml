@@ -62,16 +62,17 @@
             <ColumnDefinition Width="10*"/>
             <ColumnDefinition />
             <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <!--Back Button-->
-        <Border x:Name="backBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}">
+        <Border x:Name="backBtn" Style="{DynamicResource ResourceKey=buttonImageWrapper}">
             <Image Source="{Binding Source={StaticResource leftArrowSource}, Converter={StaticResource stringToUriConverter}}" 
                    Style="{StaticResource ResourceKey=imageSize}"/>
         </Border>
 
         <!--Forward Button-->
-        <Border x:Name="forwardBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}" Grid.Column="1">
+        <Border x:Name="forwardBtn" Style="{DynamicResource ResourceKey=buttonImageWrapper}" Grid.Column="1">
             <Image Source="{Binding Source={StaticResource rightArrowSource}, Converter={StaticResource stringToUriConverter}}" 
                    Style="{StaticResource ResourceKey=imageSize}" 
                    Margin="0,7,0,0" 
@@ -79,21 +80,22 @@
         </Border>
 
         <!--Refresh Button-->
-        <Border x:Name="refreshBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}" Grid.Column="2">
+        <Border x:Name="refreshBtn" Style="{DynamicResource ResourceKey=buttonImageWrapper}" Grid.Column="2">
             <Image Source="{Binding Source={StaticResource refreshSource}, Converter={StaticResource stringToUriConverter}}" 
                    Style="{StaticResource ResourceKey=imageSize}"/>
         </Border>
 
         <!--Home Button-->
-        <Border x:Name="homeBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}" Grid.Column="3">
+        <Border x:Name="homeBtn" Style="{DynamicResource ResourceKey=buttonImageWrapper}" Grid.Column="3">
             <Image Source="{Binding Source={StaticResource homeSource}, Converter={StaticResource stringToUriConverter}}" 
                    Style="{StaticResource ResourceKey=imageSize}"/>
         </Border>
 
         <!--Settings Button-->
-        <Border x:Name="settingsBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}" Grid.Column="6">
-            <Image Source="{Binding Source={StaticResource settingsSource}, Converter={StaticResource stringToUriConverter}}" 
-                   Style="{StaticResource ResourceKey=imageSize}"/>
+        <Border x:Name="settingsBtn" Style="{StaticResource ResourceKey=buttonImageWrapper}" Grid.Column="7">
+            <Image 
+                Source="{Binding Source={StaticResource settingsSource}, Converter={StaticResource stringToUriConverter}}" 
+                Style="{DynamicResource ResourceKey=imageSize}"/>
         </Border>
 
         <local:UrlTextBoxControl x:Name="urlTextBox" Height="30" Grid.Column="4"></local:UrlTextBoxControl>
@@ -111,9 +113,19 @@
         <!--Download Button-->
         <Border 
             x:Name="downloadBtn" 
-            Style="{StaticResource ResourceKey=imageWrapperBase}" 
+            Style="{DynamicResource ResourceKey=imageWrapperBase}" 
             Grid.Column="5">
-            <Image x:Name="downloadImage" Style="{StaticResource ResourceKey=DownloadButtonImage}"/>
+            <Image x:Name="downloadImage" Style="{DynamicResource ResourceKey=DownloadButtonImage}"/>
+        </Border>
+        
+        <!-- Saved pages button -->
+        <Border
+            x:Name="savedPagesBtn"
+            Style="{DynamicResource buttonImageWrapper}"
+            Grid.Column="6">
+            <Image 
+                Source="{Binding Source={StaticResource savedPagesImageSource}, Converter={StaticResource stringToUriConverter}}" 
+                Style="{DynamicResource ResourceKey=imageSize}"/>
         </Border>
 
         <!--Settings Dropdown canvas-->
